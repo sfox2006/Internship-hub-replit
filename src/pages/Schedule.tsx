@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CalendarDays } from "lucide-react";
 import { fixtures, filterSessions } from "../data/selectors";
-import { referenceNow, etFormat } from "../data/clock";
+import { referenceNow, localFormat } from "../data/clock";
 import FilterChips from "../components/FilterChips";
 import Card from "../components/Card";
 import SessionRow from "../components/SessionRow";
@@ -30,7 +30,7 @@ export default function Schedule() {
     referenceNow(),
   );
   const months = [
-    ...new Set(sessions.map((s) => etFormat(s.startAt, "MMMM yyyy"))),
+    ...new Set(sessions.map((s) => localFormat(s.startAt, "MMMM yyyy"))),
   ];
   const feed = origin + "/api/calendar/demo/feed.ics";
   return (
@@ -54,14 +54,9 @@ export default function Schedule() {
             value={period}
             onChange={setPeriod}
           />
-          <label className="check">
-            <input
-              type="checkbox"
-              checked={required}
-              onChange={(e) => setRequired(e.target.checked)}
-            />
-            Required only
-          </label>
+          <span className="muted">
+            Programme minimum: attend 10 of 13 sessions
+          </span>
         </div>
         <FilterChips
           label="Session type"
@@ -113,7 +108,7 @@ export default function Schedule() {
             <h2>{month}</h2>
             <Card>
               {sessions
-                .filter((s) => etFormat(s.startAt, "MMMM yyyy") === month)
+                .filter((s) => localFormat(s.startAt, "MMMM yyyy") === month)
                 .map((s) => (
                   <SessionRow key={s.id} session={s} />
                 ))}

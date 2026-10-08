@@ -54,10 +54,14 @@ export default function Readings() {
         </div>
       </div>
       <Card>
-        <ProgressBar
-          {...readingProgress(state.completedResourceIds)}
-          label="required readings"
-        />
+        <p>
+          Readings are encouraged, not mandatory. No original reading
+          assignments were supplied; use the official programme links below.
+        </p>
+        <p>
+          Readings are encouraged, not mandatory. No original reading
+          assignments were supplied; consult the official cohort programme.
+        </p>
       </Card>
       <Card className="filters">
         <label>

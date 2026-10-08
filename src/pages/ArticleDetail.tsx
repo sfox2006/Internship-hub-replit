@@ -28,7 +28,14 @@ export default function ArticleDetail() {
           <Blocks blocks={a.blocks} />
         </Card>
         <Card>
-          <h2>Who to ask</h2>
+          <h2>Official programme guidance</h2>
+          <a
+            href="https://www.cis.org.au/events/liberty-society-student-programs/ls-fellowship-cohort-2026-program/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            CIS cohort programme ↗
+          </a>
           {a.contactPersonIds.map((id) => {
             const p = fixtures.people.find((p) => p.id === id)!;
             return (

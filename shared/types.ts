@@ -145,6 +145,7 @@ export type Profile = {
 export type PersonalState = {
   version: 1;
   completedResourceIds: string[];
+  attendedSessionIds: string[];
   completedRequirementIds: string[];
   rsvpBySession: Record<string, "going" | "unavailable" | null>;
   bookmarks: Bookmark[];

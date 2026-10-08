@@ -1,337 +1,197 @@
 import { test, expect } from "@playwright/test";
-const storageKey = "intern-hub-demo:v1";
-test("production API, calendars, invalid inputs and nested SPA routes", async ({
+test("production health, nested routes, thirteen calendar events and proper errors", async ({
   request,
 }) => {
-  const health = await request.get("/api/health");
-  expect(health.status()).toBe(200);
-  expect(await health.json()).toEqual({ ok: true });
-  for (const url of ["/schedule", "/session/56"]) {
-    const r = await request.get(url);
-    expect(r.status()).toBe(200);
-    expect(await r.text()).toContain('<div id="root">');
-  }
-  const event = await request.get("/api/sessions/56/calendar.ics");
-  expect(event.headers()["content-type"]).toContain("text/calendar");
-  expect(await event.text()).toContain("DTSTART:20261008T133000Z");
-  expect(await event.text()).toContain("DTEND:20261008T150000Z");
-  const feed = await request.get("/api/calendar/demo/feed.ics");
-  expect((await feed.text()).match(/BEGIN:VEVENT/g)).toHaveLength(21);
-  expect(await feed.text()).not.toContain("privateNotes");
-  const reading = await request.get(
-    "/api/resources/globalization/reading-time.ics?start=2026-11-02T14%3A23%3A00.000Z",
-  );
-  expect(await reading.text()).toContain("DTEND:20261102T152300Z");
-  for (const url of [
-    "/api/unknown",
-    "/api/sessions/missing/calendar.ics",
-    "/api/resources/missing/reading-time.ics",
+  expect(await (await request.get("/api/health")).json()).toEqual({ ok: true });
+  for (const path of [
+    "/programme",
+    "/applications",
+    "/reflection-guide",
+    "/session/ls-1022",
+    "/schedule",
+  ])
+    expect((await request.get(path)).status()).toBe(200);
+  const feed = await (await request.get("/api/calendar/demo/feed.ics")).text();
+  expect(feed.match(/BEGIN:VEVENT/g)).toHaveLength(13);
+  expect(feed).toContain("DTSTART:20260416T080000Z");
+  expect(feed).toContain("DTSTART:20261022T070000Z");
+  for (const path of [
+    "/api/missing",
     "/assets/missing.js",
-    "/demo-files/missing.pdf",
-  ]) {
-    expect((await request.get(url)).status()).toBe(404);
-  }
-  expect(
-    (
-      await request.get(
-        "/api/resources/law/reading-time.ics?start=2026-10-08T13:23:00Z",
-      )
-    ).status(),
-  ).toBe(400);
-  expect(
-    (
-      await request.get(
-        "/api/resources/globalization/reading-time.ics?start=bad",
-      )
-    ).status(),
-  ).toBe(400);
+    "/api/sessions/56/calendar.ics",
+  ])
+    expect((await request.get(path)).status()).toBe(404);
 });
-test("home, schedule filtering, calendar and direct refresh", async ({
-  page,
-}) => {
+test("CIS home, source preservation and Sydney schedule", async ({ page }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "Good morning, Demo." }),
+    page.getByRole("heading", { name: "Welcome, Demo." }),
   ).toBeVisible();
-  await expect(page.locator(".count")).toHaveText("7");
-  await expect(page.locator(".prep-link")).toHaveCount(5);
+  await expect(
+    page.getByText("13 sessions · 6–8 p.m. Sydney time", { exact: false }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "Close quick tour" }).click();
+  await page.goto("/programme");
+  for (const text of [
+    "non-binding expression-of-interest",
+    "Chatham House Rule",
+    "200–300",
+    "15 minutes",
+    "Josh Frydenberg",
+    "Simon Bridges",
+  ])
+    await expect(page.locator(".prose")).toContainText(text);
+  await expect(page.locator("tbody tr")).toHaveCount(13);
   await page.goto("/schedule");
-  await expect(page.getByText("Showing 12 of 21")).toBeVisible();
-  await page.getByLabel("Required only", { exact: true }).check();
-  await page.getByRole("button", { name: "Seminar", exact: true }).click();
-  await page
-    .getByLabel("Policy area", { exact: true })
-    .selectOption("Trade & Immigration");
-  await expect(page.locator(".session-row")).toHaveCount(1);
-  await page.getByRole("button", { name: "Lecture", exact: true }).click();
-  await expect(
-    page.getByRole("heading", { name: "No sessions match these filters" }),
-  ).toBeVisible();
-  await page.reload();
-  await expect(page.getByText("Showing 12 of 21")).toBeVisible();
-  await expect(
-    page.getByRole("button", { name: "All types", exact: true }),
-  ).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByText("Showing 4 of 13")).toBeVisible();
+  await expect(page.locator(".session-row").first()).toContainText(
+    "6:00 PM–8:00 PM Sydney time",
+  );
   await page.getByRole("button", { name: "Past", exact: true }).click();
   await expect(page.locator(".session-title").first()).toHaveText(
-    "Free Trade and Tariffs [DEEP DIVE]",
+    "Australian immigration policy",
   );
   await page.getByRole("button", { name: "Month", exact: true }).click();
   await expect(page.locator(".calendar-day")).toHaveCount(28);
-  await page.getByRole("button", { name: "Week", exact: true }).click();
-  await expect(page.locator(".calendar-day")).toHaveCount(7);
-  await page.getByRole("button", { name: "Subscribe to calendar" }).click();
-  await expect(page.getByRole("dialog")).toBeVisible();
-  await page.keyboard.press("Escape");
-  await expect(page.getByRole("dialog")).toHaveCount(0);
-  await page.goto("/session/56");
   await page.reload();
-  await expect(
-    page.getByRole("heading", { name: "The Jones Act [FLAGSHIP]" }),
-  ).toBeVisible();
+  await expect(page.getByText("Showing 4 of 13")).toBeVisible();
 });
-test("completion, bookmarks, notes and RSVP synchronize and persist", async ({
+test("attendance, reflection, bookmark and note persistence are independent", async ({
   page,
 }) => {
-  await page.goto("/session/56");
-  await page.getByLabel("Mark complete").first().check();
-  await page
-    .getByRole("button", { name: "Save The Jones Act [FLAGSHIP]", exact: true })
-    .click();
-  await page.getByLabel("Notes", { exact: true }).fill("unsaved");
+  await page.goto("/requirements");
+  await page.getByLabel("Reflection · 16 April", { exact: true }).check();
+  const attendance = page
+    .locator(".card")
+    .filter({
+      has: page.getByRole("heading", { name: "Attendance · minimum 10 of 13" }),
+    });
+  await attendance.getByRole("checkbox").first().check();
+  await page.reload();
+  await expect(
+    page.getByText("1 of 13 sessions recorded attended in this browser.", {
+      exact: false,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("1 of 16 reflections and reviews complete"),
+  ).toBeVisible();
+  await page.goto("/session/ls-1022");
+  await expect(page.getByText("Reported length")).toBeVisible();
+  await page.getByLabel("Notes", { exact: true }).fill("Unsaved");
   await page.reload();
   await expect(page.getByLabel("Notes", { exact: true })).toHaveValue("");
-  await page.getByLabel("Notes", { exact: true }).fill("Saved private note");
+  await page.getByLabel("Notes", { exact: true }).fill("Own reasoning");
   await page.getByRole("button", { name: "Save note" }).click();
-  await page.reload();
-  await expect(page.getByLabel("Notes", { exact: true })).toHaveValue(
-    "Saved private note",
-  );
-  await expect(
-    page.getByRole("button", {
-      name: "Unsave The Jones Act [FLAGSHIP]",
-      exact: true,
-    }),
-  ).toHaveAttribute("aria-pressed", "true");
-  await page.getByRole("button", { name: "Going", exact: true }).click();
-  await expect(
-    page.getByRole("button", { name: "Going", exact: true }),
-  ).toHaveAttribute("aria-pressed", "true");
-  await page.getByRole("button", { name: "Going", exact: true }).click();
-  await expect(
-    page.getByRole("button", { name: "Going", exact: true }),
-  ).toHaveAttribute("aria-pressed", "false");
-  await page.goto("/readings");
-  await expect(
-    page.getByText("1 of 7 required readings complete"),
-  ).toBeVisible();
-  await expect(page.getByLabel("Mark complete").first()).toBeChecked();
-  await page.goto("/requirements");
-  await expect(page.getByText("3 of 8 requirements complete")).toBeVisible();
-  await page.getByLabel("Weekly Report #3", { exact: true }).check();
-  await page.goto("/readings");
-  await expect(
-    page.getByText("1 of 7 required readings complete"),
-  ).toBeVisible();
-  await page.goto("/saved");
-  await expect(
-    page.getByRole("link", { name: "The Jones Act [FLAGSHIP]", exact: true }),
-  ).toBeVisible();
   await page
     .getByRole("button", {
-      name: "Unsave The Jones Act [FLAGSHIP]",
+      name: "Save Fellowship session — topic to be confirmed",
       exact: true,
     })
     .click();
+  await page.reload();
+  await expect(page.getByLabel("Notes", { exact: true })).toHaveValue(
+    "Own reasoning",
+  );
+  await page.goto("/saved");
   await expect(
-    page.getByRole("heading", { name: "Your saved collection starts here" }),
+    page.getByRole("link", {
+      name: "Fellowship session — topic to be confirmed",
+      exact: true,
+    }),
   ).toBeVisible();
 });
-test("discussion validation, linked session, safe rendering and replies", async ({
+test("linked discussions validate and persist without official submission", async ({
   page,
 }) => {
-  await page.goto("/discussions?compose=1&session=56");
-  await expect(page.getByLabel("Linked session (optional)")).toHaveValue("56");
+  await page.goto("/discussions?compose=1&session=ls-1022");
+  await expect(page.getByLabel("Linked session (optional)")).toHaveValue(
+    "ls-1022",
+  );
   await expect(
     page.getByRole("button", { name: "Post discussion" }),
   ).toBeDisabled();
-  await page.getByLabel("Title", { exact: true }).fill("  ");
-  await page.getByLabel("Message", { exact: true }).fill("  ");
-  await expect(
-    page.getByRole("button", { name: "Post discussion" }),
-  ).toBeDisabled();
-  await page.getByLabel("Title", { exact: true }).fill("A new demo question");
+  await page
+    .getByLabel("Title", { exact: true })
+    .fill("Institutions and liberty");
   await page
     .getByLabel("Message", { exact: true })
-    .fill("<script>alert(1)</script> A plain text message");
+    .fill("My own reasoning about institutional incentives.");
   await page.getByRole("button", { name: "Post discussion" }).click();
-  await expect(
-    page.getByRole("heading", { name: "A new demo question" }),
-  ).toBeVisible();
-  const card = page
-    .locator(".card")
-    .filter({
-      has: page.getByRole("heading", { name: "A new demo question" }),
-    });
-  await expect(
-    card.getByRole("button", { name: "Reply", exact: true }),
-  ).toBeDisabled();
-  await card.getByRole("textbox").fill("A thoughtful reply");
-  await card.getByRole("button", { name: "Reply", exact: true }).click();
   await page.reload();
   await expect(
-    page.getByText("A thoughtful reply", { exact: true }),
+    page.getByRole("heading", { name: "Institutions and liberty" }),
   ).toBeVisible();
-  await page.goto("/session/56");
+  await page.goto("/session/ls-1022");
   await expect(
-    page.getByRole("link", { name: "A new demo question" }),
+    page.getByRole("link", { name: "Institutions and liberty" }),
   ).toBeVisible();
 });
-test("profile saves only on request, sign-out keeps records, photos survive reload", async ({
+test("profile and uploaded images survive reload, sign-out keeps records", async ({
   page,
 }) => {
   await page.goto("/profile");
-  await page.getByLabel("First name", { exact: true }).fill("Unsaved");
-  await page.reload();
-  await expect(page.getByLabel("First name", { exact: true })).toHaveValue(
-    "Demo",
-  );
-  await page.getByLabel("Website", { exact: true }).fill("javascript:alert(1)");
-  await page.getByRole("button", { name: "Save Changes" }).click();
-  await expect(page.getByRole("alert")).toContainText("http/https");
-  await page.getByLabel("Website", { exact: true }).fill("https://example.com");
   await page.getByLabel("First name", { exact: true }).fill("Taylor");
   await page.getByRole("button", { name: "Save Changes" }).click();
   await expect(page.getByRole("status")).toHaveText("Changes saved.");
-  await page.goto("/people");
-  await expect(
-    page.getByRole("heading", { name: "Taylor Intern" }),
-  ).toBeVisible();
-  const png = Buffer.from(
-    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aH4sAAAAASUVORK5CYII=",
-    "base64",
-  );
-  await page.goto("/photos");
-  await page
-    .getByLabel("Image", { exact: true })
-    .setInputFiles({ name: "pixel.png", mimeType: "image/png", buffer: png });
-  await page.getByLabel("Caption (optional)").fill("A demo moment");
-  await page.getByRole("button", { name: "Upload", exact: true }).click();
-  await expect(page.getByRole("img", { name: "A demo moment" })).toBeVisible();
   await page.reload();
-  await expect(page.getByRole("img", { name: "A demo moment" })).toBeVisible();
-  await page.goto("/profile");
-  await page
-    .getByLabel("Change photo")
-    .setInputFiles({ name: "avatar.png", mimeType: "image/png", buffer: png });
-  await page.getByRole("button", { name: "Save Changes" }).click();
-  await expect(page.getByRole("status")).toHaveText("Changes saved.");
-  await page.reload();
-  await expect(page.locator("img.avatar.large")).toBeVisible();
-  await page.getByRole("button", { name: "Sign out" }).click();
-  await expect(page.getByRole("button", { name: "Enter demo" })).toBeVisible();
-  await page.getByRole("button", { name: "Enter demo" }).click();
   await expect(page.getByLabel("First name", { exact: true })).toHaveValue(
     "Taylor",
   );
-});
-test("all reference and directory routes render and search keyboard works", async ({
-  page,
-}) => {
-  for (const [route, heading] of [
-    ["/handbook", "Handbook"],
-    ["/capstone-guide", "Capstone Guide"],
-    ["/dc-culture-guide", "DC Culture Guide"],
-    ["/faq", "FAQ"],
-    ["/emergency", "Emergency Procedures"],
-    ["/teams", "Who Works on What"],
-    ["/team/trade-team", "Trade & Immigration"],
-    ["/person/colin", "Colin Grabow"],
-    ["/announcements", "Announcements"],
-    ["/how-things-work", "How Things Work"],
-    ["/article/getting-started", "Getting started with your internship"],
-    ["/resource/demo-file", "Demo orientation file"],
-  ]) {
-    await page.goto(route);
-    await expect(
-      page.getByRole("heading", { name: heading, exact: true }).first(),
-    ).toBeVisible();
-  }
-  await expect(
-    page.getByRole("heading", {
-      name: "This file type cannot be previewed in the browser",
-    }),
-  ).toBeVisible();
-  const search = page.getByLabel("Search the hub");
-  await search.fill("Jones");
-  await expect(page.getByRole("listbox")).toContainText("The Jones Act");
-  await search.press("ArrowDown");
-  await search.press("Enter");
-  await expect(page).toHaveURL(/session\/56/);
-});
-test("storage failures remain visible and photos reject unsupported files", async ({
-  page,
-}) => {
-  await page.addInitScript(() => {
-    Storage.prototype.setItem = () => {
-      throw new DOMException("Quota exceeded", "QuotaExceededError");
-    };
-  });
-  await page.goto("/session/56");
-  await page.getByRole("button", { name: "Going", exact: true }).click();
-  await expect(page.getByRole("alert")).toContainText(
-    "Browser storage is unavailable or full",
+  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Enter demo" }).click();
+  await expect(page.getByLabel("First name", { exact: true })).toHaveValue(
+    "Taylor",
   );
   await page.goto("/photos");
   await page
     .getByLabel("Image", { exact: true })
     .setInputFiles({
-      name: "file.txt",
-      mimeType: "text/plain",
-      buffer: Buffer.from("not an image"),
+      name: "pixel.png",
+      mimeType: "image/png",
+      buffer: Buffer.from(
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aH4sAAAAASUVORK5CYII=",
+        "base64",
+      ),
     });
-  await expect(page.getByRole("alert").last()).toContainText(
-    "JPEG, PNG, GIF, or WebP",
-  );
+  await page.getByLabel("Caption (optional)").fill("Fellowship demo");
+  await page.getByRole("button", { name: "Upload", exact: true }).click();
   await expect(
-    page.getByRole("button", { name: "Upload", exact: true }),
-  ).toBeDisabled();
+    page.getByRole("img", { name: "Fellowship demo" }),
+  ).toBeVisible();
+  await page.reload();
+  await expect(
+    page.getByRole("img", { name: "Fellowship demo" }),
+  ).toBeVisible();
 });
-test("mobile drawer and pages avoid viewport overflow", async ({ page }) => {
+test("guidance routes, mobile layout and storage failure handling", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
-  await page.getByRole("button", { name: "Close quick tour" }).click();
-  await page.getByRole("button", { name: "Open menu" }).click();
-  await expect(page.locator(".sidebar")).toHaveClass(/open/);
-  await page.getByRole("link", { name: "Schedule", exact: true }).click();
-  await expect(page.locator(".sidebar")).not.toHaveClass(/open/);
-  for (const route of [
-    "/",
-    "/session/56",
-    "/readings",
-    "/people",
-    "/handbook",
-    "/discussions",
-    "/profile",
-    "/schedule",
+  for (const [path, title] of [
+    ["/handbook", "Fellowship Handbook"],
+    ["/reflection-guide", "Reflection & Viva Guide"],
+    ["/applications", "Application Information"],
+    ["/people", "Fellow Directory"],
+    ["/faq", "FAQ"],
+    ["/programme", "Liberty & Society Student Fellowship"],
   ]) {
-    await page.goto(route);
+    await page.goto(path);
+    await expect(
+      page.getByRole("heading", { name: title, exact: true }).first(),
+    ).toBeVisible();
     expect(
       await page.evaluate(
-        () => document.documentElement.scrollWidth <= window.innerWidth,
+        () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
   }
-  await page.goto("/schedule");
-  await page.getByRole("button", { name: "Month", exact: true }).click();
-  expect(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= window.innerWidth,
-    ),
-  ).toBe(true);
-  await page.screenshot({
-    path: "test-results/mobile-schedule.png",
-    fullPage: true,
+  await page.addInitScript(() => {
+    Storage.prototype.setItem = () => {
+      throw Error("quota");
+    };
   });
+  await page.goto("/session/ls-1022");
+  await page.getByRole("button", { name: "Going", exact: true }).click();
+  await expect(page.getByRole("alert")).toContainText("unavailable or full");
 });

@@ -4,7 +4,7 @@ export default function DemoEntry() {
   return (
     <main className="entry">
       <div className="card">
-        <span className="wordmark">CATO</span>
+        <span className="wordmark">CIS</span>
         <span className="eyebrow">INTERN HUB RECONSTRUCTION</span>
         <h1>
           A place to learn.

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { Resource } from "../../shared/types";
 import { useDemo } from "../data/demoStore";
-import { etInput, readingStart, referenceNow } from "../data/clock";
+import { localInput, readingStart, referenceNow } from "../data/clock";
 import { fixtures } from "../data/selectors";
 import BookmarkButton from "./BookmarkButton";
 export default function ResourceCard({
@@ -16,7 +16,7 @@ export default function ResourceCard({
 }) {
   const { state, toggle } = useDemo();
   const [blocking, setBlocking] = useState(false);
-  const [time, setTime] = useState(etInput(referenceNow()));
+  const [time, setTime] = useState(localInput(referenceNow()));
   const start = readingStart(time);
   const used = fixtures.sessionResources.filter((a) => a.resourceId === r.id);
   return (
@@ -73,7 +73,7 @@ export default function ResourceCard({
       {blocking && (
         <div className="reading-block">
           <label>
-            Start time (Eastern)
+            Start time (Sydney)
             <input
               type="datetime-local"
               value={time}

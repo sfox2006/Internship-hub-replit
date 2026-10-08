@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { CalendarDays, Clock, MapPin } from "lucide-react";
 import type { Session } from "../../shared/types";
 import { resourceCounts, fixtures, isPast } from "../data/selectors";
-import { etFormat, referenceNow } from "../data/clock";
+import { localFormat, referenceNow } from "../data/clock";
 import { useDemo } from "../data/demoStore";
 import BookmarkButton from "./BookmarkButton";
 export default function SessionRow({ session: s }: { session: Session }) {
@@ -11,9 +11,9 @@ export default function SessionRow({ session: s }: { session: Session }) {
   return (
     <div className="session-row">
       <div className="date-tile">
-        <small>{etFormat(s.startAt, "MMM")}</small>
-        <strong>{etFormat(s.startAt, "d")}</strong>
-        <small>{etFormat(s.startAt, "EEE")}</small>
+        <small>{localFormat(s.startAt, "MMM")}</small>
+        <strong>{localFormat(s.startAt, "d")}</strong>
+        <small>{localFormat(s.startAt, "EEE")}</small>
       </div>
       <div className="grow">
         <div className="row wrap">
@@ -31,8 +31,8 @@ export default function SessionRow({ session: s }: { session: Session }) {
         </div>
         <p className="metadata">
           <Clock size={14} />
-          {etFormat(s.startAt, "h:mm a")}–{etFormat(s.endAt, "h:mm a")} ET{" "}
-          <MapPin size={14} />
+          {localFormat(s.startAt, "h:mm a")}–{localFormat(s.endAt, "h:mm a")}{" "}
+          Sydney time <MapPin size={14} />
           {s.location || "—"} ·{" "}
           {s.speakerIds
             .map((id) => fixtures.people.find((p) => p.id === id)?.name)

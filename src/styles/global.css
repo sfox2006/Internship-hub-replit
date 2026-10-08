@@ -63,7 +63,7 @@ h1,
 h2,
 h3 {
   color: var(--navy);
-  font-family: "Fraunces", serif;
+  font-family: Arial, serif;
   font-weight: 500;
   line-height: 1.25;
 }
@@ -132,7 +132,7 @@ input[type="file"] {
 }
 .eyebrow {
   font:
-    600 10px/1.4 "DM Sans",
+    600 10px/1.4 Arial,
     sans-serif;
   letter-spacing: 1.5px;
   color: var(--gold);
@@ -188,7 +188,7 @@ input[type="file"] {
   color: #66677d;
   padding: 3px 8px;
   font:
-    500 10px/1.5 "DM Sans",
+    500 10px/1.5 Arial,
     sans-serif;
 }
 .success {

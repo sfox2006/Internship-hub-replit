@@ -969,3 +969,47 @@ footer {
     background: white;
   }
 }
+/* CIS fellowship adaptation: restrained, provisional styling, not a verified brand guide. */
+.wordmark {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--navy);
+}
+h1,
+h2,
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+.hero,
+.learning {
+  background: var(--navy);
+}
+.hero h2,
+.learning h2 {
+  color: white;
+}
+.hero .eyebrow,
+.learning a,
+.learning > svg {
+  color: #dae7e9;
+}
+.learning h2 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.demo-notice {
+  background: var(--lavender);
+  color: var(--ink);
+}
+.announcement-strip {
+  background: #f0f4f5;
+  border-color: var(--border);
+}
+.briefing-bullet {
+  margin: 6px 0 6px 12px;
+}
+.callout {
+  background: var(--lavender);
+  border-color: var(--border);
+}

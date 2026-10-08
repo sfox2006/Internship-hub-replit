@@ -17,7 +17,7 @@ describe("RFC 5545 calendar output", () => {
       ],
       new Date("2026-10-08T12:00:00Z"),
     );
-    expect(text).toContain("UID:example@intern-hub-demo\r\n");
+    expect(text).toContain("UID:example@cis-fellowship-demo\r\n");
     expect(text).toContain("DTSTART:20261008T133000Z");
     expect(text).toContain("DTEND:20261008T150000Z");
     expect(text).toContain("SUMMARY:Hello\\, world\\; test");
@@ -31,7 +31,7 @@ describe("RFC 5545 calendar output", () => {
     expect(text.replace(/\r\n /g, "")).toBe("SUMMARY:" + "é".repeat(100));
   });
   it("rejects invalid dates and unknown duration; adds actual reading minutes", () => {
-    const r = fixtures.resources[0];
+    const r = { ...fixtures.resources[0], minutes: 60 };
     expect(readingEvent(r, "no")).toBe(null);
     expect(readingEvent(r, "2026-02-30T13:00:00Z")).toBe(null);
     expect(readingEvent(r, "2026-10-08T13:00:00")).toBe(null);

@@ -92,7 +92,7 @@ export const requirementStatus = (
   const r = fixtures.requirements.find((r) => r.id === id)!;
   return done.includes(id)
     ? "Done"
-    : r.dueDate && r.dueDate <= today
+    : r.dueDate && r.dueDate < today
       ? "Overdue"
       : "Due";
 };

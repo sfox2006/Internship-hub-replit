@@ -1,1106 +1,743 @@
 {
   "term": {
-    "id": "fall2026",
-    "name": "Fall 2026",
-    "timezone": "America/New_York"
+    "id": "cis2026",
+    "name": "2026 Fellowship",
+    "timezone": "Australia/Sydney"
   },
   "policyAreas": [
-    "Communications & Operations",
-    "Constitutional Law",
-    "Criminal Justice",
-    "Economics & Fiscal Policy",
-    "Education",
-    "External Relations and Engagement",
-    "Foreign Policy & Defense",
-    "Health Care",
-    "Monetary Policy & Banking",
-    "Regulation",
-    "Social Policy & Welfare",
-    "Technology & Privacy",
-    "Trade & Immigration"
+    "Economics & institutions",
+    "Individual liberty",
+    "Education policy",
+    "Industry & regulation",
+    "Political institutions",
+    "Growth & reform",
+    "Entrepreneurship",
+    "Law & liberty",
+    "Immigration",
+    "To be confirmed"
   ],
   "sessions": [
     {
-      "id": "51",
-      "termId": "fall2026",
-      "title": "Research Methods IV: Feedback",
+      "id": "ls-0416",
+      "termId": "cis2026",
+      "title": "Public choice theory, rent-seeking and regulatory capture",
       "type": "Seminar",
-      "policyAreaId": null,
-      "startAt": "2026-10-05T13:30:00Z",
-      "endAt": "2026-10-05T14:30:00Z",
-      "location": null,
+      "policyAreaId": "Economics & institutions",
+      "startAt": "2026-04-16T08:00:00Z",
+      "endAt": "2026-04-16T10:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
       "speakerIds": [
-        "maya"
+        "speaker-1"
       ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
       "attendanceRequired": false,
-      "reportedLengthMinutes": null,
+      "reportedLengthMinutes": 120,
       "assistanceConfig": null
     },
     {
-      "id": "52",
-      "termId": "fall2026",
-      "title": "Research Methods V: Data Research in Practice",
+      "id": "ls-0507",
+      "termId": "cis2026",
+      "title": "Individualism and capitalism",
       "type": "Seminar",
-      "policyAreaId": null,
-      "startAt": "2026-10-05T14:30:00Z",
-      "endAt": "2026-10-05T15:00:00Z",
-      "location": null,
+      "policyAreaId": "Individual liberty",
+      "startAt": "2026-05-07T08:00:00Z",
+      "endAt": "2026-05-07T10:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
       "speakerIds": [
-        "maya"
+        "speaker-2"
       ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
       "attendanceRequired": false,
-      "reportedLengthMinutes": null,
+      "reportedLengthMinutes": 120,
       "assistanceConfig": null
     },
     {
-      "id": "53",
-      "termId": "fall2026",
-      "title": "The Non-Economic Case for Markets [DEEP DIVE]",
+      "id": "ls-0528",
+      "termId": "cis2026",
+      "title": "Market mechanisms in higher education",
       "type": "Seminar",
-      "policyAreaId": null,
-      "startAt": "2026-10-05T18:00:00Z",
-      "endAt": "2026-10-05T19:00:00Z",
-      "location": null,
+      "policyAreaId": "Education policy",
+      "startAt": "2026-05-28T08:00:00Z",
+      "endAt": "2026-05-28T10:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
       "speakerIds": [
-        "maya"
+        "speaker-3"
       ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
       "attendanceRequired": false,
-      "reportedLengthMinutes": null,
+      "reportedLengthMinutes": 120,
       "assistanceConfig": null
     },
     {
-      "id": "54",
-      "termId": "fall2026",
-      "title": "Weekly Plenary Meeting #2",
-      "type": "Other",
-      "policyAreaId": null,
-      "startAt": "2026-10-05T20:30:00Z",
-      "endAt": "2026-10-05T21:30:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": true,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": null
-    },
-    {
-      "id": "55",
-      "termId": "fall2026",
-      "title": "The Presumption of Liberty [FLAGSHIP]",
-      "type": "Workshop",
-      "policyAreaId": null,
-      "startAt": "2026-10-06T16:00:00Z",
-      "endAt": "2026-10-06T18:00:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": false,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": null
-    },
-    {
-      "id": "training",
-      "termId": "fall2026",
-      "title": "Harrasment Training Follow-Up",
-      "type": "Other",
-      "policyAreaId": null,
-      "startAt": "2026-10-06T19:00:00Z",
-      "endAt": "2026-10-06T20:00:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": false,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": null
-    },
-    {
-      "id": "locke",
-      "termId": "fall2026",
-      "title": "Intern Reading Group Session II: John Locke [OPTIONAL]",
-      "type": "Other",
-      "policyAreaId": null,
-      "startAt": "2026-10-06T20:00:00Z",
-      "endAt": "2026-10-06T21:00:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": false,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": null
-    },
-    {
-      "id": "rhetoric3",
-      "termId": "fall2026",
-      "title": "Rhetoric for a Free Society III: Rhetorical Theory [REQUIRED]",
+      "id": "ls-0618",
+      "termId": "cis2026",
+      "title": "Industrial policy and government direction of economic activity",
       "type": "Seminar",
-      "policyAreaId": null,
-      "startAt": "2026-10-07T14:00:00Z",
-      "endAt": "2026-10-07T15:00:00Z",
-      "location": null,
+      "policyAreaId": "Industry & regulation",
+      "startAt": "2026-06-18T08:00:00Z",
+      "endAt": "2026-06-18T10:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
       "speakerIds": [
-        "maya"
+        "speaker-4"
       ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": true,
-      "reportedLengthMinutes": null,
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": 120,
       "assistanceConfig": null
     },
     {
-      "id": "trade",
-      "termId": "fall2026",
-      "title": "Free Trade and Tariffs [DEEP DIVE]",
+      "id": "ls-0709",
+      "termId": "cis2026",
+      "title": "The centre-right and quantitative public-opinion research",
       "type": "Seminar",
-      "policyAreaId": "Trade & Immigration",
-      "startAt": "2026-10-07T18:00:00Z",
-      "endAt": "2026-10-07T19:00:00Z",
-      "location": null,
+      "policyAreaId": "Political institutions",
+      "startAt": "2026-07-09T08:00:00Z",
+      "endAt": "2026-07-09T10:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
       "speakerIds": [
-        "maya"
+        "speaker-5"
       ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
       "attendanceRequired": false,
-      "reportedLengthMinutes": null,
+      "reportedLengthMinutes": 120,
       "assistanceConfig": null
     },
     {
-      "id": "56",
-      "termId": "fall2026",
-      "title": "The Jones Act [FLAGSHIP]",
+      "id": "ls-0730",
+      "termId": "cis2026",
+      "title": "Reforms for another century of plenty",
       "type": "Seminar",
-      "policyAreaId": "Trade & Immigration",
-      "startAt": "2026-10-08T13:30:00Z",
-      "endAt": "2026-10-08T15:00:00Z",
-      "location": "Policy Center",
+      "policyAreaId": "Growth & reform",
+      "startAt": "2026-07-30T08:00:00Z",
+      "endAt": "2026-07-30T10:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
       "speakerIds": [
-        "colin"
+        "speaker-6"
       ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": true,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": {
-        "capacity": 3,
-        "baseSignups": [
-          "Alex Chen (demo)"
-        ],
-        "closesAt": "2026-10-08T13:30:00Z"
-      }
-    },
-    {
-      "id": "forum1",
-      "termId": "fall2026",
-      "title": "Friday Forum",
-      "type": "Lecture",
-      "policyAreaId": null,
-      "startAt": "2026-10-09T20:30:00Z",
-      "endAt": "2026-10-09T21:30:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
       "attendanceRequired": false,
-      "reportedLengthMinutes": null,
+      "reportedLengthMinutes": 120,
       "assistanceConfig": null
     },
     {
-      "id": "rhetoric4",
-      "termId": "fall2026",
-      "title": "Rhetoric for a Free Society IV: Op-Ed Writing [REQUIRED]",
+      "id": "ls-0820",
+      "termId": "cis2026",
+      "title": "Entrepreneurship and Australian prosperity",
       "type": "Seminar",
-      "policyAreaId": null,
-      "startAt": "2026-10-12T13:30:00Z",
-      "endAt": "2026-10-12T14:30:00Z",
-      "location": null,
+      "policyAreaId": "Entrepreneurship",
+      "startAt": "2026-08-20T08:00:00Z",
+      "endAt": "2026-08-20T10:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
       "speakerIds": [
-        "maya"
+        "speaker-7"
       ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": true,
-      "reportedLengthMinutes": null,
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": 120,
       "assistanceConfig": null
     },
     {
-      "id": "plenary3",
-      "termId": "fall2026",
-      "title": "Weekly Plenary Meeting #3",
-      "type": "Other",
-      "policyAreaId": null,
-      "startAt": "2026-10-12T20:30:00Z",
-      "endAt": "2026-10-12T21:30:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": true,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": null
-    },
-    {
-      "id": "62",
-      "termId": "fall2026",
-      "title": "Rhetoric for a Free Society: V: Oratory [REQUIRED]",
+      "id": "ls-0910",
+      "termId": "cis2026",
+      "title": "Law and liberty",
       "type": "Seminar",
-      "policyAreaId": null,
-      "startAt": "2026-10-13T13:30:00Z",
-      "endAt": "2026-10-13T15:00:00Z",
-      "location": null,
+      "policyAreaId": "Law & liberty",
+      "startAt": "2026-09-10T08:00:00Z",
+      "endAt": "2026-09-10T10:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
       "speakerIds": [
-        "tom"
+        "speaker-8"
       ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": true,
-      "reportedLengthMinutes": null,
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": 120,
       "assistanceConfig": null
     },
     {
-      "id": "health",
-      "termId": "fall2026",
-      "title": "Clinician Licensing - An Obstacle to Universal Health Care [DEEP DIVE]",
+      "id": "ls-1001",
+      "termId": "cis2026",
+      "title": "Australian immigration policy",
       "type": "Seminar",
-      "policyAreaId": "Health Care",
-      "startAt": "2026-10-13T18:00:00Z",
-      "endAt": "2026-10-13T19:00:00Z",
-      "location": null,
+      "policyAreaId": "Immigration",
+      "startAt": "2026-10-01T08:00:00Z",
+      "endAt": "2026-10-01T10:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
       "speakerIds": [
-        "maya"
+        "speaker-9"
       ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
       "attendanceRequired": false,
-      "reportedLengthMinutes": null,
+      "reportedLengthMinutes": 120,
       "assistanceConfig": null
     },
     {
-      "id": "63",
-      "termId": "fall2026",
-      "title": "Intern Reading Group Session III: Cato's Letters [OPTIONAL]",
-      "type": "Other",
-      "policyAreaId": null,
-      "startAt": "2026-10-13T20:00:00Z",
-      "endAt": "2026-10-13T21:00:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": false,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": null
-    },
-    {
-      "id": "panel",
-      "termId": "fall2026",
-      "title": "Translating Liberty Panel - Public Affairs, Media Relations, and Development Communications [FLAGSHIP]",
-      "type": "Luncheon",
-      "policyAreaId": null,
-      "startAt": "2026-10-15T15:45:00Z",
-      "endAt": "2026-10-15T17:15:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": false,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": null
-    },
-    {
-      "id": "alumni",
-      "termId": "fall2026",
-      "title": "Intern Alumni Luncheon",
-      "type": "Luncheon",
-      "policyAreaId": null,
-      "startAt": "2026-10-16T16:00:00Z",
-      "endAt": "2026-10-16T17:30:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": false,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": null
-    },
-    {
-      "id": "forum2",
-      "termId": "fall2026",
-      "title": "Friday Forum",
-      "type": "Lecture",
-      "policyAreaId": null,
-      "startAt": "2026-10-16T20:30:00Z",
-      "endAt": "2026-10-16T21:30:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": false,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": null
-    },
-    {
-      "id": "75",
-      "termId": "fall2026",
-      "title": "Intern Reading Group Session IV: Frederic Bastiat [OPTIONAL]",
-      "type": "Other",
-      "policyAreaId": null,
-      "startAt": "2026-10-20T20:00:00Z",
-      "endAt": "2026-10-20T21:00:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
-      "attendanceRequired": false,
-      "reportedLengthMinutes": null,
-      "assistanceConfig": null
-    },
-    {
-      "id": "82",
-      "termId": "fall2026",
-      "title": "The Case for Original Public Meaning",
+      "id": "ls-1022",
+      "termId": "cis2026",
+      "title": "Fellowship session \u2014 topic to be confirmed",
       "type": "Seminar",
-      "policyAreaId": "Constitutional Law",
-      "startAt": "2026-10-26T18:00:00Z",
-      "endAt": "2026-10-26T19:00:00Z",
-      "location": null,
-      "speakerIds": [
-        "maya"
-      ],
-      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "policyAreaId": "To be confirmed",
+      "startAt": "2026-10-22T07:00:00Z",
+      "endAt": "2026-10-22T09:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
+      "speakerIds": [],
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
       "attendanceRequired": false,
-      "reportedLengthMinutes": null,
+      "reportedLengthMinutes": 120,
+      "assistanceConfig": null
+    },
+    {
+      "id": "ls-1112",
+      "termId": "cis2026",
+      "title": "Fellowship session \u2014 topic to be confirmed",
+      "type": "Seminar",
+      "policyAreaId": "To be confirmed",
+      "startAt": "2026-11-12T07:00:00Z",
+      "endAt": "2026-11-12T09:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
+      "speakerIds": [],
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": 120,
+      "assistanceConfig": null
+    },
+    {
+      "id": "ls-1203",
+      "termId": "cis2026",
+      "title": "Fellowship session \u2014 topic to be confirmed",
+      "type": "Seminar",
+      "policyAreaId": "To be confirmed",
+      "startAt": "2026-12-03T07:00:00Z",
+      "endAt": "2026-12-03T09:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
+      "speakerIds": [],
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": 120,
+      "assistanceConfig": null
+    },
+    {
+      "id": "ls-1217",
+      "termId": "cis2026",
+      "title": "Fellowship session \u2014 topic to be confirmed",
+      "type": "Seminar",
+      "policyAreaId": "To be confirmed",
+      "startAt": "2026-12-17T07:00:00Z",
+      "endAt": "2026-12-17T09:00:00Z",
+      "location": "Online \u00b7 Zoom link not supplied",
+      "speakerIds": [],
+      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": 120,
       "assistanceConfig": null
     }
   ],
   "resources": [
     {
-      "id": "globalization",
-      "title": "Cato Course: Defending Globalization",
-      "type": "Course",
-      "authors": "Cato Courses",
-      "minutes": 60,
-      "policyAreaId": "Trade & Immigration",
-      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
-      "externalUrl": "https://www.catocourses.org/globalization",
+      "id": "cohort-programme",
+      "title": "Official 2026 cohort programme",
+      "type": "Link",
+      "authors": "Centre for Independent Studies",
+      "minutes": null,
+      "policyAreaId": null,
+      "description": "Check the official cohort page for current speakers, instructions and readings. The supplied briefing says readings are encouraged, not mandatory.",
+      "externalUrl": "https://www.cis.org.au/events/liberty-society-student-programs/ls-fellowship-cohort-2026-program/",
       "localFileUrl": null,
       "previewKind": "external"
     },
     {
-      "id": "jones",
-      "title": "The Jones Act: A Burden America Can No Longer Bear",
-      "type": "Reading",
-      "authors": "Original author not supplied",
-      "minutes": 25,
-      "policyAreaId": "Trade & Immigration",
-      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
-      "externalUrl": "https://www.cato.org/publications/policy-analysis/jones-act-burden-america-can-no-longer-bear",
+      "id": "cis-home",
+      "title": "Centre for Independent Studies",
+      "type": "Link",
+      "authors": "Centre for Independent Studies",
+      "minutes": null,
+      "policyAreaId": null,
+      "description": "Independent policy research, intellectual freedom and open debate. No original reading files were supplied.",
+      "externalUrl": "https://www.cis.org.au/",
       "localFileUrl": null,
       "previewKind": "external"
-    },
-    {
-      "id": "cicero",
-      "title": "De Inventione",
-      "type": "Reading",
-      "authors": "Cicero",
-      "minutes": 15,
-      "policyAreaId": null,
-      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
-      "externalUrl": null,
-      "localFileUrl": "/demo-files/reading-demo.txt",
-      "previewKind": "text"
-    },
-    {
-      "id": "grrrreat",
-      "title": "Globalization Is Grrrreat!",
-      "type": "Reading",
-      "authors": "Tom G. Palmer",
-      "minutes": 10,
-      "policyAreaId": null,
-      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
-      "externalUrl": null,
-      "localFileUrl": "/demo-files/reading-demo.txt",
-      "previewKind": "text"
-    },
-    {
-      "id": "letters",
-      "title": "Intern Reading Group Session III: Cato's Letters",
-      "type": "Reading",
-      "authors": "John Trenchard and Thomas Gordon",
-      "minutes": 35,
-      "policyAreaId": null,
-      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
-      "externalUrl": null,
-      "localFileUrl": "/demo-files/reading-demo.txt",
-      "previewKind": "text"
-    },
-    {
-      "id": "law",
-      "title": "Intern Reading Group Session IV: The Law",
-      "type": "Reading",
-      "authors": "Frederic Bastiat",
-      "minutes": null,
-      "policyAreaId": null,
-      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
-      "externalUrl": null,
-      "localFileUrl": "/demo-files/reading-demo.txt",
-      "previewKind": "text"
-    },
-    {
-      "id": "brief",
-      "title": "Brief of the Cato Institute as Amicus Curiae in Support of Respondents, Trump v. Barbara",
-      "type": "Reading",
-      "authors": "Original attribution not supplied",
-      "minutes": 50,
-      "policyAreaId": "Constitutional Law",
-      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
-      "externalUrl": null,
-      "localFileUrl": "/demo-files/reading-demo.txt",
-      "previewKind": "text"
-    },
-    {
-      "id": "gravity",
-      "title": "The Gravitational Force of Originalism",
-      "type": "Reading",
-      "authors": "Original attribution not supplied",
-      "minutes": 65,
-      "policyAreaId": "Constitutional Law",
-      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
-      "externalUrl": null,
-      "localFileUrl": "/demo-files/reading-demo.txt",
-      "previewKind": "text"
-    },
-    {
-      "id": "evil",
-      "title": "Originalism: The Lesser Evil",
-      "type": "Reading",
-      "authors": "Original attribution not supplied",
-      "minutes": 55,
-      "policyAreaId": "Constitutional Law",
-      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
-      "externalUrl": null,
-      "localFileUrl": "/demo-files/reading-demo.txt",
-      "previewKind": "text"
-    },
-    {
-      "id": "demo-file",
-      "title": "Demo orientation file",
-      "type": "File",
-      "authors": "Demo program team",
-      "minutes": null,
-      "policyAreaId": null,
-      "description": "Synthetic local document to demonstrate the unavailable-preview state.",
-      "externalUrl": null,
-      "localFileUrl": "/demo-files/demo-document.docx",
-      "previewKind": "unsupported"
     }
   ],
-  "sessionResources": [
-    {
-      "sessionId": "56",
-      "resourceId": "globalization",
-      "required": true,
-      "order": 0
-    },
-    {
-      "sessionId": "56",
-      "resourceId": "jones",
-      "required": false,
-      "order": 1
-    },
-    {
-      "sessionId": "62",
-      "resourceId": "cicero",
-      "required": true,
-      "order": 2
-    },
-    {
-      "sessionId": "62",
-      "resourceId": "grrrreat",
-      "required": true,
-      "order": 3
-    },
-    {
-      "sessionId": "63",
-      "resourceId": "letters",
-      "required": true,
-      "order": 4
-    },
-    {
-      "sessionId": "75",
-      "resourceId": "law",
-      "required": true,
-      "order": 5
-    },
-    {
-      "sessionId": "82",
-      "resourceId": "brief",
-      "required": true,
-      "order": 6
-    },
-    {
-      "sessionId": "82",
-      "resourceId": "gravity",
-      "required": true,
-      "order": 7
-    },
-    {
-      "sessionId": "82",
-      "resourceId": "evil",
-      "required": false,
-      "order": 8
-    }
-  ],
+  "sessionResources": [],
   "requirements": [
     {
-      "id": "req1",
-      "title": "Weekly Report #1",
-      "dueDate": "2026-09-25",
-      "category": "Plenary",
+      "id": "reflection-ls-0416",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 16 April",
+      "dueDate": "2026-04-30",
+      "sessionId": "ls-0416",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-0507",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 07 May",
+      "dueDate": "2026-05-21",
+      "sessionId": "ls-0507",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-0528",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 28 May",
+      "dueDate": "2026-06-11",
+      "sessionId": "ls-0528",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-0618",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 18 June",
+      "dueDate": "2026-07-02",
+      "sessionId": "ls-0618",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-0709",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 09 July",
+      "dueDate": "2026-07-23",
+      "sessionId": "ls-0709",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-0730",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 30 July",
+      "dueDate": "2026-08-13",
+      "sessionId": "ls-0730",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-0820",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 20 August",
+      "dueDate": "2026-09-03",
+      "sessionId": "ls-0820",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-0910",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 10 September",
+      "dueDate": "2026-09-24",
+      "sessionId": "ls-0910",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-1001",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 01 October",
+      "dueDate": "2026-10-15",
+      "sessionId": "ls-1001",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-1022",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 22 October",
+      "dueDate": "2026-11-05",
+      "sessionId": "ls-1022",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-1112",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 12 November",
+      "dueDate": "2026-11-26",
+      "sessionId": "ls-1112",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-1203",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 03 December",
+      "dueDate": "2026-12-17",
+      "sessionId": "ls-1203",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "reflection-ls-1217",
+      "category": "Written reflections",
+      "title": "Reflection \u00b7 17 December",
+      "dueDate": "2026-12-31",
+      "sessionId": "ls-1217",
+      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
+      "submissionUrl": null
+    },
+    {
+      "id": "viva-1",
+      "category": "Viva voce reviews",
+      "title": "Viva voce review 1",
+      "dueDate": null,
       "sessionId": null,
-      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "description": "A CIS staff member discusses a selected written submission to develop the argument and establish intellectual ownership. Reported 2026 duration: 15 minutes; general overview: 10 minutes. Appointment and submission links were not supplied.",
       "submissionUrl": null
     },
     {
-      "id": "req2",
-      "title": "Weekly Report #2",
-      "dueDate": "2026-10-02",
-      "category": "Plenary",
+      "id": "viva-2",
+      "category": "Viva voce reviews",
+      "title": "Viva voce review 2",
+      "dueDate": null,
       "sessionId": null,
-      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "description": "A CIS staff member discusses a selected written submission to develop the argument and establish intellectual ownership. Reported 2026 duration: 15 minutes; general overview: 10 minutes. Appointment and submission links were not supplied.",
       "submissionUrl": null
     },
     {
-      "id": "req3",
-      "title": "Weekly Small Group Report",
-      "dueDate": "2026-10-02",
-      "category": "Plenary",
+      "id": "viva-3",
+      "category": "Viva voce reviews",
+      "title": "Viva voce review 3",
+      "dueDate": null,
       "sessionId": null,
-      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
-      "submissionUrl": null
-    },
-    {
-      "id": "req4",
-      "title": "Weekly Report #3",
-      "dueDate": "2026-10-09",
-      "category": "Plenary",
-      "sessionId": null,
-      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
-      "submissionUrl": null
-    },
-    {
-      "id": "req5",
-      "title": "Weekly Small Group Report",
-      "dueDate": "2026-10-09",
-      "category": "Plenary",
-      "sessionId": null,
-      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
-      "submissionUrl": null
-    },
-    {
-      "id": "req6",
-      "title": "Seminar Eval: Free Trade and Tariffs",
-      "dueDate": "2026-10-08",
-      "category": "Evaluation",
-      "sessionId": "trade",
-      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
-      "submissionUrl": null
-    },
-    {
-      "id": "req7",
-      "title": "Seminar Eval: Research Methods V: Data Research in Practice",
-      "dueDate": "2026-10-06",
-      "category": "Evaluation",
-      "sessionId": "52",
-      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
-      "submissionUrl": null
-    },
-    {
-      "id": "req8",
-      "title": "Capstone Milestone 1: Subject",
-      "dueDate": "2026-10-09",
-      "category": "Capstone",
-      "sessionId": null,
-      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "description": "A CIS staff member discusses a selected written submission to develop the argument and establish intellectual ownership. Reported 2026 duration: 15 minutes; general overview: 10 minutes. Appointment and submission links were not supplied.",
       "submissionUrl": null
     }
   ],
   "people": [
     {
       "id": "demo",
-      "name": "Demo Intern",
+      "name": "Demo Fellow",
       "kind": "intern",
       "title": null,
       "school": "Example University",
-      "placement": "Policy research",
-      "termId": "fall2026",
-      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
+      "placement": "Liberty & Society demo",
+      "termId": "cis2026",
+      "bio": "Synthetic demo participant. Profile changes remain in this browser.",
       "photoUrl": null,
-      "email": "intern@example.com",
+      "email": "fellow@example.com",
       "linkedinUrl": null,
       "websiteUrl": null,
-      "teamIds": [
-        "trade-team"
-      ],
+      "teamIds": [],
       "location": null,
       "scholarProfileUrl": null
     },
     {
-      "id": "alex",
-      "name": "Alex Chen",
-      "kind": "intern",
-      "title": null,
-      "school": "Sample College",
-      "placement": "Communications",
-      "termId": "fall2026",
-      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
-      "photoUrl": null,
-      "email": "alex@example.com",
-      "linkedinUrl": null,
-      "websiteUrl": null,
-      "teamIds": [
-        "comms-team"
-      ],
-      "location": null,
-      "scholarProfileUrl": null
-    },
-    {
-      "id": "sam",
-      "name": "Sam Rivera",
-      "kind": "intern",
-      "title": null,
-      "school": "Demo State University",
-      "placement": "Legal research",
-      "termId": "fall2026",
-      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
-      "photoUrl": null,
-      "email": "sam@example.com",
-      "linkedinUrl": null,
-      "websiteUrl": null,
-      "teamIds": [
-        "law-team"
-      ],
-      "location": null,
-      "scholarProfileUrl": null
-    },
-    {
-      "id": "maya",
-      "name": "Maya Ellis",
+      "id": "speaker-1",
+      "name": "Riko Stevens",
       "kind": "staff",
-      "title": "Demo Program Coordinator",
+      "title": "University of Western Australia",
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
+      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
       "photoUrl": null,
-      "email": "maya@example.com",
+      "email": "",
       "linkedinUrl": null,
       "websiteUrl": null,
-      "teamIds": [
-        "comms-team"
-      ],
+      "teamIds": [],
       "location": null,
       "scholarProfileUrl": null
     },
     {
-      "id": "colin",
-      "name": "Colin Grabow",
+      "id": "speaker-2",
+      "name": "Maxim Bishev",
       "kind": "staff",
-      "title": "Observed speaker; demo directory record",
+      "title": "Australian Centre for Objectivism",
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
+      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
       "photoUrl": null,
-      "email": "colin@example.com",
+      "email": "",
       "linkedinUrl": null,
       "websiteUrl": null,
-      "teamIds": [
-        "trade-team"
-      ],
+      "teamIds": [],
       "location": null,
       "scholarProfileUrl": null
     },
     {
-      "id": "tom",
-      "name": "Tom G. Palmer",
+      "id": "speaker-3",
+      "name": "Andrew Norton",
       "kind": "staff",
-      "title": "Observed speaker; demo directory record",
+      "title": "Monash University",
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
+      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
       "photoUrl": null,
-      "email": "tom@example.com",
+      "email": "",
       "linkedinUrl": null,
       "websiteUrl": null,
-      "teamIds": [
-        "law-team"
-      ],
+      "teamIds": [],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "speaker-4",
+      "name": "Robert Breunig",
+      "kind": "staff",
+      "title": "Australian National University",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "photoUrl": null,
+      "email": "",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "speaker-5",
+      "name": "Jill Sheppard",
+      "kind": "staff",
+      "title": "Australian National University",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "photoUrl": null,
+      "email": "",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "speaker-6",
+      "name": "Chris Bradley",
+      "kind": "staff",
+      "title": "McKinsey & Company/McKinsey Global Institute and CIS board",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "photoUrl": null,
+      "email": "",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "speaker-7",
+      "name": "Steve Baxter",
+      "kind": "staff",
+      "title": "entrepreneur and former Shark Tank Australia investor",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "photoUrl": null,
+      "email": "",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "speaker-8",
+      "name": "Lorraine Finlay",
+      "kind": "staff",
+      "title": "Australian Human Rights Commission",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "photoUrl": null,
+      "email": "",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "speaker-9",
+      "name": "Salvatore Babones",
+      "kind": "staff",
+      "title": "University of Sydney",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "photoUrl": null,
+      "email": "",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [],
       "location": null,
       "scholarProfileUrl": null
     }
   ],
-  "teams": [
-    {
-      "id": "trade-team",
-      "name": "Trade & Immigration",
-      "policyAreaId": "Trade & Immigration",
-      "description": "Synthetic team description for this public demonstration. Explore associated demo members and session topics.",
-      "tags": [
-        "Demo team"
-      ],
-      "memberIds": [
-        "colin",
-        "demo"
-      ],
-      "primaryContactId": "colin"
-    },
-    {
-      "id": "law-team",
-      "name": "Constitutional Studies",
-      "policyAreaId": "Constitutional Law",
-      "description": "Synthetic team description for this public demonstration. Explore associated demo members and session topics.",
-      "tags": [
-        "Demo team"
-      ],
-      "memberIds": [
-        "tom",
-        "sam"
-      ],
-      "primaryContactId": "tom"
-    },
-    {
-      "id": "comms-team",
-      "name": "Educational & Talent Programs",
-      "policyAreaId": "Communications & Operations",
-      "description": "Synthetic team description for this public demonstration. Explore associated demo members and session topics.",
-      "tags": [
-        "Demo team"
-      ],
-      "memberIds": [
-        "maya",
-        "alex"
-      ],
-      "primaryContactId": "maya"
-    }
-  ],
+  "teams": [],
   "articles": [
     {
-      "slug": "getting-started",
-      "category": "Handbook",
-      "title": "Getting started with your internship",
-      "summary": "Synthetic reference article. Original article text was not supplied.",
-      "tags": [
-        "Demo excerpt"
-      ],
-      "blocks": [
-        {
-          "type": "paragraph",
-          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Topic",
-            "Who to ask"
-          ],
-          "rows": [
-            [
-              "Program questions",
-              "Demo coordinator"
-            ],
-            [
-              "Research questions",
-              "Your demo team contact"
-            ]
-          ]
-        }
-      ],
-      "contactPersonIds": [
-        "maya"
-      ]
-    },
-    {
-      "slug": "reading-prep",
+      "slug": "programme",
       "category": "Guide",
-      "title": "Preparing for a seminar",
-      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "title": "Programme structure",
+      "summary": "13 online sessions, April\u2013December, normally every third Thursday, 6:00\u20138:00 p.m. Sydney time. Guest presentation, Q&A and group discussion through Zoom.",
       "tags": [
-        "Demo excerpt"
+        "Supplied briefing \u00b7 verify current guidance"
       ],
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Topic",
-            "Who to ask"
-          ],
-          "rows": [
-            [
-              "Program questions",
-              "Demo coordinator"
-            ],
-            [
-              "Research questions",
-              "Your demo team contact"
-            ]
-          ]
+          "text": "13 online sessions, April\u2013December, normally every third Thursday, 6:00\u20138:00 p.m. Sydney time. Guest presentation, Q&A and group discussion through Zoom."
         }
       ],
-      "contactPersonIds": [
-        "maya"
-      ]
+      "contactPersonIds": []
     },
     {
-      "slug": "capstone-tracks",
+      "slug": "participation",
       "category": "Guide",
-      "title": "Choosing a capstone track",
-      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "title": "Participation and completion",
+      "summary": "Attend at least 10 of 13 sessions, complete written reflections and three viva voce reviews. Cameras remain on. Sessions are not recorded. The Chatham House Rule protects attribution. Conference entrants have a reported two-absence allowance; starting fellows three. Additional absences require a medical certificate.",
       "tags": [
-        "Demo excerpt"
+        "Supplied briefing \u00b7 verify current guidance"
       ],
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Topic",
-            "Who to ask"
-          ],
-          "rows": [
-            [
-              "Program questions",
-              "Demo coordinator"
-            ],
-            [
-              "Research questions",
-              "Your demo team contact"
-            ]
-          ]
+          "text": "Attend at least 10 of 13 sessions, complete written reflections and three viva voce reviews. Cameras remain on. Sessions are not recorded. The Chatham House Rule protects attribution. Conference entrants have a reported two-absence allowance; starting fellows three. Additional absences require a medical certificate."
         }
       ],
-      "contactPersonIds": [
-        "maya"
-      ]
+      "contactPersonIds": []
     },
     {
-      "slug": "office-terms",
-      "category": "Glossary",
-      "title": "Office terminology",
-      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "slug": "reflections",
+      "category": "Guide",
+      "title": "Written reflections",
+      "summary": "2026 cohort instructions reportedly require 300 words, usually due 11:59 p.m. Thursday two weeks after each session. General guidance says 200\u2013300 words. Readings are encouraged but non-mandatory.",
       "tags": [
-        "Demo excerpt"
+        "Supplied briefing \u00b7 verify current guidance"
       ],
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Topic",
-            "Who to ask"
-          ],
-          "rows": [
-            [
-              "Program questions",
-              "Demo coordinator"
-            ],
-            [
-              "Research questions",
-              "Your demo team contact"
-            ]
-          ]
+          "text": "2026 cohort instructions reportedly require 300 words, usually due 11:59 p.m. Thursday two weeks after each session. General guidance says 200\u2013300 words. Readings are encouraged but non-mandatory."
         }
       ],
-      "contactPersonIds": [
-        "maya"
-      ]
+      "contactPersonIds": []
     },
     {
-      "slug": "who-to-ask",
-      "category": "Escalation",
-      "title": "Finding the right contact",
-      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "slug": "ownership",
+      "category": "Guide",
+      "title": "Intellectual ownership and AI",
+      "summary": "AI is not prohibited outright in the reported instructions, but the thoughts and answer must remain the fellow\u2019s own. Oral reviews test the ability to explain and develop that reasoning.",
       "tags": [
-        "Demo excerpt"
+        "Supplied briefing \u00b7 verify current guidance"
       ],
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Topic",
-            "Who to ask"
-          ],
-          "rows": [
-            [
-              "Program questions",
-              "Demo coordinator"
-            ],
-            [
-              "Research questions",
-              "Your demo team contact"
-            ]
-          ]
+          "text": "AI is not prohibited outright in the reported instructions, but the thoughts and answer must remain the fellow\u2019s own. Oral reviews test the ability to explain and develop that reasoning."
         }
       ],
-      "contactPersonIds": [
-        "maya"
-      ]
+      "contactPersonIds": []
     },
     {
-      "slug": "program-faq",
-      "category": "FAQ",
-      "title": "Common program questions",
-      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "slug": "applications",
+      "category": "Guide",
+      "title": "Applications and eligibility",
+      "summary": "Over 18; Australia or New Zealand; undergraduate, postgraduate, recent graduate or young professional, from any discipline. No prior economics or classical-liberal study required. High-school students are ineligible. Fellowship upper age limit is not published in the supplied source. The separate workshop\u2019s 18\u201327 cap must not be assumed to apply.",
       "tags": [
-        "Demo excerpt"
+        "Supplied briefing \u00b7 verify current guidance"
       ],
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Topic",
-            "Who to ask"
-          ],
-          "rows": [
-            [
-              "Program questions",
-              "Demo coordinator"
-            ],
-            [
-              "Research questions",
-              "Your demo team contact"
-            ]
-          ]
+          "text": "Over 18; Australia or New Zealand; undergraduate, postgraduate, recent graduate or young professional, from any discipline. No prior economics or classical-liberal study required. High-school students are ineligible. Fellowship upper age limit is not published in the supplied source. The separate workshop\u2019s 18\u201327 cap must not be assumed to apply."
         }
       ],
-      "contactPersonIds": [
-        "maya"
-      ]
+      "contactPersonIds": []
+    },
+    {
+      "slug": "funding",
+      "category": "Guide",
+      "title": "Funding and opportunities",
+      "summary": "Donor-funded participation with no fee. No stipend, salary, research grant, academic credit or CIS employment is established. Completion offers a certificate and access to the alumni network, internship opportunities, subsidised events and priority access to further programmes, without guaranteed jobs.",
+      "tags": [
+        "Supplied briefing \u00b7 verify current guidance"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Donor-funded participation with no fee. No stipend, salary, research grant, academic credit or CIS employment is established. Completion offers a certificate and access to the alumni network, internship opportunities, subsidised events and priority access to further programmes, without guaranteed jobs."
+        }
+      ],
+      "contactPersonIds": []
     }
   ],
   "guides": [
     {
       "slug": "handbook",
-      "title": "Handbook",
-      "subtitle": "Fall 2026",
+      "title": "Fellowship Handbook",
+      "subtitle": "Reported 2026 programme guidance",
       "sections": [
         {
-          "id": "section-1",
-          "title": "Welcome and Program Overview",
+          "id": "programme",
+          "title": "Programme structure",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "13 online sessions, April\u2013December, normally every third Thursday, 6:00\u20138:00 p.m. Sydney time. Guest presentation, Q&A and group discussion through Zoom."
             }
           ]
         },
         {
-          "id": "section-2",
-          "title": "About Cato",
+          "id": "participation",
+          "title": "Participation and completion",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "Attend at least 10 of 13 sessions, complete written reflections and three viva voce reviews. Cameras remain on. Sessions are not recorded. The Chatham House Rule protects attribution. Conference entrants have a reported two-absence allowance; starting fellows three. Additional absences require a medical certificate."
             }
           ]
         },
         {
-          "id": "section-3",
-          "title": "Expectations and Conduct",
+          "id": "reflections",
+          "title": "Written reflections",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "2026 cohort instructions reportedly require 300 words, usually due 11:59 p.m. Thursday two weeks after each session. General guidance says 200\u2013300 words. Readings are encouraged but non-mandatory."
             }
           ]
         },
         {
-          "id": "section-4",
-          "title": "Work Hours, Compensation, and Timekeeping",
+          "id": "ownership",
+          "title": "Intellectual ownership and AI",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "AI is not prohibited outright in the reported instructions, but the thoughts and answer must remain the fellow\u2019s own. Oral reviews test the ability to explain and develop that reasoning."
             }
           ]
         },
         {
-          "id": "section-5",
-          "title": "Administrative and Workplace Responsibilities",
+          "id": "applications",
+          "title": "Applications and eligibility",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "Over 18; Australia or New Zealand; undergraduate, postgraduate, recent graduate or young professional, from any discipline. No prior economics or classical-liberal study required. High-school students are ineligible. Fellowship upper age limit is not published in the supplied source. The separate workshop\u2019s 18\u201327 cap must not be assumed to apply."
             }
           ]
         },
         {
-          "id": "section-6",
-          "title": "Seminars, Meetings, and Professional Development",
+          "id": "funding",
+          "title": "Funding and opportunities",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-7",
-          "title": "Workplace Tools and Office Resources",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-8",
-          "title": "Building Access and Workplace Policies",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-9",
-          "title": "Advice and FAQs",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "Donor-funded participation with no fee. No stipend, salary, research grant, academic credit or CIS employment is established. Completion offers a certificate and access to the alumni network, internship opportunities, subsidised events and priority access to further programmes, without guaranteed jobs."
             }
           ]
         }
@@ -1109,129 +746,36 @@
     },
     {
       "slug": "capstone-guide",
-      "title": "Capstone Guide",
-      "subtitle": "Participant guide",
+      "title": "Reflection & Viva Guide",
+      "subtitle": "Intellectual ownership and rigorous argument",
       "sections": [
         {
-          "id": "section-1",
-          "title": "Purpose",
+          "id": "reflection",
+          "title": "Written reflection",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "2026 cohort instructions reportedly require 300 words, usually due 11:59 p.m. Thursday two weeks after each session. General guidance says 200\u2013300 words. Readings are encouraged but non-mandatory."
             }
           ]
         },
         {
-          "id": "section-2",
-          "title": "Scope and standards",
+          "id": "viva",
+          "title": "Oral review",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "Complete three oral reviews. Staff select one of your submissions for discussion. The 2026 hub reportedly says 15 minutes; the general page says ten. Dates are not supplied."
             }
           ]
         },
         {
-          "id": "section-3",
-          "title": "Tracks and deliverable specifications",
+          "id": "ai",
+          "title": "Your own thinking",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            },
-            {
-              "type": "heading",
-              "text": "Argumentation"
-            },
-            {
-              "type": "heading",
-              "text": "Methodology"
-            },
-            {
-              "type": "heading",
-              "text": "Translation"
-            },
-            {
-              "type": "table",
-              "headers": [
-                "Track",
-                "Demo deliverable"
-              ],
-              "rows": [
-                [
-                  "Argumentation",
-                  "Outline a clear claim"
-                ],
-                [
-                  "Methodology",
-                  "Describe a research approach"
-                ],
-                [
-                  "Translation",
-                  "Explain an idea to a new audience"
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "id": "section-4",
-          "title": "Milestones and submissions",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-5",
-          "title": "Resources and support",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-6",
-          "title": "Final screening and symposium",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-7",
-          "title": "Guidance on common issues",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-8",
-          "title": "Submission standards",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-9",
-          "title": "Reference materials",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "AI is not prohibited outright in the reported instructions, but the thoughts and answer must remain the fellow\u2019s own. Oral reviews test the ability to explain and develop that reasoning."
             }
           ]
         }
@@ -1240,126 +784,26 @@
     },
     {
       "slug": "dc-culture-guide",
-      "title": "DC Culture Guide",
-      "subtitle": "A field guide to your new city",
+      "title": "Application Information",
+      "subtitle": "Reported status and matters to confirm",
       "sections": [
         {
-          "id": "section-1",
-          "title": "Getting Started",
+          "id": "eligibility",
+          "title": "Eligibility",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "Over 18; Australia or New Zealand; undergraduate, postgraduate, recent graduate or young professional, from any discipline. No prior economics or classical-liberal study required. High-school students are ineligible. Fellowship upper age limit is not published in the supplied source. The separate workshop\u2019s 18\u201327 cap must not be assumed to apply."
             }
           ]
         },
         {
-          "id": "section-2",
-          "title": "Getting Around",
+          "id": "status",
+          "title": "2027 applications",
           "blocks": [
             {
               "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-3",
-          "title": "City and policy context",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-4",
-          "title": "Lunch",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-5",
-          "title": "Museums",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-6",
-          "title": "Neighborhoods",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-7",
-          "title": "Free Performances",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-8",
-          "title": "Parks",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-9",
-          "title": "History",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-10",
-          "title": "Day Trips",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-11",
-          "title": "After Work",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
-            }
-          ]
-        },
-        {
-          "id": "section-12",
-          "title": "Practical Notes",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+              "text": "The supplied source says applications are not yet open and a non-binding expression of interest is available. This has not been verified as current. Registration of interest is not a formal application. No cohort size, acceptance rate, rubric, interview requirement, questions or confirmed dates are supplied."
             }
           ]
         }
@@ -1369,68 +813,15 @@
   ],
   "announcements": [
     {
-      "id": "welcome",
-      "title": "Your week, at a glance",
-      "body": "Demo announcement: explore your schedule, prepare for upcoming sessions, and get to know the cohort.",
-      "postedAt": "2026-10-07T14:00:00Z",
+      "id": "source-status",
+      "title": "Programme information: verify current instructions",
+      "body": "This portal uses the supplied 25 September 2026 schedule. Later speakers are to be confirmed. It is an independent demo, not an official CIS portal; no registration, reflection or RSVP is sent to CIS.",
+      "postedAt": "2026-09-25T00:00:00Z",
       "dueAt": null,
-      "expiresAt": "2026-10-16T23:59:00Z",
+      "expiresAt": null,
       "urgent": false,
       "assistanceConfig": null
-    },
-    {
-      "id": "help",
-      "title": "Help welcome the alumni",
-      "body": "Synthetic signup to demonstrate local assistance capacity.",
-      "postedAt": "2026-10-08T12:00:00Z",
-      "dueAt": "2026-10-16T16:00:00Z",
-      "expiresAt": "2026-10-16T16:00:00Z",
-      "urgent": true,
-      "assistanceConfig": {
-        "capacity": 2,
-        "baseSignups": [
-          "Alex Chen (demo)"
-        ],
-        "closesAt": "2026-10-16T16:00:00Z"
-      }
-    },
-    {
-      "id": "past",
-      "title": "Earlier demo welcome event",
-      "body": "This example signup is closed.",
-      "postedAt": "2026-09-20T12:00:00Z",
-      "dueAt": null,
-      "expiresAt": "2026-09-25T12:00:00Z",
-      "urgent": false,
-      "assistanceConfig": {
-        "capacity": 3,
-        "baseSignups": [
-          "Sam Rivera (demo)"
-        ],
-        "closesAt": "2026-09-25T12:00:00Z"
-      }
     }
   ],
-  "discussions": [
-    {
-      "id": "d1",
-      "title": "What the Other Tracks Miss?",
-      "body": "Abbreviated demo message: what questions would you bring to this conversation?",
-      "authorId": "alex",
-      "createdAt": "2026-10-06T15:00:00Z",
-      "policyAreaId": null,
-      "sessionId": null,
-      "replies": []
-    },
-    {
-      "id": "d2",
-      "title": "The Question You Came Here For",
-      "body": "Abbreviated demo message: what questions would you bring to this conversation?",
-      "authorId": "sam",
-      "createdAt": "2026-10-07T15:00:00Z",
-      "policyAreaId": null,
-      "sessionId": "56",
-      "replies": []
-    }
-  ]
+  "discussions": []
 }

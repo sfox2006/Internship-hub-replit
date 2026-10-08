@@ -1,6 +1,6 @@
 import { openDB } from "idb";
 const database = () =>
-  openDB("intern-hub-images", 1, {
+  openDB("cis-fellowship-images", 1, {
     upgrade(db) {
       db.createObjectStore("blobs");
     },

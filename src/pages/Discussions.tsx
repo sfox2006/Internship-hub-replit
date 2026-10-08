@@ -7,7 +7,7 @@ import {
   sortDiscussions,
   personWithProfile,
 } from "../data/selectors";
-import { referenceNow, etFormat } from "../data/clock";
+import { referenceNow, localFormat } from "../data/clock";
 import { useDemo } from "../data/demoStore";
 import Card from "../components/Card";
 import Modal from "../components/Modal";
@@ -83,7 +83,7 @@ export default function Discussions() {
             <div>
               <strong>{author(d.authorId)}</strong>
               <small className="muted">
-                {etFormat(d.createdAt, "MMM d, yyyy · h:mm a")} ET
+                {localFormat(d.createdAt, "MMM d, yyyy · h:mm a")} Sydney time
               </small>
             </div>
           </div>
@@ -101,7 +101,10 @@ export default function Discussions() {
             {d.replies.map((r) => (
               <div key={r.id}>
                 <strong>{author(r.authorId)}</strong>
-                <small> · {etFormat(r.createdAt, "MMM d, h:mm a")} ET</small>
+                <small>
+                  {" "}
+                  · {localFormat(r.createdAt, "MMM d, h:mm a")} Sydney time
+                </small>
                 <p className="preserve-lines">{r.body}</p>
               </div>
             ))}

@@ -1,4 +1,5 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import Programme from "./pages/Programme";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useDemo } from "./data/demoStore";
 import AppShell from "./components/AppShell";
 import ThisWeek from "./pages/ThisWeek";
@@ -11,9 +12,6 @@ import Handbook from "./pages/Handbook";
 import CapstoneGuide from "./pages/CapstoneGuide";
 import DcCultureGuide from "./pages/DcCultureGuide";
 import Faq from "./pages/Faq";
-import Emergency from "./pages/Emergency";
-import Teams from "./pages/Teams";
-import TeamDetail from "./pages/TeamDetail";
 import People from "./pages/People";
 import PersonDetail from "./pages/PersonDetail";
 import Announcements from "./pages/Announcements";
@@ -34,6 +32,9 @@ export default function App() {
     <AppShell>
       <Routes>
         <Route path="/" element={<ThisWeek />} />
+        <Route path="/programme" element={<Programme />} />
+        <Route path="/reflection-guide" element={<CapstoneGuide />} />
+        <Route path="/applications" element={<DcCultureGuide />} />
         <Route path="/schedule" element={<Schedule key={location.key} />} />
         <Route
           path="/session/:id"
@@ -46,9 +47,15 @@ export default function App() {
         <Route path="/capstone-guide" element={<CapstoneGuide />} />
         <Route path="/dc-culture-guide" element={<DcCultureGuide />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/emergency" element={<Emergency />} />
-        <Route path="/teams" element={<Teams />} />
-        <Route path="/team/:id" element={<TeamDetail />} />
+        <Route
+          path="/emergency"
+          element={<Navigate to="/handbook" replace />}
+        />
+        <Route path="/teams" element={<Navigate to="/programme" replace />} />
+        <Route
+          path="/team/:id"
+          element={<Navigate to="/programme" replace />}
+        />
         <Route path="/people" element={<People />} />
         <Route path="/person/:id" element={<PersonDetail />} />
         <Route path="/announcements" element={<Announcements />} />

@@ -1,5 +1,5 @@
 import { fixtures } from "../data/selectors";
-import { referenceNow, etFormat } from "../data/clock";
+import { referenceNow, localFormat } from "../data/clock";
 import Card from "../components/Card";
 import AssistanceCard from "../components/AssistanceCard";
 export default function Announcements() {
@@ -37,8 +37,8 @@ export default function Announcements() {
               </div>
               <p>{a.body}</p>
               <p className="metadata">
-                Posted {etFormat(a.postedAt)} · Expires{" "}
-                {a.expiresAt ? etFormat(a.expiresAt) : "—"}
+                Posted {localFormat(a.postedAt)} · Expires{" "}
+                {a.expiresAt ? localFormat(a.expiresAt) : "—"}
               </p>
               {a.assistanceConfig && (
                 <AssistanceCard

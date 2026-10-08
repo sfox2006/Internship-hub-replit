@@ -30,19 +30,18 @@ const groups = [
     label: "Reference",
     items: [
       ["Readings & Materials", "/readings", BookOpen],
+      ["Programme Briefing", "/programme", BookOpen],
       ["Handbook", "/handbook", BookOpen],
-      ["Capstone Guide", "/capstone-guide", GraduationCap],
-      ["DC Culture Guide", "/dc-culture-guide", Map],
+      ["Reflection & Viva Guide", "/reflection-guide", GraduationCap],
+      ["Application Information", "/applications", Map],
       ["FAQ", "/faq", HelpCircle],
-      ["Emergency Procedures", "/emergency", Shield],
-      ["Who Works on What", "/teams", Users],
     ],
   },
   {
     label: "Community",
     items: [
       ["Announcements", "/announcements", Megaphone],
-      ["Intern Directory", "/people", Users],
+      ["Fellow Directory", "/people", Users],
       ["Discussion Board", "/discussions", MessageCircle],
       ["Photo Library", "/photos", Images],
     ],
@@ -64,9 +63,9 @@ export default function Sidebar({
       aria-label="Main navigation"
     >
       <Link to="/" className="brand" onClick={onClose}>
-        <span className="wordmark">CATO</span>
-        <strong>Intern Hub</strong>
-        <small>Educational and Talent Programs</small>
+        <span className="wordmark">CIS</span>
+        <strong>Fellowship Hub</strong>
+        <small>Centre for Independent Studies</small>
       </Link>
       <nav>
         {groups.map((g) => (
@@ -92,7 +91,7 @@ export default function Sidebar({
           <Avatar name={name} id="demo" />
           <span>
             <strong>{name}</strong>
-            <small>intern@example.com</small>
+            <small>fellow@example.com</small>
           </span>
         </Link>
         <button
