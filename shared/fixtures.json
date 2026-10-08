@@ -1,0 +1,1436 @@
+{
+  "term": {
+    "id": "fall2026",
+    "name": "Fall 2026",
+    "timezone": "America/New_York"
+  },
+  "policyAreas": [
+    "Communications & Operations",
+    "Constitutional Law",
+    "Criminal Justice",
+    "Economics & Fiscal Policy",
+    "Education",
+    "External Relations and Engagement",
+    "Foreign Policy & Defense",
+    "Health Care",
+    "Monetary Policy & Banking",
+    "Regulation",
+    "Social Policy & Welfare",
+    "Technology & Privacy",
+    "Trade & Immigration"
+  ],
+  "sessions": [
+    {
+      "id": "51",
+      "termId": "fall2026",
+      "title": "Research Methods IV: Feedback",
+      "type": "Seminar",
+      "policyAreaId": null,
+      "startAt": "2026-10-05T13:30:00Z",
+      "endAt": "2026-10-05T14:30:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "52",
+      "termId": "fall2026",
+      "title": "Research Methods V: Data Research in Practice",
+      "type": "Seminar",
+      "policyAreaId": null,
+      "startAt": "2026-10-05T14:30:00Z",
+      "endAt": "2026-10-05T15:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "53",
+      "termId": "fall2026",
+      "title": "The Non-Economic Case for Markets [DEEP DIVE]",
+      "type": "Seminar",
+      "policyAreaId": null,
+      "startAt": "2026-10-05T18:00:00Z",
+      "endAt": "2026-10-05T19:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "54",
+      "termId": "fall2026",
+      "title": "Weekly Plenary Meeting #2",
+      "type": "Other",
+      "policyAreaId": null,
+      "startAt": "2026-10-05T20:30:00Z",
+      "endAt": "2026-10-05T21:30:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": true,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "55",
+      "termId": "fall2026",
+      "title": "The Presumption of Liberty [FLAGSHIP]",
+      "type": "Workshop",
+      "policyAreaId": null,
+      "startAt": "2026-10-06T16:00:00Z",
+      "endAt": "2026-10-06T18:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "training",
+      "termId": "fall2026",
+      "title": "Harrasment Training Follow-Up",
+      "type": "Other",
+      "policyAreaId": null,
+      "startAt": "2026-10-06T19:00:00Z",
+      "endAt": "2026-10-06T20:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "locke",
+      "termId": "fall2026",
+      "title": "Intern Reading Group Session II: John Locke [OPTIONAL]",
+      "type": "Other",
+      "policyAreaId": null,
+      "startAt": "2026-10-06T20:00:00Z",
+      "endAt": "2026-10-06T21:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "rhetoric3",
+      "termId": "fall2026",
+      "title": "Rhetoric for a Free Society III: Rhetorical Theory [REQUIRED]",
+      "type": "Seminar",
+      "policyAreaId": null,
+      "startAt": "2026-10-07T14:00:00Z",
+      "endAt": "2026-10-07T15:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": true,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "trade",
+      "termId": "fall2026",
+      "title": "Free Trade and Tariffs [DEEP DIVE]",
+      "type": "Seminar",
+      "policyAreaId": "Trade & Immigration",
+      "startAt": "2026-10-07T18:00:00Z",
+      "endAt": "2026-10-07T19:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "56",
+      "termId": "fall2026",
+      "title": "The Jones Act [FLAGSHIP]",
+      "type": "Seminar",
+      "policyAreaId": "Trade & Immigration",
+      "startAt": "2026-10-08T13:30:00Z",
+      "endAt": "2026-10-08T15:00:00Z",
+      "location": "Policy Center",
+      "speakerIds": [
+        "colin"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": true,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": {
+        "capacity": 3,
+        "baseSignups": [
+          "Alex Chen (demo)"
+        ],
+        "closesAt": "2026-10-08T13:30:00Z"
+      }
+    },
+    {
+      "id": "forum1",
+      "termId": "fall2026",
+      "title": "Friday Forum",
+      "type": "Lecture",
+      "policyAreaId": null,
+      "startAt": "2026-10-09T20:30:00Z",
+      "endAt": "2026-10-09T21:30:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "rhetoric4",
+      "termId": "fall2026",
+      "title": "Rhetoric for a Free Society IV: Op-Ed Writing [REQUIRED]",
+      "type": "Seminar",
+      "policyAreaId": null,
+      "startAt": "2026-10-12T13:30:00Z",
+      "endAt": "2026-10-12T14:30:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": true,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "plenary3",
+      "termId": "fall2026",
+      "title": "Weekly Plenary Meeting #3",
+      "type": "Other",
+      "policyAreaId": null,
+      "startAt": "2026-10-12T20:30:00Z",
+      "endAt": "2026-10-12T21:30:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": true,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "62",
+      "termId": "fall2026",
+      "title": "Rhetoric for a Free Society: V: Oratory [REQUIRED]",
+      "type": "Seminar",
+      "policyAreaId": null,
+      "startAt": "2026-10-13T13:30:00Z",
+      "endAt": "2026-10-13T15:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "tom"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": true,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "health",
+      "termId": "fall2026",
+      "title": "Clinician Licensing - An Obstacle to Universal Health Care [DEEP DIVE]",
+      "type": "Seminar",
+      "policyAreaId": "Health Care",
+      "startAt": "2026-10-13T18:00:00Z",
+      "endAt": "2026-10-13T19:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "63",
+      "termId": "fall2026",
+      "title": "Intern Reading Group Session III: Cato's Letters [OPTIONAL]",
+      "type": "Other",
+      "policyAreaId": null,
+      "startAt": "2026-10-13T20:00:00Z",
+      "endAt": "2026-10-13T21:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "panel",
+      "termId": "fall2026",
+      "title": "Translating Liberty Panel - Public Affairs, Media Relations, and Development Communications [FLAGSHIP]",
+      "type": "Luncheon",
+      "policyAreaId": null,
+      "startAt": "2026-10-15T15:45:00Z",
+      "endAt": "2026-10-15T17:15:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "alumni",
+      "termId": "fall2026",
+      "title": "Intern Alumni Luncheon",
+      "type": "Luncheon",
+      "policyAreaId": null,
+      "startAt": "2026-10-16T16:00:00Z",
+      "endAt": "2026-10-16T17:30:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "forum2",
+      "termId": "fall2026",
+      "title": "Friday Forum",
+      "type": "Lecture",
+      "policyAreaId": null,
+      "startAt": "2026-10-16T20:30:00Z",
+      "endAt": "2026-10-16T21:30:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "75",
+      "termId": "fall2026",
+      "title": "Intern Reading Group Session IV: Frederic Bastiat [OPTIONAL]",
+      "type": "Other",
+      "policyAreaId": null,
+      "startAt": "2026-10-20T20:00:00Z",
+      "endAt": "2026-10-20T21:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    },
+    {
+      "id": "82",
+      "termId": "fall2026",
+      "title": "The Case for Original Public Meaning",
+      "type": "Seminar",
+      "policyAreaId": "Constitutional Law",
+      "startAt": "2026-10-26T18:00:00Z",
+      "endAt": "2026-10-26T19:00:00Z",
+      "location": null,
+      "speakerIds": [
+        "maya"
+      ],
+      "description": "Demo description: a chance to explore ideas, ask thoughtful questions, and connect with your cohort. Original session description was not supplied.",
+      "attendanceRequired": false,
+      "reportedLengthMinutes": null,
+      "assistanceConfig": null
+    }
+  ],
+  "resources": [
+    {
+      "id": "globalization",
+      "title": "Cato Course: Defending Globalization",
+      "type": "Course",
+      "authors": "Cato Courses",
+      "minutes": 60,
+      "policyAreaId": "Trade & Immigration",
+      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
+      "externalUrl": "https://www.catocourses.org/globalization",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "jones",
+      "title": "The Jones Act: A Burden America Can No Longer Bear",
+      "type": "Reading",
+      "authors": "Original author not supplied",
+      "minutes": 25,
+      "policyAreaId": "Trade & Immigration",
+      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
+      "externalUrl": "https://www.cato.org/publications/policy-analysis/jones-act-burden-america-can-no-longer-bear",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cicero",
+      "title": "De Inventione",
+      "type": "Reading",
+      "authors": "Cicero",
+      "minutes": 15,
+      "policyAreaId": null,
+      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
+      "externalUrl": null,
+      "localFileUrl": "/demo-files/reading-demo.txt",
+      "previewKind": "text"
+    },
+    {
+      "id": "grrrreat",
+      "title": "Globalization Is Grrrreat!",
+      "type": "Reading",
+      "authors": "Tom G. Palmer",
+      "minutes": 10,
+      "policyAreaId": null,
+      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
+      "externalUrl": null,
+      "localFileUrl": "/demo-files/reading-demo.txt",
+      "previewKind": "text"
+    },
+    {
+      "id": "letters",
+      "title": "Intern Reading Group Session III: Cato's Letters",
+      "type": "Reading",
+      "authors": "John Trenchard and Thomas Gordon",
+      "minutes": 35,
+      "policyAreaId": null,
+      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
+      "externalUrl": null,
+      "localFileUrl": "/demo-files/reading-demo.txt",
+      "previewKind": "text"
+    },
+    {
+      "id": "law",
+      "title": "Intern Reading Group Session IV: The Law",
+      "type": "Reading",
+      "authors": "Frederic Bastiat",
+      "minutes": null,
+      "policyAreaId": null,
+      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
+      "externalUrl": null,
+      "localFileUrl": "/demo-files/reading-demo.txt",
+      "previewKind": "text"
+    },
+    {
+      "id": "brief",
+      "title": "Brief of the Cato Institute as Amicus Curiae in Support of Respondents, Trump v. Barbara",
+      "type": "Reading",
+      "authors": "Original attribution not supplied",
+      "minutes": 50,
+      "policyAreaId": "Constitutional Law",
+      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
+      "externalUrl": null,
+      "localFileUrl": "/demo-files/reading-demo.txt",
+      "previewKind": "text"
+    },
+    {
+      "id": "gravity",
+      "title": "The Gravitational Force of Originalism",
+      "type": "Reading",
+      "authors": "Original attribution not supplied",
+      "minutes": 65,
+      "policyAreaId": "Constitutional Law",
+      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
+      "externalUrl": null,
+      "localFileUrl": "/demo-files/reading-demo.txt",
+      "previewKind": "text"
+    },
+    {
+      "id": "evil",
+      "title": "Originalism: The Lesser Evil",
+      "type": "Reading",
+      "authors": "Original attribution not supplied",
+      "minutes": 55,
+      "policyAreaId": "Constitutional Law",
+      "description": "Observed title and attribution; original file not supplied. Local file is a clearly labeled demonstration excerpt.",
+      "externalUrl": null,
+      "localFileUrl": "/demo-files/reading-demo.txt",
+      "previewKind": "text"
+    },
+    {
+      "id": "demo-file",
+      "title": "Demo orientation file",
+      "type": "File",
+      "authors": "Demo program team",
+      "minutes": null,
+      "policyAreaId": null,
+      "description": "Synthetic local document to demonstrate the unavailable-preview state.",
+      "externalUrl": null,
+      "localFileUrl": "/demo-files/demo-document.docx",
+      "previewKind": "unsupported"
+    }
+  ],
+  "sessionResources": [
+    {
+      "sessionId": "56",
+      "resourceId": "globalization",
+      "required": true,
+      "order": 0
+    },
+    {
+      "sessionId": "56",
+      "resourceId": "jones",
+      "required": false,
+      "order": 1
+    },
+    {
+      "sessionId": "62",
+      "resourceId": "cicero",
+      "required": true,
+      "order": 2
+    },
+    {
+      "sessionId": "62",
+      "resourceId": "grrrreat",
+      "required": true,
+      "order": 3
+    },
+    {
+      "sessionId": "63",
+      "resourceId": "letters",
+      "required": true,
+      "order": 4
+    },
+    {
+      "sessionId": "75",
+      "resourceId": "law",
+      "required": true,
+      "order": 5
+    },
+    {
+      "sessionId": "82",
+      "resourceId": "brief",
+      "required": true,
+      "order": 6
+    },
+    {
+      "sessionId": "82",
+      "resourceId": "gravity",
+      "required": true,
+      "order": 7
+    },
+    {
+      "sessionId": "82",
+      "resourceId": "evil",
+      "required": false,
+      "order": 8
+    }
+  ],
+  "requirements": [
+    {
+      "id": "req1",
+      "title": "Weekly Report #1",
+      "dueDate": "2026-09-25",
+      "category": "Plenary",
+      "sessionId": null,
+      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "submissionUrl": null
+    },
+    {
+      "id": "req2",
+      "title": "Weekly Report #2",
+      "dueDate": "2026-10-02",
+      "category": "Plenary",
+      "sessionId": null,
+      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "submissionUrl": null
+    },
+    {
+      "id": "req3",
+      "title": "Weekly Small Group Report",
+      "dueDate": "2026-10-02",
+      "category": "Plenary",
+      "sessionId": null,
+      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "submissionUrl": null
+    },
+    {
+      "id": "req4",
+      "title": "Weekly Report #3",
+      "dueDate": "2026-10-09",
+      "category": "Plenary",
+      "sessionId": null,
+      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "submissionUrl": null
+    },
+    {
+      "id": "req5",
+      "title": "Weekly Small Group Report",
+      "dueDate": "2026-10-09",
+      "category": "Plenary",
+      "sessionId": null,
+      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "submissionUrl": null
+    },
+    {
+      "id": "req6",
+      "title": "Seminar Eval: Free Trade and Tariffs",
+      "dueDate": "2026-10-08",
+      "category": "Evaluation",
+      "sessionId": "trade",
+      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "submissionUrl": null
+    },
+    {
+      "id": "req7",
+      "title": "Seminar Eval: Research Methods V: Data Research in Practice",
+      "dueDate": "2026-10-06",
+      "category": "Evaluation",
+      "sessionId": "52",
+      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "submissionUrl": null
+    },
+    {
+      "id": "req8",
+      "title": "Capstone Milestone 1: Subject",
+      "dueDate": "2026-10-09",
+      "category": "Capstone",
+      "sessionId": null,
+      "description": "Self-reported demo checklist. Completion is independent of reading progress. Original submission destination was not supplied.",
+      "submissionUrl": null
+    }
+  ],
+  "people": [
+    {
+      "id": "demo",
+      "name": "Demo Intern",
+      "kind": "intern",
+      "title": null,
+      "school": "Example University",
+      "placement": "Policy research",
+      "termId": "fall2026",
+      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
+      "photoUrl": null,
+      "email": "intern@example.com",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [
+        "trade-team"
+      ],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "alex",
+      "name": "Alex Chen",
+      "kind": "intern",
+      "title": null,
+      "school": "Sample College",
+      "placement": "Communications",
+      "termId": "fall2026",
+      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
+      "photoUrl": null,
+      "email": "alex@example.com",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [
+        "comms-team"
+      ],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "sam",
+      "name": "Sam Rivera",
+      "kind": "intern",
+      "title": null,
+      "school": "Demo State University",
+      "placement": "Legal research",
+      "termId": "fall2026",
+      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
+      "photoUrl": null,
+      "email": "sam@example.com",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [
+        "law-team"
+      ],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "maya",
+      "name": "Maya Ellis",
+      "kind": "staff",
+      "title": "Demo Program Coordinator",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
+      "photoUrl": null,
+      "email": "maya@example.com",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [
+        "comms-team"
+      ],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "colin",
+      "name": "Colin Grabow",
+      "kind": "staff",
+      "title": "Observed speaker; demo directory record",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
+      "photoUrl": null,
+      "email": "colin@example.com",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [
+        "trade-team"
+      ],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "tom",
+      "name": "Tom G. Palmer",
+      "kind": "staff",
+      "title": "Observed speaker; demo directory record",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Synthetic biography \u2014 not an original person record. This demo profile enjoys reading, asking questions, and connecting big ideas to practical research. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. The cohort is a place to exchange perspectives and learn together. ",
+      "photoUrl": null,
+      "email": "tom@example.com",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [
+        "law-team"
+      ],
+      "location": null,
+      "scholarProfileUrl": null
+    }
+  ],
+  "teams": [
+    {
+      "id": "trade-team",
+      "name": "Trade & Immigration",
+      "policyAreaId": "Trade & Immigration",
+      "description": "Synthetic team description for this public demonstration. Explore associated demo members and session topics.",
+      "tags": [
+        "Demo team"
+      ],
+      "memberIds": [
+        "colin",
+        "demo"
+      ],
+      "primaryContactId": "colin"
+    },
+    {
+      "id": "law-team",
+      "name": "Constitutional Studies",
+      "policyAreaId": "Constitutional Law",
+      "description": "Synthetic team description for this public demonstration. Explore associated demo members and session topics.",
+      "tags": [
+        "Demo team"
+      ],
+      "memberIds": [
+        "tom",
+        "sam"
+      ],
+      "primaryContactId": "tom"
+    },
+    {
+      "id": "comms-team",
+      "name": "Educational & Talent Programs",
+      "policyAreaId": "Communications & Operations",
+      "description": "Synthetic team description for this public demonstration. Explore associated demo members and session topics.",
+      "tags": [
+        "Demo team"
+      ],
+      "memberIds": [
+        "maya",
+        "alex"
+      ],
+      "primaryContactId": "maya"
+    }
+  ],
+  "articles": [
+    {
+      "slug": "getting-started",
+      "category": "Handbook",
+      "title": "Getting started with your internship",
+      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "tags": [
+        "Demo excerpt"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Topic",
+            "Who to ask"
+          ],
+          "rows": [
+            [
+              "Program questions",
+              "Demo coordinator"
+            ],
+            [
+              "Research questions",
+              "Your demo team contact"
+            ]
+          ]
+        }
+      ],
+      "contactPersonIds": [
+        "maya"
+      ]
+    },
+    {
+      "slug": "reading-prep",
+      "category": "Guide",
+      "title": "Preparing for a seminar",
+      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "tags": [
+        "Demo excerpt"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Topic",
+            "Who to ask"
+          ],
+          "rows": [
+            [
+              "Program questions",
+              "Demo coordinator"
+            ],
+            [
+              "Research questions",
+              "Your demo team contact"
+            ]
+          ]
+        }
+      ],
+      "contactPersonIds": [
+        "maya"
+      ]
+    },
+    {
+      "slug": "capstone-tracks",
+      "category": "Guide",
+      "title": "Choosing a capstone track",
+      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "tags": [
+        "Demo excerpt"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Topic",
+            "Who to ask"
+          ],
+          "rows": [
+            [
+              "Program questions",
+              "Demo coordinator"
+            ],
+            [
+              "Research questions",
+              "Your demo team contact"
+            ]
+          ]
+        }
+      ],
+      "contactPersonIds": [
+        "maya"
+      ]
+    },
+    {
+      "slug": "office-terms",
+      "category": "Glossary",
+      "title": "Office terminology",
+      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "tags": [
+        "Demo excerpt"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Topic",
+            "Who to ask"
+          ],
+          "rows": [
+            [
+              "Program questions",
+              "Demo coordinator"
+            ],
+            [
+              "Research questions",
+              "Your demo team contact"
+            ]
+          ]
+        }
+      ],
+      "contactPersonIds": [
+        "maya"
+      ]
+    },
+    {
+      "slug": "who-to-ask",
+      "category": "Escalation",
+      "title": "Finding the right contact",
+      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "tags": [
+        "Demo excerpt"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Topic",
+            "Who to ask"
+          ],
+          "rows": [
+            [
+              "Program questions",
+              "Demo coordinator"
+            ],
+            [
+              "Research questions",
+              "Your demo team contact"
+            ]
+          ]
+        }
+      ],
+      "contactPersonIds": [
+        "maya"
+      ]
+    },
+    {
+      "slug": "program-faq",
+      "category": "FAQ",
+      "title": "Common program questions",
+      "summary": "Synthetic reference article. Original article text was not supplied.",
+      "tags": [
+        "Demo excerpt"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Bring your questions to the demo program coordinator. This excerpt illustrates how reference material is organized; it is not official program guidance."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Topic",
+            "Who to ask"
+          ],
+          "rows": [
+            [
+              "Program questions",
+              "Demo coordinator"
+            ],
+            [
+              "Research questions",
+              "Your demo team contact"
+            ]
+          ]
+        }
+      ],
+      "contactPersonIds": [
+        "maya"
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "slug": "handbook",
+      "title": "Handbook",
+      "subtitle": "Fall 2026",
+      "sections": [
+        {
+          "id": "section-1",
+          "title": "Welcome and Program Overview",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-2",
+          "title": "About Cato",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-3",
+          "title": "Expectations and Conduct",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-4",
+          "title": "Work Hours, Compensation, and Timekeeping",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-5",
+          "title": "Administrative and Workplace Responsibilities",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-6",
+          "title": "Seminars, Meetings, and Professional Development",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-7",
+          "title": "Workplace Tools and Office Resources",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-8",
+          "title": "Building Access and Workplace Policies",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-9",
+          "title": "Advice and FAQs",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        }
+      ],
+      "originalFileUrl": null
+    },
+    {
+      "slug": "capstone-guide",
+      "title": "Capstone Guide",
+      "subtitle": "Participant guide",
+      "sections": [
+        {
+          "id": "section-1",
+          "title": "Purpose",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-2",
+          "title": "Scope and standards",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-3",
+          "title": "Tracks and deliverable specifications",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            },
+            {
+              "type": "heading",
+              "text": "Argumentation"
+            },
+            {
+              "type": "heading",
+              "text": "Methodology"
+            },
+            {
+              "type": "heading",
+              "text": "Translation"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Track",
+                "Demo deliverable"
+              ],
+              "rows": [
+                [
+                  "Argumentation",
+                  "Outline a clear claim"
+                ],
+                [
+                  "Methodology",
+                  "Describe a research approach"
+                ],
+                [
+                  "Translation",
+                  "Explain an idea to a new audience"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "section-4",
+          "title": "Milestones and submissions",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-5",
+          "title": "Resources and support",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-6",
+          "title": "Final screening and symposium",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-7",
+          "title": "Guidance on common issues",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-8",
+          "title": "Submission standards",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-9",
+          "title": "Reference materials",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        }
+      ],
+      "originalFileUrl": null
+    },
+    {
+      "slug": "dc-culture-guide",
+      "title": "DC Culture Guide",
+      "subtitle": "A field guide to your new city",
+      "sections": [
+        {
+          "id": "section-1",
+          "title": "Getting Started",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-2",
+          "title": "Getting Around",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-3",
+          "title": "City and policy context",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-4",
+          "title": "Lunch",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-5",
+          "title": "Museums",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-6",
+          "title": "Neighborhoods",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-7",
+          "title": "Free Performances",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-8",
+          "title": "Parks",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-9",
+          "title": "History",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-10",
+          "title": "Day Trips",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-11",
+          "title": "After Work",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        },
+        {
+          "id": "section-12",
+          "title": "Practical Notes",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Demo excerpt \u2014 original document not supplied. This section demonstrates the guide layout. Ask the actual program team for current policies and approved information."
+            }
+          ]
+        }
+      ],
+      "originalFileUrl": null
+    }
+  ],
+  "announcements": [
+    {
+      "id": "welcome",
+      "title": "Your week, at a glance",
+      "body": "Demo announcement: explore your schedule, prepare for upcoming sessions, and get to know the cohort.",
+      "postedAt": "2026-10-07T14:00:00Z",
+      "dueAt": null,
+      "expiresAt": "2026-10-16T23:59:00Z",
+      "urgent": false,
+      "assistanceConfig": null
+    },
+    {
+      "id": "help",
+      "title": "Help welcome the alumni",
+      "body": "Synthetic signup to demonstrate local assistance capacity.",
+      "postedAt": "2026-10-08T12:00:00Z",
+      "dueAt": "2026-10-16T16:00:00Z",
+      "expiresAt": "2026-10-16T16:00:00Z",
+      "urgent": true,
+      "assistanceConfig": {
+        "capacity": 2,
+        "baseSignups": [
+          "Alex Chen (demo)"
+        ],
+        "closesAt": "2026-10-16T16:00:00Z"
+      }
+    },
+    {
+      "id": "past",
+      "title": "Earlier demo welcome event",
+      "body": "This example signup is closed.",
+      "postedAt": "2026-09-20T12:00:00Z",
+      "dueAt": null,
+      "expiresAt": "2026-09-25T12:00:00Z",
+      "urgent": false,
+      "assistanceConfig": {
+        "capacity": 3,
+        "baseSignups": [
+          "Sam Rivera (demo)"
+        ],
+        "closesAt": "2026-09-25T12:00:00Z"
+      }
+    }
+  ],
+  "discussions": [
+    {
+      "id": "d1",
+      "title": "What the Other Tracks Miss?",
+      "body": "Abbreviated demo message: what questions would you bring to this conversation?",
+      "authorId": "alex",
+      "createdAt": "2026-10-06T15:00:00Z",
+      "policyAreaId": null,
+      "sessionId": null,
+      "replies": []
+    },
+    {
+      "id": "d2",
+      "title": "The Question You Came Here For",
+      "body": "Abbreviated demo message: what questions would you bring to this conversation?",
+      "authorId": "sam",
+      "createdAt": "2026-10-07T15:00:00Z",
+      "policyAreaId": null,
+      "sessionId": "56",
+      "replies": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+:root {
+  --navy: #0d0e51;
+  --blue: #3648a0;
+  --gold: #a17d38;
+  --lavender: #eeedf8;
+  --background: #f5f5fa;
+  --ink: #24253d;
+  --muted: #6a6c80;
+  --border: #e5e5ef;
+  --white: #fff;
+  --radius: 15px;
+  --shadow: 0 3px 16px #22234405;
+  font-family: "DM Sans", sans-serif;
+  color: var(--ink);
+  background: var(--background);
+  font-synthesis: none;
+}
