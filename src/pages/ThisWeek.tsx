@@ -14,7 +14,7 @@ import {
   weekSessions,
   sessionAssignments,
 } from "../data/selectors";
-import { etFormat, mondayKey, referenceNow, shiftDay } from "../data/clock";
+import { localFormat, mondayKey, referenceNow, shiftDay } from "../data/clock";
 import { useDemo } from "../data/demoStore";
 import Card from "../components/Card";
 import SessionRow from "../components/SessionRow";
@@ -64,11 +64,11 @@ export default function ThisWeek() {
     <>
       <div className="page-heading">
         <div>
-          <span className="eyebrow">YOUR WEEK AT THE HUB</span>
-          <h1>Good morning, {state.profile.firstName}.</h1>
-          <p>A little preparation. A lot of possibility.</p>
+          <span className="eyebrow">LIBERTY & SOCIETY · 2026 FELLOWSHIP</span>
+          <h1>Welcome, {state.profile.firstName}.</h1>
+          <p>Independent thinking. Rigorous inquiry. Open debate.</p>
         </div>
-        <span className="date-label">{etFormat(now, "EEEE, MMMM d")}</span>
+        <span className="date-label">{localFormat(now, "EEEE, MMMM d")}</span>
       </div>
       {next ? (
         <section className="hero">
@@ -78,18 +78,23 @@ export default function ThisWeek() {
           </div>
           <h2>{next.title}</h2>
           <p>
-            {etFormat(next.startAt, "EEEE, MMM d")} ·{" "}
-            {etFormat(next.startAt, "h:mm a")}–{etFormat(next.endAt, "h:mm a")}{" "}
-            ET · {next.location || "—"}
+            {localFormat(next.startAt, "EEEE, MMM d")} ·{" "}
+            {localFormat(next.startAt, "h:mm a")}–
+            {localFormat(next.endAt, "h:mm a")} Sydney time ·{" "}
+            {next.location || "—"}
           </p>
           <p>
-            With{" "}
+            Speaker:{" "}
             {next.speakerIds
               .map((id) => fixtures.people.find((p) => p.id === id)?.name)
-              .join(", ")}
+              .join(", ") || "To be confirmed"}
           </p>
           <div className="hero-prep">
-            <span className="eyebrow">ENTRY TICKET</span>
+            <span className="eyebrow">SUGGESTED PREPARATION</span>
+            <p>
+              Readings are encouraged, not mandatory. No session-specific
+              reading links were supplied.
+            </p>
             {sessionAssignments(next.id)
               .filter((a) => a.required)
               .map((a) => (
@@ -113,12 +118,21 @@ export default function ThisWeek() {
           <Link to="/schedule">Explore the schedule</Link>
         </Card>
       )}
+      <div className="callout">
+        <strong>Programme snapshot · 25 September 2026</strong>
+        <p>
+          13 sessions · 6–8 p.m. Sydney time · Zoom · cameras on · Chatham House
+          Rule. This independent demo does not submit work to CIS.
+        </p>
+        <Link to="/programme">Read the complete fellowship briefing →</Link>
+      </div>
       <div className="home-intro">
         <Card>
           <span className="eyebrow">START HERE</span>
-          <h2>Find your footing this week.</h2>
+          <h2>Liberty, responsibility and policy.</h2>
           <p className="muted">
-            Your handbook, helpful people, and the essentials for a good start.
+            A selective, fully subsidised online programme examining competing
+            ideas and contemporary policy.
           </p>
           <div className="row wrap">
             <Link className="button primary" to="/handbook">
@@ -129,17 +143,17 @@ export default function ThisWeek() {
         </Card>
         <section className="learning card">
           <GraduationCap size={26} />
-          <h2>The Learning Hall</h2>
-          <p>Keep learning between sessions.</p>
-          <a href="https://www.cato.courses/" target="_blank" rel="noreferrer">
-            Explore Cato Courses ↗
+          <h2>Ideas & policy</h2>
+          <p>Explore independent research and the official programme.</p>
+          <a href="https://www.cis.org.au/" target="_blank" rel="noreferrer">
+            Explore CIS ↗
           </a>
           <a
-            href="https://daily.cato.courses/"
+            href="https://www.cis.org.au/events/liberty-society-student-programs/ls-fellowship-cohort-2026-program/"
             target="_blank"
             rel="noreferrer"
           >
-            Your daily course ↗
+            Official cohort programme ↗
           </a>
         </section>
       </div>
@@ -171,23 +185,36 @@ export default function ThisWeek() {
         <section>
           <div className="between">
             <h2>Coming up</h2>
+            <span className="muted">
+              Every third Thursday, with a final 17 December session.
+            </span>
             <Link to="/schedule">Full schedule →</Link>
           </div>
+          <Card>
+            {fixtures.sessions
+              .filter((s) => new Date(s.endAt) >= now)
+              .slice(0, 4)
+              .map((s) => (
+                <SessionRow key={s.id} session={s} />
+              ))}
+          </Card>
           {[
             ["This week", week],
             ["Next week", shiftDay(week, 7)],
-          ].map(([label, key]) => (
-            <details className="card week-group" open key={label}>
-              <summary>
-                {label}
-                <span className="badge">{weekSessions(key).length}</span>
-                <ChevronDown size={16} />
-              </summary>
-              {weekSessions(key).map((s) => (
-                <SessionRow key={s.id} session={s} />
-              ))}
-            </details>
-          ))}
+          ]
+            .filter(([, key]) => weekSessions(key).length > 0)
+            .map(([label, key]) => (
+              <details className="card week-group" open key={label}>
+                <summary>
+                  {label}
+                  <span className="badge">{weekSessions(key).length}</span>
+                  <ChevronDown size={16} />
+                </summary>
+                {weekSessions(key).map((s) => (
+                  <SessionRow key={s.id} session={s} />
+                ))}
+              </details>
+            ))}
         </section>
         <aside>
           <Card>
@@ -195,7 +222,10 @@ export default function ThisWeek() {
               <h2>Outstanding prep</h2>
               <span className="count">{prep.length}</span>
             </div>
-            <p className="muted">A few things to read before you arrive.</p>
+            <p className="muted">
+              Readings are encouraged, not mandatory. Consult the official
+              cohort programme for current materials.
+            </p>
             {prep.slice(0, 5).map((a) => (
               <Link
                 key={a.sessionId + a.resourceId}
@@ -206,7 +236,7 @@ export default function ThisWeek() {
                 <span>
                   <strong>{a.resource.title}</strong>
                   <small>
-                    {etFormat(a.session.startAt, "MMM d")} ·{" "}
+                    {localFormat(a.session.startAt, "MMM d")} ·{" "}
                     {a.resource.minutes === null
                       ? "—"
                       : `${a.resource.minutes} min`}

@@ -52,7 +52,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
           </Link>
         </header>
         <div className="demo-notice">
-          Demo · changes are stored in this browser <span>Fall 2026</span>
+          Demo · changes are stored in this browser <span>2026 Fellowship</span>
         </div>
         {error && (
           <div className="error storage-error" role="alert">
@@ -63,7 +63,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
           {children}
         </main>
         <footer>
-          Intern Hub reconstruction · Fixture content · Browser-local demo
+          Independent CIS fellowship adaptation · Browser-local demo · Not an
+          official CIS portal
         </footer>
       </div>
     </>

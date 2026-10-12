@@ -1,12 +1,13 @@
 import type { PersonalState } from "../../shared/types";
 import { fixtures } from "./selectors";
-export const STORAGE_KEY = "intern-hub-demo:v1";
+export const STORAGE_KEY = "cis-fellowship-demo:v1";
 export function initialState(): PersonalState {
   return {
     version: 1,
     completedResourceIds: [],
-    completedRequirementIds: ["req1", "req2", "req3"],
-    rsvpBySession: { locke: "going", trade: "going" },
+    attendedSessionIds: [],
+    completedRequirementIds: [],
+    rsvpBySession: {},
     bookmarks: [],
     privateNotesBySession: {},
     assistingEntityKeys: [],
@@ -14,7 +15,7 @@ export function initialState(): PersonalState {
     quickTourDismissed: false,
     profile: {
       firstName: "Demo",
-      lastName: "Intern",
+      lastName: "Fellow",
       school: "Example University",
       bio: fixtures.people[0].bio,
       linkedinUrl: "",
@@ -90,6 +91,9 @@ export function loadState(storage: Pick<Storage, "getItem">): {
       ...saved,
       profile: { ...seed.profile, ...saved.profile },
     } as PersonalState;
+    state.attendedSessionIds = (
+      Array.isArray(state.attendedSessionIds) ? state.attendedSessionIds : []
+    ).filter((id) => fixtures.sessions.some((s) => s.id === id));
     state.completedResourceIds = state.completedResourceIds.filter((id) =>
       fixtures.resources.some((r) => r.id === id),
     );

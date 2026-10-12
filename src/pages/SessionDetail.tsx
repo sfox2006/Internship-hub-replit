@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fixtures, sessionAssignments } from "../data/selectors";
-import { etFormat } from "../data/clock";
+import { localFormat } from "../data/clock";
 import { useDemo } from "../data/demoStore";
 import Card from "../components/Card";
 import Avatar from "../components/Avatar";
@@ -37,9 +37,10 @@ export default function SessionDetail() {
           </div>
           <h1>{session.title}</h1>
           <p>
-            {etFormat(session.startAt, "EEEE, MMMM d, yyyy")} ·{" "}
-            {etFormat(session.startAt, "h:mm a")}–
-            {etFormat(session.endAt, "h:mm a")} ET · {session.location || "—"}
+            {localFormat(session.startAt, "EEEE, MMMM d, yyyy")} ·{" "}
+            {localFormat(session.startAt, "h:mm a")}–
+            {localFormat(session.endAt, "h:mm a")} Sydney time ·{" "}
+            {session.location || "—"}
           </p>
         </div>
       </div>
@@ -60,7 +61,7 @@ export default function SessionDetail() {
             <p>{session.description}</p>
           </Card>
           {[
-            [true, "Entry Ticket"],
+            [true, "Suggested preparation"],
             [false, "Learn More (Optional)"],
           ].map(([required, title]) => (
             <Card key={String(title)}>
@@ -127,7 +128,7 @@ export default function SessionDetail() {
               <dd>
                 {session.attendanceRequired
                   ? "Required"
-                  : "Optional (fixture assumption)"}
+                  : "Programme minimum: 10 of 13"}
               </dd>
               <dt>Reported length</dt>
               <dd>
@@ -185,7 +186,9 @@ export default function SessionDetail() {
           </Card>
           <Card>
             <h2>Who to ask</h2>
-            <a href="mailto:maya@example.com">Maya Ellis · Demo coordinator</a>
+            <a href="https://www.cis.org.au/" target="_blank" rel="noreferrer">
+              Official CIS website · contact details not supplied
+            </a>
             {teams.map((t) => (
               <p key={t.id}>
                 <Link to={`/team/${t.id}`}>{t.name} →</Link>

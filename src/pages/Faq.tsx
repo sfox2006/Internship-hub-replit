@@ -4,24 +4,36 @@ import Card from "../components/Card";
 import EmptyState from "../components/EmptyState";
 const entries = [
   [
-    "Where should I start?",
-    "Explore the handbook demo excerpt, then review your upcoming schedule.",
+    "Who is eligible?",
+    "People over 18 living in Australia or New Zealand: students, recent graduates and young professionals from any discipline. High-school students are ineligible. The fellowship’s upper age limit is not supplied.",
   ],
   [
-    "How do I mark preparation complete?",
-    "Use the reading checkbox. Completion is shared between readings and session pages in this browser.",
+    "What does fully subsidised mean?",
+    "Donors fund participation. No stipend, salary, research grant, academic credit or CIS employment is established in the supplied source.",
   ],
   [
-    "Does a submission update my checklist?",
-    "No. Requirements are separately self-reported. Original submission destinations were not supplied.",
+    "What must fellows complete?",
+    "At least 10 of 13 sessions, required reflections and three oral reviews. The reported cohort instructions specify 300 words and 15-minute vivas; the general overview says 200–300 words and ten minutes.",
   ],
   [
-    "Are my notes shared?",
-    "No. Notes, profile changes, discussions, and signups stay in this browser.",
+    "Can fellows use AI?",
+    "The reported policy permits AI provided the thoughts and answer remain the fellow’s own. Oral reviews test intellectual ownership.",
   ],
   [
-    "Who can answer program questions?",
-    "The example demo coordinator is Maya Ellis at maya@example.com. This is a synthetic contact.",
+    "Are readings mandatory?",
+    "The supplied 2026 instructions describe readings as encouraged, not mandatory.",
+  ],
+  [
+    "Are sessions recorded?",
+    "No. Cameras remain on; the Chatham House Rule protects the attribution of comments.",
+  ],
+  [
+    "Are 2027 applications open?",
+    "The supplied source says not yet, with a non-binding expression of interest available. This status is not verified as current; an expression of interest is not an application.",
+  ],
+  [
+    "Does this portal submit work to CIS?",
+    "No. Completion, RSVP, notes, discussions and profile changes are stored only in this browser. Actual submission destinations and Zoom links were not supplied.",
   ],
 ];
 export default function Faq() {
@@ -41,8 +53,10 @@ export default function Faq() {
       <div className="callout">
         <strong>Need a little help?</strong>
         <p>
-          Demo support: <a href="mailto:maya@example.com">maya@example.com</a>.
-          For actual program questions, use your real program contact.
+          <a href="https://www.cis.org.au/" target="_blank" rel="noreferrer">
+            Visit the official CIS website
+          </a>
+          . For actual program questions, use your real program contact.
         </p>
         <Link to="/handbook">Open the handbook →</Link>
       </div>
@@ -59,7 +73,7 @@ export default function Faq() {
       <Card>
         <details open>
           <summary>
-            Intern FAQ <span className="badge">{filtered.length}</span>
+            Fellowship FAQ <span className="badge">{filtered.length}</span>
           </summary>
           {filtered.length ? (
             <div className="table-scroll">
@@ -67,7 +81,7 @@ export default function Faq() {
                 <thead>
                   <tr>
                     <th>Question</th>
-                    <th>Answer · demo content</th>
+                    <th>Answer · supplied programme information</th>
                   </tr>
                 </thead>
                 <tbody>

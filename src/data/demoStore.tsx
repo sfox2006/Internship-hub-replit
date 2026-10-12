@@ -9,7 +9,8 @@ type Store = {
     key:
       | "completedResourceIds"
       | "completedRequirementIds"
-      | "assistingEntityKeys",
+      | "assistingEntityKeys"
+      | "attendedSessionIds",
     id: string,
   ) => void;
 };
@@ -45,7 +46,8 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     key:
       | "completedResourceIds"
       | "completedRequirementIds"
-      | "assistingEntityKeys",
+      | "assistingEntityKeys"
+      | "attendedSessionIds",
     id: string,
   ) {
     update((s) => ({

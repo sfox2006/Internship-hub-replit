@@ -9,13 +9,13 @@ import BookmarkButton from "../components/BookmarkButton";
 import EmptyState from "../components/EmptyState";
 export default function People() {
   const { state } = useDemo();
-  const [tab, setTab] = useState("Interns");
+  const [tab, setTab] = useState("Fellows");
   const [q, setQ] = useState("");
   const [expanded, setExpanded] = useState<string[]>([]);
   const all = fixtures.people.map((p) => personWithProfile(p, state));
   const people = all.filter(
     (p) =>
-      p.kind === (tab === "Interns" ? "intern" : "staff") &&
+      p.kind === (tab === "Fellows" ? "intern" : "staff") &&
       (p.name + " " + p.school + " " + p.placement)
         .toLowerCase()
         .includes(q.toLowerCase()),
@@ -25,7 +25,7 @@ export default function People() {
       <div className="page-heading">
         <div>
           <span className="eyebrow">COMMUNITY</span>
-          <h1>Intern Directory</h1>
+          <h1>Fellow Directory</h1>
           <p>Your cohort, your colleagues, your connections.</p>
         </div>
       </div>
@@ -33,13 +33,13 @@ export default function People() {
         <div className="between wrap">
           <FilterChips
             label="Directory"
-            options={["Interns", "Staff"]}
+            options={["Fellows", "Speakers"]}
             value={tab}
             onChange={setTab}
           />
           <span className="muted">
-            {all.filter((p) => p.kind === "intern").length} interns ·{" "}
-            {all.filter((p) => p.kind === "staff").length} staff
+            {all.filter((p) => p.kind === "intern").length} demo fellows ·{" "}
+            {all.filter((p) => p.kind === "staff").length} reported speakers
           </span>
         </div>
         <label>
@@ -66,7 +66,8 @@ export default function People() {
             </h2>
             <p className="metadata">{p.school || p.title || "—"}</p>
             <p className="muted">
-              {p.placement || "—"} · {p.termId ? fixtures.term.name : "Staff"}
+              {p.placement || "—"} ·{" "}
+              {p.termId ? fixtures.term.name : "Speakers"}
             </p>
             <p className={expanded.includes(p.id) ? "" : "clamp"}>{p.bio}</p>
             <button
@@ -81,7 +82,11 @@ export default function People() {
               {expanded.includes(p.id) ? "Show less" : "Read full bio"}
             </button>
             <p>
-              <a href={`mailto:${p.email}`}>{p.email}</a>
+              {p.email ? (
+                <a href={`mailto:${p.email}`}>{p.email}</a>
+              ) : (
+                <span className="muted">Contact details not supplied</span>
+              )}
             </p>
             {p.linkedinUrl && (
               <a href={p.linkedinUrl} target="_blank" rel="noreferrer">

@@ -50,7 +50,11 @@ export default function PersonDetail() {
         <Card>
           <h2>Contact</h2>
           <p>
-            <a href={`mailto:${p.email}`}>{p.email}</a>
+            {p.email ? (
+              <a href={`mailto:${p.email}`}>{p.email}</a>
+            ) : (
+              <span className="muted">Contact details not supplied</span>
+            )}
           </p>
           <dl>
             <dt>Location</dt>

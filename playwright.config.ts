@@ -4,7 +4,7 @@ export default defineConfig({
   fullyParallel: false,
   workers: 2,
   use: {
-    baseURL: "http://127.0.0.1:3000",
+    baseURL: "http://127.0.0.1:3004",
     headless: true,
     launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
       ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH }
@@ -12,7 +12,8 @@ export default defineConfig({
   },
   webServer: {
     command: "npm start",
-    url: "http://127.0.0.1:3000/api/health",
+    env: { PORT: "3004" },
+    url: "http://127.0.0.1:3004/api/health",
     reuseExistingServer: true,
   },
   reporter: "list",

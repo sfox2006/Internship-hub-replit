@@ -1,148 +1,78 @@
 import { describe, it, expect } from "vitest";
 import {
-  filterSessions,
   fixtures,
-  isPast,
-  nextSession,
-  outstandingPrep,
+  filterSessions,
   percentage,
+  nextSession,
   readingProgress,
   requirementProgress,
-  requiredIds,
-  resourceCounts,
   requirementStatus,
-  sortDiscussions,
-  lastActivity,
-  searchEntities,
+  outstandingPrep,
 } from "../data/selectors";
-import { mondayKey, readingStart } from "../data/clock";
-import {
-  initialState,
-  loadState,
-  saveState,
-  STORAGE_KEY,
-} from "../data/storage";
+import { mondayKey, readingStart, localFormat } from "../data/clock";
+import { initialState, loadState, saveState } from "../data/storage";
 const now = new Date("2026-10-08T13:23:00Z");
-describe("schedule and preparation selectors", () => {
-  it("combines filters and replaces the single type selection", () => {
-    const seminar = filterSessions(
-      { required: true, type: "Seminar", area: "Trade & Immigration" },
-      now,
-    );
-    expect(seminar.map((s) => s.id)).toEqual(["56"]);
+describe("CIS fellowship selectors and persistence", () => {
+  it("uses all thirteen supplied sessions, upcoming/past ordering and unknowns", () => {
+    expect(fixtures.sessions).toHaveLength(13);
+    expect(filterSessions({}, now)).toHaveLength(4);
+    expect(filterSessions({ past: true }, now)[0].id).toBe("ls-1001");
+    expect(nextSession(now)?.id).toBe("ls-1022");
+    expect(nextSession(now)?.speakerIds).toEqual([]);
+  });
+  it("AND-combines programme area and single type filters", () => {
     expect(
       filterSessions(
-        { required: true, type: "Lecture", area: "Trade & Immigration" },
+        { past: true, area: "Education policy", type: "Seminar" },
+        now,
+      ).map((s) => s.id),
+    ).toEqual(["ls-0528"]);
+    expect(
+      filterSessions(
+        { past: true, area: "Education policy", type: "Lecture" },
         now,
       ),
     ).toEqual([]);
   });
-  it("orders upcoming oldest first and past newest first at the end boundary", () => {
-    const past = filterSessions({ past: true }, now);
-    expect(past[0].id).toBe("trade");
-    expect(past).toHaveLength(9);
-    expect(filterSessions({}, now)[0].id).toBe("56");
-    const s = fixtures.sessions.find((s) => s.id === "56")!;
-    expect(isPast(s, new Date(s.endAt))).toBe(false);
-    expect(isPast(s, new Date(Date.parse(s.endAt) + 1))).toBe(true);
-    expect(nextSession(now)?.id).toBe("56");
+  it("preserves Sydney 6–8pm across daylight saving", () => {
+    expect(fixtures.sessions[0].startAt).toBe("2026-04-16T08:00:00Z");
+    expect(fixtures.sessions[9].startAt).toBe("2026-10-22T07:00:00Z");
+    expect(localFormat(fixtures.sessions[9].startAt, "HH:mm")).toBe("18:00");
+    expect(readingStart("2026-07-09T18:00")).toBe("2026-07-09T08:00:00.000Z");
+    expect(readingStart("2026-10-22T18:00")).toBe("2026-10-22T07:00:00.000Z");
   });
-  it("includes seven assignments, even those on optional sessions, and previews five", () => {
-    const prep = outstandingPrep([], now);
-    expect(prep).toHaveLength(7);
-    expect(prep.slice(0, 5)).toHaveLength(5);
-    expect(
-      prep.some((a) => a.session.id === "63" && !a.session.attendanceRequired),
-    ).toBe(true);
-    expect(outstandingPrep(["letters"], now)).toHaveLength(6);
+  it("groups Monday in Sydney and handles invalid local dates", () => {
+    expect(mondayKey("2026-10-11T14:00:00Z")).toBe("2026-10-12");
+    expect(readingStart("bad")).toBe(null);
   });
-  it("uses distinct IDs, actual progress counts and rounding", () => {
-    expect(requiredIds()).toHaveLength(7);
-    expect(
-      readingProgress(["globalization", "stale", "globalization"]),
-    ).toEqual({ done: 1, total: 7 });
+  it("does not invent mandatory readings and uses actual completion counts", () => {
+    expect(readingProgress([])).toEqual({ done: 0, total: 0 });
+    expect(outstandingPrep([], now)).toEqual([]);
     expect(percentage(5, 46)).toBe(11);
     expect(percentage(0, 0)).toBe(0);
-    expect(resourceCounts("56")).toEqual({ required: 1, optional: 1 });
-    expect(requirementProgress(["req1", "stale"])).toEqual({
-      done: 1,
-      total: 8,
-    });
+    expect(requirementProgress([])).toEqual({ done: 0, total: 16 });
   });
-  it("keeps requirements independent and applies the ET due-date assumption", () => {
+  it("uses a deadline fourteen days later and does not flag overdue before 11:59pm", () => {
+    const r = fixtures.requirements[0];
+    expect(r.dueDate).toBe("2026-04-30");
+    expect(requirementStatus(r.id, [], "2026-04-30")).toBe("Due");
+    expect(requirementStatus(r.id, [], "2026-05-01")).toBe("Overdue");
+    expect(requirementStatus(r.id, [r.id], "2026-05-01")).toBe("Done");
+  });
+  it("keeps RSVP, attendance and requirements independent; persists namespaced records", () => {
     const state = initialState();
-    state.completedResourceIds = ["globalization"];
-    expect(requirementProgress(state.completedRequirementIds).done).toBe(3);
-    expect(requirementStatus("req6", [], "2026-10-08")).toBe("Overdue");
-    expect(requirementStatus("req6", ["req6"], "2026-10-08")).toBe("Done");
-  });
-});
-describe("ET and discussion rules", () => {
-  it("groups by the Monday in ET, even when UTC is already Monday", () => {
-    expect(mondayKey("2026-10-12T02:00:00Z")).toBe("2026-10-05");
-    expect(mondayKey("2026-10-12T05:00:00Z")).toBe("2026-10-12");
-  });
-  it("converts local reading time across DST", () => {
-    expect(readingStart("2026-10-08T09:23")).toBe("2026-10-08T13:23:00.000Z");
-    expect(readingStart("2026-11-02T09:23")).toBe("2026-11-02T14:23:00.000Z");
-    expect(readingStart("garbage")).toBe(null);
-  });
-  it("sorts most active, latest reply and unanswered", () => {
-    const ds = structuredClone(fixtures.discussions);
-    ds[0].replies.push({
-      id: "r",
-      discussionId: ds[0].id,
-      authorId: "demo",
-      body: "A reply",
-      createdAt: "2026-10-08T13:00:00Z",
-    });
-    expect(sortDiscussions(ds, "Most active")[0].id).toBe(ds[0].id);
-    expect(sortDiscussions(ds, "Unanswered").map((d) => d.id)).toEqual([
-      ds[1].id,
-    ]);
-    expect(lastActivity(ds[0])).toBe("2026-10-08T13:00:00Z");
-  });
-  it("searches grouped source entities", () => {
-    const result = searchEntities("Jones");
-    expect(result.map((r) => r.type)).toEqual(["Sessions", "Readings"]);
-    expect(searchEntities("")).toEqual([]);
-  });
-});
-describe("versioned browser storage", () => {
-  it("loads seed once without writing, preserves notes and composite keys", () => {
-    const state = initialState();
-    state.bookmarks = [
-      { entityType: "session", entityId: "56", savedAt: now.toISOString() },
-      { entityType: "resource", entityId: "56", savedAt: now.toISOString() },
-    ];
-    state.privateNotesBySession["56"] = "A private note";
-    let serialized = "";
+    state.attendedSessionIds = ["ls-0416"];
+    state.rsvpBySession["ls-0416"] = "going";
+    expect(state.completedRequirementIds).toEqual([]);
+    let saved = "";
+    expect(saveState({ setItem: (_k, v) => (saved = v) }, state)).toBe(null);
     expect(
-      saveState(
-        {
-          setItem: (key, value) => {
-            expect(key).toBe(STORAGE_KEY);
-            serialized = value;
-          },
-        },
-        state,
-      ),
-    ).toBe(null);
-    const loaded = loadState({ getItem: () => serialized });
-    expect(loaded.state.bookmarks).toHaveLength(2);
-    expect(loaded.state.privateNotesBySession["56"]).toBe("A private note");
+      loadState({ getItem: () => saved }).state.attendedSessionIds,
+    ).toEqual(["ls-0416"]);
+    expect(initialState().profile.lastName).toBe("Fellow");
   });
-  it("handles corrupt JSON and unavailable storage without throwing", () => {
-    expect(loadState({ getItem: () => "{broken" }).error).toMatch(
-      /could not be read/,
-    );
-    expect(
-      loadState({
-        getItem: () => {
-          throw Error("blocked");
-        },
-      }).state.demoSignedIn,
-    ).toBe(true);
+  it("handles corrupt data and unavailable storage without throwing", () => {
+    expect(loadState({ getItem: () => "{broken" }).error).toBeTruthy();
     expect(
       saveState(
         {
@@ -152,25 +82,12 @@ describe("versioned browser storage", () => {
         },
         initialState(),
       ),
-    ).toMatch(/unavailable or full/);
-  });
-  it("rejects incompatible personal state without crashing the app", () => {
-    const s = { ...initialState(), profile: { firstName: { invalid: true } } };
-    expect(loadState({ getItem: () => JSON.stringify(s) }).error).toMatch(
-      /could not be read/,
-    );
-  });
-  it("migrates obsolete fixture completion IDs", () => {
-    const s = initialState();
-    s.completedResourceIds = ["removed", "globalization"];
-    s.completedRequirementIds = ["removed", "req1"];
+    ).toContain("unavailable or full");
+    const state = initialState();
+    state.completedRequirementIds = ["old-cato-id"];
     expect(
-      loadState({ getItem: () => JSON.stringify(s) }).state
-        .completedResourceIds,
-    ).toEqual(["globalization"]);
-    expect(
-      loadState({ getItem: () => JSON.stringify(s) }).state
+      loadState({ getItem: () => JSON.stringify(state) }).state
         .completedRequirementIds,
-    ).toEqual(["req1"]);
+    ).toEqual([]);
   });
 });

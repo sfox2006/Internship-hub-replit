@@ -40,23 +40,17 @@ export default function GuideArticle({ guide: g }: { guide: Guide }) {
     <>
       <div className="page-heading">
         <div>
-          <span className="eyebrow">REFERENCE · {g.subtitle}</span>
+          <span className="eyebrow">LIBERTY & SOCIETY · {g.subtitle}</span>
           <h1>{g.title}</h1>
-          <p>Demo excerpt — original document not supplied</p>
+          <p>Adapted from the supplied programme briefing.</p>
         </div>
         <BookmarkButton type="guide" id={g.slug} title={g.title} />
       </div>
       <div className="callout">
-        Original DOCX unavailable.{" "}
-        <a download href="/demo-files/demo-document.docx">
-          Download a clearly labeled demo DOCX
-        </a>
-        {g.slug === "dc-culture-guide" && (
-          <p>
-            Corrections: this sample is not current transit, restaurant, or
-            official city advice.
-          </p>
-        )}
+        Reported guidance, not a live CIS service.{" "}
+        <Link to="/programme">
+          Read the full source briefing and qualifications →
+        </Link>
       </div>
       <div className="guide-layout">
         <aside className="card contents">
@@ -67,9 +61,9 @@ export default function GuideArticle({ guide: g }: { guide: Guide }) {
             </a>
           ))}
           <hr />
-          <Link to="/handbook">Handbook</Link>
-          <Link to="/capstone-guide">Capstone Guide</Link>
-          <Link to="/dc-culture-guide">DC Culture Guide</Link>
+          <Link to="/handbook">Fellowship Handbook</Link>
+          <Link to="/reflection-guide">Reflection & Viva Guide</Link>
+          <Link to="/applications">Application Information</Link>
         </aside>
         <article className="card prose">
           {g.sections.map((s) => (
@@ -78,22 +72,6 @@ export default function GuideArticle({ guide: g }: { guide: Guide }) {
               <Blocks blocks={s.blocks} />
             </section>
           ))}
-          {g.slug === "dc-culture-guide" && (
-            <p>
-              Consult official information:{" "}
-              <a href="https://www.wmata.com/" target="_blank" rel="noreferrer">
-                WMATA
-              </a>{" "}
-              ·{" "}
-              <a
-                href="https://washington.org/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Destination DC
-              </a>
-            </p>
-          )}
         </article>
       </div>
     </>

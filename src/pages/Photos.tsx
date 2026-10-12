@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ImagePlus } from "lucide-react";
 import { useDemo } from "../data/demoStore";
 import { getImage, putImage, validateImage } from "../data/imageStore";
-import { referenceNow, etFormat } from "../data/clock";
+import { referenceNow, localFormat } from "../data/clock";
 import Card from "../components/Card";
 import EmptyState from "../components/EmptyState";
 import type { Photo } from "../../shared/types";
@@ -45,7 +45,7 @@ function PhotoCard({ photo }: { photo: Photo }) {
       <p>{photo.caption || "No caption"}</p>
       <small className="muted">
         {state.profile.firstName} {state.profile.lastName} ·{" "}
-        {etFormat(photo.createdAt)}
+        {localFormat(photo.createdAt)}
       </small>
     </Card>
   );

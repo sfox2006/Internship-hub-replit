@@ -31,14 +31,14 @@ export function calendar(events, now = new Date()) {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Intern Hub Demo//Calendar//EN",
+    "PRODID:-//CIS Fellowship Demo//Calendar//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
   ];
   for (const event of events) {
     lines.push(
       "BEGIN:VEVENT",
-      `UID:${escapeText(event.id)}@intern-hub-demo`,
+      `UID:${escapeText(event.id)}@cis-fellowship-demo`,
       `DTSTAMP:${stamp(now)}`,
       `DTSTART:${stamp(event.startAt)}`,
       `DTEND:${stamp(event.endAt)}`,

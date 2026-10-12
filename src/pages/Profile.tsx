@@ -120,7 +120,7 @@ export default function Profile() {
           </div>
           <label>
             Email
-            <input value="intern@example.com" readOnly />
+            <input value="fellow@example.com" readOnly />
           </label>
           <div className="grid two">
             <label>

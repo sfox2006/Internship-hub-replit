@@ -37,12 +37,9 @@ app.get("/api/resources/:id/reading-time.ics", (req, res) => {
   if (!resource) return res.status(404).json({ error: "Resource not found" });
   const event = readingEvent(resource, req.query.start);
   if (!event)
-    return res
-      .status(400)
-      .json({
-        error:
-          "A valid UTC timestamp and positive reading duration are required",
-      });
+    return res.status(400).json({
+      error: "A valid UTC timestamp and positive reading duration are required",
+    });
   sendCalendar(res, [event], `reading-${resource.id}.ics`);
 });
 app.use("/api", (_req, res) =>
@@ -61,7 +58,7 @@ if (process.argv.includes("--dev")) {
     if (!["GET", "HEAD"].includes(req.method)) return next();
     // Only known page routes get the SPA; asset requests and unknown URLs stay 404.
     const page =
-      /^\/(?:schedule|requirements|readings|handbook|capstone-guide|dc-culture-guide|faq|emergency|teams|people|announcements|discussions|photos|saved|profile|search|how-things-work|session\/[^/.]+|resource\/[^/.]+|team\/[^/.]+|person\/[^/.]+|article\/[^/.]+)?\/?$/;
+      /^\/(?:programme|applications|reflection-guide|schedule|requirements|readings|handbook|capstone-guide|dc-culture-guide|faq|emergency|teams|people|announcements|discussions|photos|saved|profile|search|how-things-work|session\/[^/.]+|resource\/[^/.]+|team\/[^/.]+|person\/[^/.]+|article\/[^/.]+)?\/?$/;
     if (page.test(req.path))
       return res.sendFile(path.join(root, "dist/client/index.html"));
     next();
@@ -74,5 +71,5 @@ app.use((error, _req, res, _next) => {
 });
 const port = Number(process.env.PORT || 3000);
 app.listen(port, "0.0.0.0", () =>
-  console.log(`Intern Hub listening on port ${port}`),
+  console.log(`CIS Fellowship listening on port ${port}`),
 );

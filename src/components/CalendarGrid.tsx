@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Session } from "../../shared/types";
-import { etFormat, mondayKey, referenceNow, shiftDay } from "../data/clock";
+import { localFormat, mondayKey, referenceNow, shiftDay } from "../data/clock";
 export default function CalendarGrid({
   sessions,
   view,
@@ -17,8 +17,11 @@ export default function CalendarGrid({
     <div>
       <div className="between calendar-toolbar">
         <h2>
-          {etFormat(anchor + "T12:00:00Z", "MMM d")} –{" "}
-          {etFormat(shiftDay(anchor, length - 1) + "T12:00:00Z", "MMM d, yyyy")}
+          {localFormat(anchor + "T12:00:00Z", "MMM d")} –{" "}
+          {localFormat(
+            shiftDay(anchor, length - 1) + "T12:00:00Z",
+            "MMM d, yyyy",
+          )}
         </h2>
         <div className="row">
           <button
@@ -46,11 +49,11 @@ export default function CalendarGrid({
           {Array.from({ length }, (_, i) => shiftDay(anchor, i)).map((day) => (
             <div
               key={day}
-              className={`calendar-day ${day === etFormat(referenceNow(), "yyyy-MM-dd") ? "today" : ""}`}
+              className={`calendar-day ${day === localFormat(referenceNow(), "yyyy-MM-dd") ? "today" : ""}`}
             >
               <span>{day.slice(-2)}</span>
               {sessions
-                .filter((s) => etFormat(s.startAt, "yyyy-MM-dd") === day)
+                .filter((s) => localFormat(s.startAt, "yyyy-MM-dd") === day)
                 .map((s) => (
                   <Link
                     key={s.id}
@@ -58,7 +61,7 @@ export default function CalendarGrid({
                     to={`/session/${s.id}`}
                     className="calendar-event"
                   >
-                    <small>{etFormat(s.startAt, "h:mm a")}</small>
+                    <small>{localFormat(s.startAt, "h:mm a")}</small>
                     <span>{s.title}</span>
                   </Link>
                 ))}
