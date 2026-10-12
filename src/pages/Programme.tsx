@@ -41,9 +41,11 @@ export default function Programme() {
           Supplied programme briefing · schedule reported 25 September 2026
         </strong>
         <p>
-          This page preserves the substantive source information, including
-          uncertainties. Current programme and application arrangements require
-          confirmation with CIS. This is an independent adaptation.
+          The original briefing is preserved below. Updated speakers, readings
+          and reflection questions are on the schedule and session pages. This
+          page retains historical source information, including uncertainties.
+          Current programme and application arrangements require confirmation
+          with CIS. This is an independent adaptation.
         </p>
         <a
           href="https://www.cis.org.au/events/liberty-society-student-programs/ls-fellowship-cohort-2026-program/"

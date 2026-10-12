@@ -1,0 +1,52 @@
+{
+  "faq": [
+    [
+      "Will recordings be uploaded so fellows can watch sessions back?",
+      "No. Sessions are not recorded or uploaded. This is intentional: the Fellowship gives speakers as much freedom as possible to discuss ideas candidly, without needing to speak as though every comment will be publicly replayed."
+    ],
+    [
+      "Can I tell other people what a speaker said?",
+      "Yes, but only under Chatham House rules. You may share what was said, but you must not say who said it or identify the speaker or fellow responsible for a particular comment."
+    ],
+    [
+      "What are Chatham House rules?",
+      "Chatham House rules mean you may use and discuss the ideas raised in the session, but you must not reveal who made a particular comment or identify another participant's contribution."
+    ],
+    [
+      "I am missing a session. Who do I tell?",
+      "No one. You do not need to notify anyone if you miss a session. If you joined at the start of the Fellowship, you can miss up to three sessions. If you miss more than three, you need to provide a doctor's note. If you joined from the Liberty and Society Conference, you can miss up to two sessions. If you miss more than two, you need to provide a doctor's note."
+    ],
+    [
+      "What is the viva voce?",
+      "Throughout the Fellowship, there will be three viva voce sessions. In each viva voce, you will spend 15 minutes discussing one of your submissions, chosen at random, with a CIS staff member. The viva voce exists first to ensure that fellows are not using AI to write their submissions for them. You are more than welcome to use AI in any way you like, as long as the thoughts and the answer are your own. It also gives fellows a chance to express their thoughts on the Fellowship as it progresses."
+    ],
+    [
+      "What does the written reflection involve?",
+      "A short reflection of 300 words answering one of the questions listed for the week. Submit it via the form below. Submission dates are listed in the schedule above."
+    ],
+    [
+      "Where are our sessions?",
+      "Sessions are held online via Zoom. Use the meeting link provided privately by the programme organisers."
+    ],
+    [
+      "If I have questions, who do I contact?",
+      "Contact Sam Fox at sfox@cis.org.au or Max Hawke-Weaver at mhawkeweaver@cis.org.au."
+    ],
+    [
+      "Why do cameras have to be on during the Zoom?",
+      "Having cameras on ensures that fellows are paying attention. It also makes it easier for speakers to speak to faces they can see, rather than black screens."
+    ]
+  ],
+  "contacts": [
+    {
+      "name": "Sam Fox",
+      "email": "sfox@cis.org.au"
+    },
+    {
+      "name": "Max Hawke-Weaver",
+      "email": "mhawkeweaver@cis.org.au"
+    }
+  ],
+  "submissionFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header",
+  "source": "User-supplied CIS cohort HTML"
+}

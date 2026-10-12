@@ -5,6 +5,11 @@ export type AssistanceConfig = {
   closesAt: string | null;
 };
 export type Session = {
+  submissionQuestions?: string[];
+  questionsStatus?: string | null;
+  readingsStatus?: string | null;
+  presentationStatus?: string | null;
+  reflectionDueDate?: string | null;
   id: string;
   termId: string;
   title: string;
@@ -32,6 +37,7 @@ export type Resource = {
   previewKind: string;
 };
 export type SessionResource = {
+  kind?: "reading" | "presentation";
   sessionId: string;
   resourceId: string;
   required: boolean;

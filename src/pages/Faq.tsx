@@ -1,41 +1,9 @@
+import cohortGuidance from "../../shared/cohortGuidance.json";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import EmptyState from "../components/EmptyState";
-const entries = [
-  [
-    "Who is eligible?",
-    "People over 18 living in Australia or New Zealand: students, recent graduates and young professionals from any discipline. High-school students are ineligible. The fellowship’s upper age limit is not supplied.",
-  ],
-  [
-    "What does fully subsidised mean?",
-    "Donors fund participation. No stipend, salary, research grant, academic credit or CIS employment is established in the supplied source.",
-  ],
-  [
-    "What must fellows complete?",
-    "At least 10 of 13 sessions, required reflections and three oral reviews. The reported cohort instructions specify 300 words and 15-minute vivas; the general overview says 200–300 words and ten minutes.",
-  ],
-  [
-    "Can fellows use AI?",
-    "The reported policy permits AI provided the thoughts and answer remain the fellow’s own. Oral reviews test intellectual ownership.",
-  ],
-  [
-    "Are readings mandatory?",
-    "The supplied 2026 instructions describe readings as encouraged, not mandatory.",
-  ],
-  [
-    "Are sessions recorded?",
-    "No. Cameras remain on; the Chatham House Rule protects the attribution of comments.",
-  ],
-  [
-    "Are 2027 applications open?",
-    "The supplied source says not yet, with a non-binding expression of interest available. This status is not verified as current; an expression of interest is not an application.",
-  ],
-  [
-    "Does this portal submit work to CIS?",
-    "No. Completion, RSVP, notes, discussions and profile changes are stored only in this browser. Actual submission destinations and Zoom links were not supplied.",
-  ],
-];
+const entries = cohortGuidance.faq;
 export default function Faq() {
   const [query, setQuery] = useState("");
   const filtered = entries.filter((e) =>

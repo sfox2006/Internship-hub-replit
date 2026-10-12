@@ -1,3 +1,4 @@
+import cohortGuidance from "../../shared/cohortGuidance.json";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fixtures, sessionAssignments } from "../data/selectors";
@@ -60,29 +61,68 @@ export default function SessionDetail() {
             <h2>About this session</h2>
             <p>{session.description}</p>
           </Card>
-          {[
-            [true, "Suggested preparation"],
-            [false, "Learn More (Optional)"],
-          ].map(([required, title]) => (
-            <Card key={String(title)}>
+          {(
+            [
+              ["reading", "Readings (optional)"],
+              ["presentation", "Presentation materials"],
+            ] as const
+          ).map(([kind, title]) => (
+            <Card key={kind}>
               <h2>{title}</h2>
               {assignments
-                .filter((a) => a.required === required)
+                .filter((a) => (a.kind || "reading") === kind)
                 .map((a) => (
                   <ResourceCard
                     key={a.resourceId}
                     resource={fixtures.resources.find(
                       (r) => r.id === a.resourceId,
                     )!}
-                    required={a.required}
                     allowCompletion
                   />
                 ))}
-              {!assignments.some((a) => a.required === required) && (
-                <p className="muted">No materials supplied for this section.</p>
+              {!assignments.some((a) => (a.kind || "reading") === kind) && (
+                <p className="muted">
+                  {kind === "reading"
+                    ? session.readingsStatus || "To be confirmed."
+                    : session.presentationStatus || "To be added."}
+                </p>
               )}
             </Card>
           ))}
+          <Card>
+            <h2>Reflection questions</h2>
+            <p>Submit a 300-word reflection answering one question.</p>
+            {session.submissionQuestions?.length ? (
+              <ol>
+                {session.submissionQuestions.map((q) => (
+                  <li key={q}>{q}</li>
+                ))}
+              </ol>
+            ) : (
+              <p className="muted">
+                {session.questionsStatus || "To be confirmed."}
+              </p>
+            )}
+            <p>
+              <strong>Due:</strong>{" "}
+              {session.reflectionDueDate
+                ? localFormat(session.reflectionDueDate + "T12:00:00Z")
+                : "—"}{" "}
+              · 11:59 p.m. Sydney time
+            </p>
+            <a
+              className="button primary"
+              href={cohortGuidance.submissionFormUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open fellowship submissions form ↗
+            </a>
+            <p className="muted">
+              Submissions are handled by the external form. This browser-local
+              checklist is not updated automatically.
+            </p>
+          </Card>
           <Card>
             <div className="between">
               <h2>Discussion</h2>
@@ -187,8 +227,15 @@ export default function SessionDetail() {
           <Card>
             <h2>Who to ask</h2>
             <a href="https://www.cis.org.au/" target="_blank" rel="noreferrer">
-              Official CIS website · contact details not supplied
+              Official CIS website
             </a>
+            {cohortGuidance.contacts.map((c) => (
+              <p key={c.email}>
+                <a href={`mailto:${c.email}`}>
+                  {c.name} · {c.email}
+                </a>
+              </p>
+            ))}
             {teams.map((t) => (
               <p key={t.id}>
                 <Link to={`/team/${t.id}`}>{t.name} →</Link>

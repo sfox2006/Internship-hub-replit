@@ -1,15 +1,15 @@
 # Liberty & Society Fellowship Hub
 
-An independent adaptation of the existing intern-portal demo for the Centre for Independent Studies (CIS) Liberty & Society Student Fellowship. Programme data comes from the user-supplied briefing, whose schedule snapshot is **25 September 2026**. This is not an official CIS portal, an application system, or a live integration with CIS. No secrets are required.
+An independent adaptation of the existing intern-portal demo for the Centre for Independent Studies (CIS) Liberty & Society Student Fellowship. Programme data combines the original briefing (25 September 2026 snapshot) with the subsequently supplied cohort HTML containing readings, questions and updated speakers. This is not an official CIS portal, an application system, or a live integration with CIS. No secrets are required.
 
 ## What changed
 
 - Cato branding, course links and session fixtures were replaced by the CIS fellowship context and official CIS website/cohort links.
 - `/programme` preserves the substantive supplied briefing: mission, classical-liberal orientation, eligibility, funding, reflections, viva voce/AI policy, participation rules, all 13 sessions, discussion questions, alumni qualifications, related programmes and application unknowns.
-- The 13 supplied dates use **Australia/Sydney**, including daylight saving. Sessions run 6–8 p.m. Sydney time. Unknown later speakers/topics remain explicitly to be confirmed.
-- Requirements contain 13 reflections and three viva reviews. Reflection dates are calculated as 14 days after each session; the reported due time is 11:59 p.m. Sydney time. An item becomes overdue the following local day, rather than at the beginning of its due date. Appointments/submission destinations were not supplied.
+- The 13 supplied dates use **Australia/Sydney**, including daylight saving. Sessions run 6–8 p.m. Sydney time. Stephen Walters, Chris Berg and Gigi Foster are now confirmed in the supplied HTML. The final speaker and outstanding questions/readings retain their source placeholders.
+- Requirements contain 13 reflections and three viva reviews. Reflection dates are calculated as 14 days after each session; the reported due time is 11:59 p.m. Sydney time. An item becomes overdue the following local day, rather than at the beginning of its due date. Reflection requirements link to the supplied Google submission form. Viva appointments remain unspecified.
 - Attendance has its own browser-local record, separate from RSVP and reflection/review completion. Programme guidance reports at least 10 of 13 sessions; entry-specific absence limits are retained. This is not an official attendance register or certificate.
-- Readings are encouraged, not mandatory. No reading assignments were invented. Official source links are provided instead.
+- Readings are encouraged, not mandatory. 26 optional resource assignments (including two presentations) and 19 full reflection questions are imported from the supplied HTML. External links are retained, including shared reading collections.
 - The handbook, reflection/viva guide, application information and FAQ reflect the fellowship. Cato-specific office/team/emergency content is no longer reachable as active pages; those old routes redirect to programme guidance. Legacy guide URLs remain supported.
 - Speakers use reported names/affiliations, with missing biographies/contacts identified as unavailable. The sole fellow profile is explicitly synthetic.
 - Profile, notes, bookmarks, replies and image-upload functionality remain browser-local. CIS records use `cis-fellowship-demo:v1` and IndexedDB `cis-fellowship-images`; previous Cato browser records are left untouched.
@@ -58,7 +58,7 @@ Express serves `dist/client` on `0.0.0.0:${PORT:-3000}`. Production does not use
 - `APP_URL`: optional public origin for the calendar feed URL; defaults to the browser origin.
 - `VITE_REFERENCE_NOW`: public build-time instant, default `2026-10-08T13:23:00Z`. Set to `live` and rebuild for real current time. All programme calculations use the same reference clock and Sydney timezone. There is no background live-refresh service.
 
-Do not put secrets in `VITE_*` variables. No Zoom, application, reflection or viva submission link was supplied; the demo does not fabricate successful official submissions.
+Do not put secrets in `VITE_*` variables. Reflection links open the supplied external form; this app does not detect or assert successful form submission. No application or viva appointment integration is implemented. The supplied password-bearing Zoom join link is not committed to this public-demo code; distribute it privately until authenticated membership access is implemented.
 
 The retained `.replit` / `replit.nix` configure Node 22, workspace Run `npm run replit`, production build `npm ci --include=dev && npm run build`, production run `npm start`, and one mapped HTTP port (3000 → 80). Import `sfox2006/Internship-hub-replit` on `main` into Replit, run the checks, then publish using the account’s Public/Autoscale controls after reviewing the displayed cost. Pull this commit into an existing Replit project and republish to update its live app. A GitHub push alone does not deploy Replit.
 
@@ -70,7 +70,7 @@ After publishing, verify the public app’s `/api/health`, `/programme`, `/sched
 
 UTC event instants are converted from the supplied Sydney dates/times. Assignments, unknown speakers, deadline assumptions and synthetic participant data must remain clearly distinguished from verified official data. The palette and policy-area classifications are editorial adaptations; they are not claims about official CIS website taxonomy.
 
-Notes and profile edits save only on request. Image Blobs use IndexedDB with recreated/revoked object URLs. Storage failures remain visible. Sign-out retains personal browser records. There is no shared database, real authentication, moderation, CIS submission integration or cross-device synchronization. Calendar feeds contain fixture sessions and no private notes.
+Notes and profile edits save only on request. Image Blobs use IndexedDB with recreated/revoked object URLs. Storage failures remain visible. Sign-out retains personal browser records. There is no shared database, real authentication, moderation, automatic CIS submission synchronisation or cross-device synchronization. Calendar feeds contain fixture sessions and no private notes.
 
 ## Verification
 
@@ -90,4 +90,4 @@ PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run test:e2e
 
 The browser suite starts an isolated production test listener on port **3004**. Build before running it. On PowerShell, set the executable path via `$env:PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` if needed.
 
-Verified for this adaptation: **11 unit tests and 6 browser integration tests**, TypeScript and production build pass. Checks cover Sydney DST conversion, all 13 calendar events, programme-source preservation, real fixture totals, deadlines, independent attendance/RSVP/reflections, notes/bookmarks, linked discussions, profile/image persistence, mobile overflow, storage errors, nested production routes and API/asset 404s. These results validate the cloud build, not a future Replit publication or official CIS content/branding.
+Verified for this adaptation: **13 unit tests and 7 browser integration tests**, TypeScript and production build pass. Checks cover Sydney DST conversion, all 13 calendar events, programme-source preservation, real fixture totals, deadlines, independent attendance/RSVP/reflections, notes/bookmarks, linked discussions, profile/image persistence, mobile overflow, storage errors, nested production routes and API/asset 404s. These results validate the cloud build, not a future Replit publication or official CIS content/branding.
