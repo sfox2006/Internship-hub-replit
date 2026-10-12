@@ -1,17 +1,22 @@
-/* Provisional institutional treatment; exact CIS website palette awaits verified access. */
+/* Teal/green/neutral values are explicit in the supplied CIS cohort HTML.
+   Gold is a visual approximation from the supplied website screenshot. */
 :root {
-  --navy: #183547;
-  --blue: #245f73;
-  --gold: #715d3b;
-  --lavender: #edf3f4;
-  --background: #f5f7f7;
-  --ink: #21333d;
-  --muted: #60717b;
-  --border: #dde5e8;
+  --navy: #005850;
+  --blue: #005850;
+  --gold: #c09d51;
+  --lavender: #edf4f2;
+  --background: #fafafa;
+  --ink: #1a1a1a;
+  --muted: #555;
+  --border: #d7d7d7;
   --white: #fff;
-  --radius: 10px;
-  --shadow: 0 3px 16px #18354706;
-  font-family: Arial, Helvetica, sans-serif;
+  --cis-dark: #024a44;
+  --cis-action: #1a4a2e;
+  --cis-success: #e3efe6;
+  --radius: 4px;
+  --shadow: 0 2px 10px #00585008;
+  --font-body: "Raleway", Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   background: var(--background);
   font-synthesis: none;

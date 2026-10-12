@@ -1,11 +1,12 @@
+import BrandMark from "../components/BrandMark";
 import { useDemo } from "../data/demoStore";
 export default function DemoEntry() {
   const { update, error } = useDemo();
   return (
     <main className="entry">
       <div className="card">
-        <span className="wordmark">CIS</span>
-        <span className="eyebrow">INTERN HUB RECONSTRUCTION</span>
+        <BrandMark />
+        <span className="eyebrow">LIBERTY & SOCIETY STUDENT FELLOWSHIP</span>
         <h1>
           A place to learn.
           <br />A place to belong.

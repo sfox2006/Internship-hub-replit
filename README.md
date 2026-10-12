@@ -14,11 +14,16 @@ An independent adaptation of the existing intern-portal demo for the Centre for 
 - Speakers use reported names/affiliations, with missing biographies/contacts identified as unavailable. The sole fellow profile is explicitly synthetic.
 - Profile, notes, bookmarks, replies and image-upload functionality remain browser-local. CIS records use `cis-fellowship-demo:v1` and IndexedDB `cis-fellowship-images`; previous Cato browser records are left untouched.
 
-## Brand verification: incomplete
+## Visual references and brand fidelity
 
-The CIS website returned HTTP 403 through this cloud environment’s restricted network. Exact website colours, typography, official logo assets and current programme changes could not be inspected. The interface therefore uses a **provisional**, restrained blue/teal palette, neutral Arial/Helvetica typography and a **text CIS identifier**, not a recovered official logo. It must not be described as matching verified CIS brand guidelines.
+The current treatment uses the user-supplied CIS cohort HTML and website screenshot:
 
-Palette tokens live in `src/styles/tokens.css`, and fellowship overrides in `src/styles/layout.css`. After official references become accessible, replace the provisional tokens/typeface and text identifier with verified assets. The domains `cis.org.au` and `www.cis.org.au` were requested in the environment configuration draft; saving a draft does not apply network changes. Alternatively use branding references supplied by the user. No bypass of the network policy was attempted.
+- Exact HTML colours: teal `#005850`, dark teal `#024a44`, action green `#1a4a2e`, success background `#e3efe6`, body text `#1a1a1a`, neutral background `#fafafa`, border `#d7d7d7` and lighter divider `#e3e3e3`.
+- Screenshot-based details: a gold institutional plaque with the 50-year anniversary treatment, teal headings and a broad teal rule, spacious text, flat white surfaces and restrained rounding. Gold `#c09d51` is visually approximated from the screenshot, not sampled from an original logo file.
+- Local Raleway weights 400/600/700 provide a close visual match to the geometric sans-serif screenshot. The supplied HTML does not declare a font family, so the official website typeface is not confirmed.
+- `BrandMark.tsx` is a text/CSS reconstruction of the visible mark, with an accessible name. It is not an original official logo asset. Replace it with that asset if one is supplied.
+
+Palette tokens live in `src/styles/tokens.css`; reference-based layout rules are in `src/styles/layout.css`. Website access remains restricted, but the supplied references are sufficient to apply the evidenced colours and formatting. The new HTML also contains programme links and operational information; this styling change does not publish that raw HTML or its meeting access details to GitHub.
 
 Official references for later verification:
 

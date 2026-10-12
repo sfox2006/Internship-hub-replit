@@ -969,47 +969,336 @@ footer {
     background: white;
   }
 }
-/* CIS fellowship adaptation: restrained, provisional styling, not a verified brand guide. */
-.wordmark {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: var(--navy);
+/* Website screenshot and supplied cohort HTML: teal, gold, generous spacing,
+   flat white surfaces, restrained borders, and geometric sans-serif typography. */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-body);
 }
 h1,
 h2,
-h3 {
-  font-family: Arial, Helvetica, sans-serif;
+h3,
+.learning h2 {
+  font-family: var(--font-body);
+  color: var(--navy);
+}
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+h2 {
+  font-size: 23px;
   font-weight: 600;
+}
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.card {
+  border-radius: 4px;
+  box-shadow: none;
+  padding: 24px;
+}
+.page-heading {
+  position: relative;
+  padding-bottom: 27px;
+  margin-bottom: 32px;
+}
+.page-heading:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 9px;
+  background: var(--navy);
+  border-radius: 12px 0 12px 0;
+}
+.page-heading h1:before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--navy);
+  vertical-align: middle;
+}
+.page-heading p {
+  line-height: 1.65;
+}
+.brand {
+  gap: 0;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.cis-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: 220px;
+  max-width: 100%;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.cis-plaque {
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  outline: 1px solid white;
+  outline-offset: -4px;
+  min-height: 65px;
+  width: 149px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 1px;
+  line-height: 1.35;
+}
+.cis-plaque > span {
+  font-size: 10px;
+  font-weight: 700;
+}
+.cis-plaque > strong {
+  font-family: inherit;
+  font-size: 15px;
+  border-top: 1px solid #ffffffa6;
+  border-bottom: 1px solid #ffffffa6;
+  padding: 1px 0;
+  line-height: 1.1;
+}
+.cis-anniversary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 0.85;
+}
+.cis-anniversary > strong {
+  font-size: 46px;
+  font-weight: 700;
+  letter-spacing: -3px;
+}
+.cis-anniversary > em {
+  font-size: 24px;
+  letter-spacing: -1px;
+}
+.cis-anniversary > span {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  font-weight: bold;
+  margin-top: 4px;
+  letter-spacing: 0;
+}
+.brand > strong {
+  font-size: 18px;
+  color: var(--navy);
+  margin-top: 3px;
+}
+.brand > small {
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.topbar {
+  background: #fff;
+  border-color: #e3e3e3;
+  box-shadow: 0 2px 6px #00000006;
+}
+.sidebar nav a {
+  font-size: 12px;
+  color: var(--navy);
+  border-radius: 3px;
+}
+.sidebar nav a.active {
+  background: var(--lavender);
+  color: var(--navy);
+}
+.sidebar nav a:hover {
+  background: #f1f6f4;
+}
+.sidebar summary {
+  color: var(--muted);
+}
+.primary,
+button.selected,
+.chip.selected {
+  background: var(--cis-action);
+  border-color: var(--cis-action);
+  color: white;
+}
+.primary:hover,
+button.selected:hover,
+.chip.selected:hover {
+  background: var(--cis-dark);
+  border-color: var(--cis-dark);
+}
+button,
+.button,
+input,
+select,
+textarea {
+  border-radius: 4px;
+  border-color: var(--border);
+}
+button:hover,
+.button:hover {
+  background: var(--lavender);
+}
+button.primary:hover,
+.button.primary:hover {
+  background: var(--cis-dark);
+}
+.chip {
+  border-radius: 999px;
 }
 .hero,
 .learning {
   background: var(--navy);
+  border-radius: 4px;
 }
 .hero h2,
 .learning h2 {
   color: white;
 }
+.hero {
+  padding: 30px;
+}
 .hero .eyebrow,
 .learning a,
 .learning > svg {
-  color: #dae7e9;
+  color: #e1efec;
 }
-.learning h2 {
-  font-family: Arial, Helvetica, sans-serif;
+.hero-prep {
+  border-radius: 4px;
+}
+.hero .row button.selected {
+  color: var(--navy);
+}
+.hero .row button.selected:hover {
+  background: #edf4f2;
+}
+.hero .button:hover {
+  background: #edf4f2;
+  color: var(--navy);
+}
+.learning a {
+  font-weight: 600;
+}
+.eyebrow {
+  font-family: var(--font-body);
+  color: #7b612b;
+  letter-spacing: 0.08em;
+}
+.badge {
+  background: #ececec;
+  color: #555;
+  font-family: var(--font-body);
+  border-radius: 3px;
+}
+.badge.success {
+  background: var(--cis-success);
+  color: var(--cis-action);
+}
+.badge.gold {
+  background: #f7f1e2;
+  color: #785e2c;
+}
+.badge.danger {
+  background: #fff0ec;
+  color: #aa4c34;
+}
+.avatar {
+  background: #e5efeb;
+  color: var(--navy);
 }
 .demo-notice {
-  background: var(--lavender);
-  color: var(--ink);
+  background: #edf4f2;
+  color: var(--muted);
 }
+.callout,
 .announcement-strip {
-  background: #f0f4f5;
-  border-color: var(--border);
+  background: #f2f6f4;
+  border-color: #d7e3e1;
+  border-radius: 4px;
+}
+.warning {
+  background: #fff8e8;
+  border-color: #eedcb7;
+}
+.quick-tour,
+.date-tile,
+.calendar-event,
+.search-dropdown {
+  border-radius: 4px;
+}
+.date-tile small,
+.date-tile strong {
+  font-family: var(--font-body);
+}
+.search-dropdown > .highlight,
+.search-dropdown > a:hover {
+  background: var(--lavender);
+}
+.weekday,
+th,
+input[readonly],
+.replies > div,
+.reading-block {
+  background: #fafafa;
+}
+.calendar-day.today,
+.calendar-event {
+  background: #e3efe6;
 }
 .briefing-bullet {
   margin: 6px 0 6px 12px;
 }
-.callout {
-  background: var(--lavender);
-  border-color: var(--border);
+.prose p,
+.prose li {
+  line-height: 1.65;
+}
+.prose > section {
+  margin-bottom: 40px;
+}
+.contents a {
+  color: var(--navy);
+}
+.entry {
+  background: #fafafa;
+}
+.entry .cis-brand-mark {
+  margin-bottom: 24px;
+}
+:focus-visible {
+  outline-color: var(--navy);
+}
+@media (max-width: 640px) {
+  h1 {
+    font-size: 27px;
+  }
+  .page-heading {
+    padding-bottom: 22px;
+  }
+  .page-heading:after {
+    height: 7px;
+  }
+  .card {
+    padding: 20px;
+  }
+  .hero {
+    padding: 22px;
+  }
+  .hero h2 {
+    font-size: 24px;
+  }
 }

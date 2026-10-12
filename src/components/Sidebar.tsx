@@ -1,3 +1,4 @@
+import BrandMark from "./BrandMark";
 import { NavLink, Link } from "react-router-dom";
 import {
   Home,
@@ -63,7 +64,7 @@ export default function Sidebar({
       aria-label="Main navigation"
     >
       <Link to="/" className="brand" onClick={onClose}>
-        <span className="wordmark">CIS</span>
+        <BrandMark />
         <strong>Fellowship Hub</strong>
         <small>Centre for Independent Studies</small>
       </Link>
