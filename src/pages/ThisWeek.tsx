@@ -96,7 +96,7 @@ export default function ThisWeek() {
               reading links were supplied.
             </p>
             {sessionAssignments(next.id)
-              .filter((a) => a.required)
+              .filter((a) => a.kind !== "presentation")
               .map((a) => (
                 <Link key={a.resourceId} to={`/resource/${a.resourceId}`}>
                   <BookOpen size={16} />
@@ -119,7 +119,7 @@ export default function ThisWeek() {
         </Card>
       )}
       <div className="callout">
-        <strong>Programme snapshot · 25 September 2026</strong>
+        <strong>Cohort programme · supplied session details</strong>
         <p>
           13 sessions · 6–8 p.m. Sydney time · Zoom · cameras on · Chatham House
           Rule. This independent demo does not submit work to CIS.

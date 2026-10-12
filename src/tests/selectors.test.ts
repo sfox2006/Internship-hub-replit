@@ -18,7 +18,7 @@ describe("CIS fellowship selectors and persistence", () => {
     expect(filterSessions({}, now)).toHaveLength(4);
     expect(filterSessions({ past: true }, now)[0].id).toBe("ls-1001");
     expect(nextSession(now)?.id).toBe("ls-1022");
-    expect(nextSession(now)?.speakerIds).toEqual([]);
+    expect(nextSession(now)?.speakerIds).toEqual(["speaker-10"]);
   });
   it("AND-combines programme area and single type filters", () => {
     expect(
@@ -89,5 +89,49 @@ describe("CIS fellowship selectors and persistence", () => {
       loadState({ getItem: () => JSON.stringify(state) }).state
         .completedRequirementIds,
     ).toEqual([]);
+  });
+});
+
+import guidance from "../../shared/cohortGuidance.json";
+describe("supplied cohort detail import", () => {
+  it("imports the supplied reading URLs, presentations and complete questions", () => {
+    expect(fixtures.sessionResources).toHaveLength(26);
+    expect(fixtures.sessionResources.every((a) => !a.required)).toBe(true);
+    expect(
+      fixtures.sessions.reduce(
+        (n, s) => n + (s.submissionQuestions?.length || 0),
+        0,
+      ),
+    ).toBe(19);
+    expect(fixtures.sessions[0].submissionQuestions?.[0]).toContain(
+      "regulatory capture and rent-seeking",
+    );
+    expect(
+      fixtures.resources.some(
+        (r) =>
+          r.externalUrl ===
+          "https://www.econlib.org/library/Enc/PublicChoice.html",
+      ),
+    ).toBe(true);
+    expect(
+      fixtures.sessionResources.filter((a) => a.kind === "presentation"),
+    ).toHaveLength(2);
+  });
+  it("preserves explicit unknowns and links reflections to the supplied form", () => {
+    expect(fixtures.sessions[9].speakerIds).toEqual(["speaker-10"]);
+    expect(fixtures.people.find((p) => p.id === "speaker-11")?.name).toBe(
+      "Chris Berg",
+    );
+    expect(fixtures.people.find((p) => p.id === "speaker-12")?.name).toBe(
+      "Gigi Foster",
+    );
+    expect(fixtures.sessions[12].speakerIds).toEqual([]);
+    expect(fixtures.sessions[9].questionsStatus).toBe("To be confirmed.");
+    expect(
+      fixtures.requirements
+        .filter((r) => r.sessionId)
+        .every((r) => r.submissionUrl === guidance.submissionFormUrl),
+    ).toBe(true);
+    expect(JSON.stringify(fixtures)).not.toContain("pwd=");
   });
 });

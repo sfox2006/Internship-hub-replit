@@ -49,7 +49,7 @@ test("CIS home, source preservation and Sydney schedule", async ({ page }) => {
   );
   await page.getByRole("button", { name: "Past", exact: true }).click();
   await expect(page.locator(".session-title").first()).toHaveText(
-    "Australian immigration policy",
+    "Immigration Policy in Australia",
   );
   await page.getByRole("button", { name: "Month", exact: true }).click();
   await expect(page.locator(".calendar-day")).toHaveCount(28);
@@ -61,11 +61,9 @@ test("attendance, reflection, bookmark and note persistence are independent", as
 }) => {
   await page.goto("/requirements");
   await page.getByLabel("Reflection · 16 April", { exact: true }).check();
-  const attendance = page
-    .locator(".card")
-    .filter({
-      has: page.getByRole("heading", { name: "Attendance · minimum 10 of 13" }),
-    });
+  const attendance = page.locator(".card").filter({
+    has: page.getByRole("heading", { name: "Attendance · minimum 10 of 13" }),
+  });
   await attendance.getByRole("checkbox").first().check();
   await page.reload();
   await expect(
@@ -85,7 +83,7 @@ test("attendance, reflection, bookmark and note persistence are independent", as
   await page.getByRole("button", { name: "Save note" }).click();
   await page
     .getByRole("button", {
-      name: "Save Fellowship session — topic to be confirmed",
+      name: "Save Tax, Spending and the Sustainability of the Budget",
       exact: true,
     })
     .click();
@@ -96,7 +94,7 @@ test("attendance, reflection, bookmark and note persistence are independent", as
   await page.goto("/saved");
   await expect(
     page.getByRole("link", {
-      name: "Fellowship session — topic to be confirmed",
+      name: "Tax, Spending and the Sustainability of the Budget",
       exact: true,
     }),
   ).toBeVisible();
@@ -144,16 +142,14 @@ test("profile and uploaded images survive reload, sign-out keeps records", async
     "Taylor",
   );
   await page.goto("/photos");
-  await page
-    .getByLabel("Image", { exact: true })
-    .setInputFiles({
-      name: "pixel.png",
-      mimeType: "image/png",
-      buffer: Buffer.from(
-        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aH4sAAAAASUVORK5CYII=",
-        "base64",
-      ),
-    });
+  await page.getByLabel("Image", { exact: true }).setInputFiles({
+    name: "pixel.png",
+    mimeType: "image/png",
+    buffer: Buffer.from(
+      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aH4sAAAAASUVORK5CYII=",
+      "base64",
+    ),
+  });
   await page.getByLabel("Caption (optional)").fill("Fellowship demo");
   await page.getByRole("button", { name: "Upload", exact: true }).click();
   await expect(
@@ -194,4 +190,42 @@ test("guidance routes, mobile layout and storage failure handling", async ({
   await page.goto("/session/ls-1022");
   await page.getByRole("button", { name: "Going", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("unavailable or full");
+});
+
+test("reading links, presentation materials, full questions and submission form render", async ({
+  page,
+}) => {
+  await page.goto("/session/ls-0416");
+  await expect(
+    page.getByRole("link", {
+      name: "EconLib — Introduction to Public Choice",
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Reflection questions" }),
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      "Identify a real-world example of rent-seeking or regulatory capture.",
+      { exact: false },
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Open fellowship submissions form ↗" }),
+  ).toHaveAttribute("href", /^https:\/\/docs.google.com\/forms\//);
+  await page.goto("/session/ls-0618");
+  await expect(
+    page.getByRole("link", {
+      name: "Industrial Policy presentation",
+      exact: true,
+    }),
+  ).toBeVisible();
+  await page.goto("/readings");
+  await expect(
+    page.getByRole("link", {
+      name: "EconLib — Introduction to Public Choice",
+      exact: true,
+    }),
+  ).toBeVisible();
 });

@@ -55,12 +55,10 @@ export default function Readings() {
       </div>
       <Card>
         <p>
-          Readings are encouraged, not mandatory. No original reading
-          assignments were supplied; use the official programme links below.
-        </p>
-        <p>
-          Readings are encouraged, not mandatory. No original reading
-          assignments were supplied; consult the official cohort programme.
+          Readings are encouraged, not mandatory. Optional readings and
+          presentation materials from the supplied cohort programme are grouped
+          by session below. Some links open shared collections or require access
+          from their external host.
         </p>
       </Card>
       <Card className="filters">

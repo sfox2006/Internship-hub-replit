@@ -20,215 +20,314 @@
     {
       "id": "ls-0416",
       "termId": "cis2026",
-      "title": "Public choice theory, rent-seeking and regulatory capture",
+      "title": "Public Choice Theory \u2014 Rent-Seeking & Regulatory Capture",
       "type": "Seminar",
       "policyAreaId": "Economics & institutions",
       "startAt": "2026-04-16T08:00:00Z",
       "endAt": "2026-04-16T10:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
+      "location": "Online \u00b7 Zoom",
       "speakerIds": [
         "speaker-1"
       ],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [
+        "Before this session, many of you said government should regulate to prevent market concentration. Having now explored regulatory capture and rent-seeking, how confident are you in that view? Discuss.",
+        "Identify a real-world example of rent-seeking or regulatory capture. What are the consequences, and are there reforms or interventions that could reduce it?"
+      ],
+      "questionsStatus": null,
+      "readingsStatus": null,
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-04-30"
     },
     {
       "id": "ls-0507",
       "termId": "cis2026",
-      "title": "Individualism and capitalism",
+      "title": "Individualism & Capitalism",
       "type": "Seminar",
       "policyAreaId": "Individual liberty",
       "startAt": "2026-05-07T08:00:00Z",
       "endAt": "2026-05-07T10:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
+      "location": "Online \u00b7 Zoom",
       "speakerIds": [
         "speaker-2"
       ],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [
+        "What makes a political or economic structure immoral \u2014 and is communism immoral by that standard? Maxim grounded capitalism's moral legitimacy in its prohibition of physical force and its respect for individual rights. Applying this framework: does a system become immoral simply by permitting or requiring the use of force against individuals, or does intent and outcome also matter? Is communism immoral in principle, in practice, or both \u2014 and does the distinction matter?",
+        "If reason is humanity's defining characteristic, does capitalism uniquely enable it \u2014 or could other systems claim to do the same? Maxim argued that force \"paralyses\" and \"negates\" rational thought, making capitalism the only system compatible with human nature. But could a defender of social democracy argue their system also protects reason while correcting for market failures that suppress independent thought \u2014 such as monopoly control over media or economic insecurity limiting risk-taking?",
+        "Can a fully voluntary society handle the problem of private threats and intimidation \u2014 or does it require something beyond police and courts? Fellows raised concerns that economic power and the threat of violence can distort voluntary exchange without any formal coercion taking place. Maxim's response pointed to the legal system as the remedy. Is that sufficient? At what point, if any, does private power become indistinguishable in effect from political force?"
+      ],
+      "questionsStatus": null,
+      "readingsStatus": null,
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-05-21"
     },
     {
       "id": "ls-0528",
       "termId": "cis2026",
-      "title": "Market mechanisms in higher education",
+      "title": "Market Mechanisms in Higher Education",
       "type": "Seminar",
       "policyAreaId": "Education policy",
       "startAt": "2026-05-28T08:00:00Z",
       "endAt": "2026-05-28T10:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
+      "location": "Online \u00b7 Zoom",
       "speakerIds": [
         "speaker-3"
       ],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [
+        "It is very hard to start a university in Australia, New Zealand, the United States, and most other Western countries due to regulation, permitting, and other barriers. Should we make it easier to start new universities and allow them to compete with incumbents?",
+        "Are income-contingent loans the least-worst way to fund higher education? Is there a more market-based alternative that would be better? If so, why?"
+      ],
+      "questionsStatus": null,
+      "readingsStatus": null,
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-06-11"
     },
     {
       "id": "ls-0618",
       "termId": "cis2026",
-      "title": "Industrial policy and government direction of economic activity",
+      "title": "Industrial Policy: The Role of the Government in Steering Economic Activity",
       "type": "Seminar",
       "policyAreaId": "Industry & regulation",
       "startAt": "2026-06-18T08:00:00Z",
       "endAt": "2026-06-18T10:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
+      "location": "Online \u00b7 Zoom",
       "speakerIds": [
         "speaker-4"
       ],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [
+        "Bob stressed that, even under a new industrial policy agenda, price signals should generally be left untouched. Why are price signals so important, and what happens when governments suppress, distort, or override them?",
+        "What are the main government failures associated with industrial policy? In particular, how serious are the risks of poor information, political capture, rent-seeking, permanent protection, and governments backing the wrong firms or industries?",
+        "How can industrial policy be prevented from simply rewarding politically connected industries? Are transparency rules, sunset clauses, competitive processes, and independent review enough \u2014 or is political favouritism an unavoidable feature of industrial policy?"
+      ],
+      "questionsStatus": null,
+      "readingsStatus": null,
+      "presentationStatus": null,
+      "reflectionDueDate": "2026-07-02"
     },
     {
       "id": "ls-0709",
       "termId": "cis2026",
-      "title": "The centre-right and quantitative public-opinion research",
+      "title": "Where to for the centre-right - a quantitative approach to public opinion",
       "type": "Seminar",
       "policyAreaId": "Political institutions",
       "startAt": "2026-07-09T08:00:00Z",
       "endAt": "2026-07-09T10:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
+      "location": "Online \u00b7 Zoom",
       "speakerIds": [
         "speaker-5"
       ],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [
+        "Jill's polling showed the Coalition's traditional advantage on economic management and immigration has eroded or converged with Labor's in recent years. If a centre-right party can no longer rely on \"ownership\" of these issues, what should it try to own instead?",
+        "Jill highlighted a growing rift between the centre-right's traditional donor base and its electoral base. The migration debate \u2014 where business groups tend to favour higher migration for growth while centre-right voters increasingly want it lower \u2014 is one example of this rift; another is business involvement in the promotion of social issues. How should a centre-right party manage this tension between its business supporters and its voters?"
+      ],
+      "questionsStatus": null,
+      "readingsStatus": null,
+      "presentationStatus": null,
+      "reflectionDueDate": "2026-07-23"
     },
     {
       "id": "ls-0730",
       "termId": "cis2026",
-      "title": "Reforms for another century of plenty",
+      "title": "Reforms for another Century of Plenty",
       "type": "Seminar",
       "policyAreaId": "Growth & reform",
       "startAt": "2026-07-30T08:00:00Z",
       "endAt": "2026-07-30T10:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
+      "location": "Online \u00b7 Zoom",
       "speakerIds": [
         "speaker-6"
       ],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [
+        "Chris argues that environmentalists should in fact seek more growth, not less, to address environmental degradation and climate change. How does more growth actually help solve environmental problems, rather than worsen them?",
+        "Australia has faced a decade of weak productivity and disposable income growth relative to OECD peers. What do you see as the single most important reform to reverse this, and why has it proven politically difficult?"
+      ],
+      "questionsStatus": null,
+      "readingsStatus": null,
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-08-13"
     },
     {
       "id": "ls-0820",
       "termId": "cis2026",
-      "title": "Entrepreneurship and Australian prosperity",
+      "title": "Entrepreneurship and Australian Prosperity",
       "type": "Seminar",
       "policyAreaId": "Entrepreneurship",
       "startAt": "2026-08-20T08:00:00Z",
       "endAt": "2026-08-20T10:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
+      "location": "Online \u00b7 Zoom",
       "speakerIds": [
         "speaker-7"
       ],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [
+        "What role should the entrepreneur play in society, and what policies, laws, or programs should be removed or added to promote entrepreneurship \u2014 if it should be promoted at all?"
+      ],
+      "questionsStatus": null,
+      "readingsStatus": "To be confirmed.",
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-09-03"
     },
     {
       "id": "ls-0910",
       "termId": "cis2026",
-      "title": "Law and liberty",
+      "title": "Law and Liberty",
       "type": "Seminar",
       "policyAreaId": "Law & liberty",
       "startAt": "2026-09-10T08:00:00Z",
       "endAt": "2026-09-10T10:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
+      "location": "Online \u00b7 Zoom",
       "speakerIds": [
         "speaker-8"
       ],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [
+        "The speaker argued \"anarchy and liberty are not the same thing.\" Are there cases where more law actually produced more freedom, not less?",
+        "The speaker suggested most 18C disagreement isn't \"free speech vs. racism\" but a dispute about where the threshold for legal intervention should sit. Where would you draw that threshold, and what test would you use to justify it?"
+      ],
+      "questionsStatus": null,
+      "readingsStatus": null,
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-09-24"
     },
     {
       "id": "ls-1001",
       "termId": "cis2026",
-      "title": "Australian immigration policy",
+      "title": "Immigration Policy in Australia",
       "type": "Seminar",
       "policyAreaId": "Immigration",
       "startAt": "2026-10-01T08:00:00Z",
       "endAt": "2026-10-01T10:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
+      "location": "Online \u00b7 Zoom",
       "speakerIds": [
         "speaker-9"
       ],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [
+        "Leaving aside the issue of numbers, what goal(s) should Australia want to accomplish with its immigration policy?",
+        "If rural areas are having trouble finding workers, why are rural Aboriginal unemployment rates so high?"
+      ],
+      "questionsStatus": null,
+      "readingsStatus": null,
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-10-15"
     },
     {
       "id": "ls-1022",
       "termId": "cis2026",
-      "title": "Fellowship session \u2014 topic to be confirmed",
+      "title": "Tax, Spending and the Sustainability of the Budget",
       "type": "Seminar",
       "policyAreaId": "To be confirmed",
       "startAt": "2026-10-22T07:00:00Z",
       "endAt": "2026-10-22T09:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
-      "speakerIds": [],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "location": "Online \u00b7 Zoom",
+      "speakerIds": [
+        "speaker-10"
+      ],
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [],
+      "questionsStatus": "To be confirmed.",
+      "readingsStatus": null,
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-11-05"
     },
     {
       "id": "ls-1112",
       "termId": "cis2026",
-      "title": "Fellowship session \u2014 topic to be confirmed",
+      "title": "Tech, AI and Classical Liberalism",
       "type": "Seminar",
       "policyAreaId": "To be confirmed",
       "startAt": "2026-11-12T07:00:00Z",
       "endAt": "2026-11-12T09:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
-      "speakerIds": [],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "location": "Online \u00b7 Zoom",
+      "speakerIds": [
+        "speaker-11"
+      ],
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [],
+      "questionsStatus": "To be confirmed.",
+      "readingsStatus": "To be confirmed.",
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-11-26"
     },
     {
       "id": "ls-1203",
       "termId": "cis2026",
-      "title": "Fellowship session \u2014 topic to be confirmed",
+      "title": "Institutions",
       "type": "Seminar",
       "policyAreaId": "To be confirmed",
       "startAt": "2026-12-03T07:00:00Z",
       "endAt": "2026-12-03T09:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
-      "speakerIds": [],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "location": "Online \u00b7 Zoom",
+      "speakerIds": [
+        "speaker-12"
+      ],
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [],
+      "questionsStatus": "To be confirmed.",
+      "readingsStatus": "To be confirmed.",
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-12-17"
     },
     {
       "id": "ls-1217",
       "termId": "cis2026",
-      "title": "Fellowship session \u2014 topic to be confirmed",
+      "title": "To be confirmed.",
       "type": "Seminar",
       "policyAreaId": "To be confirmed",
       "startAt": "2026-12-17T07:00:00Z",
       "endAt": "2026-12-17T09:00:00Z",
-      "location": "Online \u00b7 Zoom link not supplied",
+      "location": "Online \u00b7 Zoom",
       "speakerIds": [],
-      "description": "Guest presentation, Q&A and facilitated discussion. Cameras on; Chatham House Rule applies; sessions are not recorded. Schedule reported in the supplied briefing as at 25 September 2026, not verified against the current cohort page.",
+      "description": "Facilitated seminar discussion, questions and answers. Readings are encouraged, not necessary. Cameras remain on; discussions follow the Chatham House Rule. Sessions are not recorded.",
       "attendanceRequired": false,
       "reportedLengthMinutes": 120,
-      "assistanceConfig": null
+      "assistanceConfig": null,
+      "submissionQuestions": [],
+      "questionsStatus": "To be confirmed.",
+      "readingsStatus": "To be confirmed.",
+      "presentationStatus": "To be added.",
+      "reflectionDueDate": "2026-12-31"
     }
   ],
   "resources": [
@@ -255,9 +354,504 @@
       "externalUrl": "https://www.cis.org.au/",
       "localFileUrl": null,
       "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-1",
+      "title": "EconLib \u2014 Introduction to Public Choice",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Economics & institutions",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://www.econlib.org/library/Enc/PublicChoice.html",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-2",
+      "title": "Libertarianism.org Podcast \u2014 Introduction to Public Choice",
+      "type": "Recording",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Economics & institutions",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://www.libertarianism.org/media/free-thoughts/introduction-public-choice",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-3",
+      "title": "The Objectivist Ethics \u2014 Podcast",
+      "type": "Recording",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Individual liberty",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://courses.aynrand.org/works/the-objectivist-ethics/",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-4",
+      "title": "Anthem \u2014 Ayn Rand",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Individual liberty",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/file/d/1EEEtrB3cHHBFVBGJclwOLeaywZ8hgGWi/view?usp=drive_link",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-5",
+      "title": "Andrew Norton \u2014 After demand driven funding in Australia: Competing models for distributing student places to universities, courses and students",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Education policy",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/file/d/1YC8Ghmc8Kx3p1qs1dCXdF8lJFXs5BP5D/view?usp=drive_link",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-6",
+      "title": "Andrew Norton \u2014 Job-ready Graduates 2.0: The Universities Accord and centralised control of universities and courses",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Education policy",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/file/d/1j_-B_2HRzjZYsZdSkq3VMRzxlXWdj9vd/view?usp=drive_link",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-7",
+      "title": "AFR op-ed \u2014 Danielle Wood, \"Fuel crisis a lesson against 'insurance' for non-essential industries\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Industry & regulation",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/file/d/1eGX3frHPuHSjwwqoyUtSw_VRQf_y77qU/view?usp=sharing",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-8",
+      "title": "Speech \u2014 Alex Robson, \"Optimal industry policy\" (Productivity Commission)",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Industry & regulation",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/file/d/1qdmaPnzRUf6-JifgczuJjg_8ck91UsfX/view?usp=sharing",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-9",
+      "title": "Podcast \u2014 EconTalk, \"Michael Munger on Industrial Policy\"",
+      "type": "Recording",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Industry & regulation",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://open.spotify.com/episode/4nYrE0WC9d2hudiB03Pkhf?si=35f8f3e51b6f46bb",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-10",
+      "title": "Industrial Policy presentation",
+      "type": "Deck",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Industry & regulation",
+      "description": "Presentation material supplied for this session.",
+      "externalUrl": "https://docs.google.com/presentation/d/1nA0wL47KAh4ewqcMZfulTXjTQGkaLYvL/edit?usp=sharing&ouid=112066287456361377469&rtpof=true&sd=true",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-11",
+      "title": "\"The Causes of Populism in the West\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Political institutions",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/file/d/1nr1VKRGyq3VfF7GMyxZFsk5fSwXOAaGB/view?usp=sharing",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-12",
+      "title": "\"Political Economy Models of Elections\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Political institutions",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/file/d/1SykpHZtTQwaTmV5y4EW2c-iyjCfjr73Z/view?usp=sharing",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-13",
+      "title": "\"Rational Disaffection? The Economic Origins of Minor\u2010Party Voting in Australia\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Political institutions",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/file/d/1OE83jeUqRd6oZJPJMYC1xLi0QHer_tii/view?usp=sharing",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-14",
+      "title": "\"Where to next for the centre right\" presentation",
+      "type": "Deck",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Political institutions",
+      "description": "Presentation material supplied for this session.",
+      "externalUrl": "https://drive.google.com/file/d/13KaZJpyizDlqACI12qQ5eCbYNeS271KC/view?usp=sharing",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-15",
+      "title": "Milken Institute Review \u2014 Article",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Growth & reform",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/file/d/1dHoXZJbF2p_WVmBI1t9DSsPcED1bkE6m/view?usp=drive_link",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-16",
+      "title": "Chris Merritt \u2014 \"Democracy at risk in troubling shift among young voters\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Law & liberty",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://ruleoflawaustralia.com.au/commentary/democracy-at-risk-in-troubling-shift-among-young-voters/",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-17",
+      "title": "John Anderson \u2014 \"It's critical the West recovers its self-belief\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Law & liberty",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://www.theaustralian.com.au/commentary/its-critical-the-west-recovers-its-selfbelief/news-story/37f7db14b31d370177ff7addd20d0c39",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-18",
+      "title": "Video \u2014 Konstantin Kisin, \"We are where we are because our culture is special\"",
+      "type": "Video",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Law & liberty",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://www.youtube.com/watch?v=TtlnqsszJks",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-19",
+      "title": "Peter Kurti \u2014 Fractured Loyalties: Australian citizenship and the crisis of civic virtue",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Law & liberty",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://www.cis.org.au/publication/fractured-loyalties-australian-citizenship-and-the-crisis-of-civic-virtue/",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-20",
+      "title": "AFR op-ed \u2014 Salvatore Babones, \"Our unis are helping overseas students abuse the visa system\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Immigration",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/drive/folders/1SkEpcGwuXw4z6csOZKraepVUUxhsOtsl?usp=drive_link",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-21",
+      "title": "MacroBusiness \u2014 Salvatore Babones, \"Net migration: Don't limit the intake; accelerate the outflow\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Immigration",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/drive/folders/1SkEpcGwuXw4z6csOZKraepVUUxhsOtsl?usp=drive_link",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-22",
+      "title": "MacroBusiness \u2014 Salvatore Babones, \"How a temporary immigrant becomes permanent\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Immigration",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/drive/folders/1SkEpcGwuXw4z6csOZKraepVUUxhsOtsl?usp=drive_link",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-23",
+      "title": "AFR op-ed \u2014 Salvatore Babones, \"Cut 'permanent temporary' migration rort with offshore visas only\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Immigration",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/drive/folders/1SkEpcGwuXw4z6csOZKraepVUUxhsOtsl?usp=drive_link",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-24",
+      "title": "MacroBusiness \u2014 Salvatore Babones, \"A fresh start for immigration policy\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "Immigration",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/drive/folders/1SkEpcGwuXw4z6csOZKraepVUUxhsOtsl?usp=drive_link",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-25",
+      "title": "\"Bigger tax burden won't help the younger generations\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "To be confirmed",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/drive/folders/1mhsacXkuZvx-gen7EhVVepkhrsIiFYSQ?usp=sharing",
+      "localFileUrl": null,
+      "previewKind": "external"
+    },
+    {
+      "id": "cohort-resource-26",
+      "title": "\"Intergenerational Report accepts a low-growth future for the next generation of Australians\"",
+      "type": "Reading",
+      "authors": "Supplied CIS cohort programme",
+      "minutes": null,
+      "policyAreaId": "To be confirmed",
+      "description": "Optional reading from the supplied cohort programme. Shared-folder links open the collection supplied by CIS; external sites may require permission or a subscription.",
+      "externalUrl": "https://drive.google.com/drive/folders/1mhsacXkuZvx-gen7EhVVepkhrsIiFYSQ?usp=sharing",
+      "localFileUrl": null,
+      "previewKind": "external"
     }
   ],
-  "sessionResources": [],
+  "sessionResources": [
+    {
+      "sessionId": "ls-0416",
+      "resourceId": "cohort-resource-1",
+      "required": false,
+      "order": 0,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0416",
+      "resourceId": "cohort-resource-2",
+      "required": false,
+      "order": 1,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0507",
+      "resourceId": "cohort-resource-3",
+      "required": false,
+      "order": 2,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0507",
+      "resourceId": "cohort-resource-4",
+      "required": false,
+      "order": 3,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0528",
+      "resourceId": "cohort-resource-5",
+      "required": false,
+      "order": 4,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0528",
+      "resourceId": "cohort-resource-6",
+      "required": false,
+      "order": 5,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0618",
+      "resourceId": "cohort-resource-7",
+      "required": false,
+      "order": 6,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0618",
+      "resourceId": "cohort-resource-8",
+      "required": false,
+      "order": 7,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0618",
+      "resourceId": "cohort-resource-9",
+      "required": false,
+      "order": 8,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0618",
+      "resourceId": "cohort-resource-10",
+      "required": false,
+      "order": 9,
+      "kind": "presentation"
+    },
+    {
+      "sessionId": "ls-0709",
+      "resourceId": "cohort-resource-11",
+      "required": false,
+      "order": 10,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0709",
+      "resourceId": "cohort-resource-12",
+      "required": false,
+      "order": 11,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0709",
+      "resourceId": "cohort-resource-13",
+      "required": false,
+      "order": 12,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0709",
+      "resourceId": "cohort-resource-14",
+      "required": false,
+      "order": 13,
+      "kind": "presentation"
+    },
+    {
+      "sessionId": "ls-0730",
+      "resourceId": "cohort-resource-15",
+      "required": false,
+      "order": 14,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0910",
+      "resourceId": "cohort-resource-16",
+      "required": false,
+      "order": 15,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0910",
+      "resourceId": "cohort-resource-17",
+      "required": false,
+      "order": 16,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0910",
+      "resourceId": "cohort-resource-18",
+      "required": false,
+      "order": 17,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-0910",
+      "resourceId": "cohort-resource-19",
+      "required": false,
+      "order": 18,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-1001",
+      "resourceId": "cohort-resource-20",
+      "required": false,
+      "order": 19,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-1001",
+      "resourceId": "cohort-resource-21",
+      "required": false,
+      "order": 20,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-1001",
+      "resourceId": "cohort-resource-22",
+      "required": false,
+      "order": 21,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-1001",
+      "resourceId": "cohort-resource-23",
+      "required": false,
+      "order": 22,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-1001",
+      "resourceId": "cohort-resource-24",
+      "required": false,
+      "order": 23,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-1022",
+      "resourceId": "cohort-resource-25",
+      "required": false,
+      "order": 24,
+      "kind": "reading"
+    },
+    {
+      "sessionId": "ls-1022",
+      "resourceId": "cohort-resource-26",
+      "required": false,
+      "order": 25,
+      "kind": "reading"
+    }
+  ],
   "requirements": [
     {
       "id": "reflection-ls-0416",
@@ -265,8 +859,8 @@
       "title": "Reflection \u00b7 16 April",
       "dueDate": "2026-04-30",
       "sessionId": "ls-0416",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-0507",
@@ -274,8 +868,8 @@
       "title": "Reflection \u00b7 07 May",
       "dueDate": "2026-05-21",
       "sessionId": "ls-0507",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-0528",
@@ -283,8 +877,8 @@
       "title": "Reflection \u00b7 28 May",
       "dueDate": "2026-06-11",
       "sessionId": "ls-0528",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-0618",
@@ -292,8 +886,8 @@
       "title": "Reflection \u00b7 18 June",
       "dueDate": "2026-07-02",
       "sessionId": "ls-0618",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-0709",
@@ -301,8 +895,8 @@
       "title": "Reflection \u00b7 09 July",
       "dueDate": "2026-07-23",
       "sessionId": "ls-0709",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-0730",
@@ -310,8 +904,8 @@
       "title": "Reflection \u00b7 30 July",
       "dueDate": "2026-08-13",
       "sessionId": "ls-0730",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-0820",
@@ -319,8 +913,8 @@
       "title": "Reflection \u00b7 20 August",
       "dueDate": "2026-09-03",
       "sessionId": "ls-0820",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-0910",
@@ -328,8 +922,8 @@
       "title": "Reflection \u00b7 10 September",
       "dueDate": "2026-09-24",
       "sessionId": "ls-0910",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-1001",
@@ -337,8 +931,8 @@
       "title": "Reflection \u00b7 01 October",
       "dueDate": "2026-10-15",
       "sessionId": "ls-1001",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-1022",
@@ -346,8 +940,8 @@
       "title": "Reflection \u00b7 22 October",
       "dueDate": "2026-11-05",
       "sessionId": "ls-1022",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-1112",
@@ -355,8 +949,8 @@
       "title": "Reflection \u00b7 12 November",
       "dueDate": "2026-11-26",
       "sessionId": "ls-1112",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-1203",
@@ -364,8 +958,8 @@
       "title": "Reflection \u00b7 03 December",
       "dueDate": "2026-12-17",
       "sessionId": "ls-1203",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "reflection-ls-1217",
@@ -373,8 +967,8 @@
       "title": "Reflection \u00b7 17 December",
       "dueDate": "2026-12-31",
       "sessionId": "ls-1217",
-      "description": "300 words according to the reported 2026 cohort instructions (general overview: 200\u2013300). Ordinarily due 11:59 p.m. Thursday two weeks after the session, Sydney time. Deadline calculated from the supplied rule; confirm current instructions. Record completion here only after your actual submission.",
-      "submissionUrl": null
+      "description": "Submit a 300-word reflection answering one of the supplied session questions by 11:59 p.m. Sydney time on the listed date. The form opens externally. Mark this local checklist only after submitting; form submission does not automatically update it.",
+      "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSePj3ucSyl14bxHBCrnehE0gJsbxL9_GfAcQynBTxsaFZJ4jg/viewform?usp=header"
     },
     {
       "id": "viva-1",
@@ -430,7 +1024,7 @@
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
       "photoUrl": null,
       "email": "",
       "linkedinUrl": null,
@@ -447,7 +1041,7 @@
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
       "photoUrl": null,
       "email": "",
       "linkedinUrl": null,
@@ -464,7 +1058,7 @@
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
       "photoUrl": null,
       "email": "",
       "linkedinUrl": null,
@@ -481,7 +1075,7 @@
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
       "photoUrl": null,
       "email": "",
       "linkedinUrl": null,
@@ -498,7 +1092,7 @@
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
       "photoUrl": null,
       "email": "",
       "linkedinUrl": null,
@@ -511,11 +1105,11 @@
       "id": "speaker-6",
       "name": "Chris Bradley",
       "kind": "staff",
-      "title": "McKinsey & Company/McKinsey Global Institute and CIS board",
+      "title": "Senior Partner, McKinsey & Company; Director, McKinsey Global Institute (MGI); Board Member, Centre for Independent Studies",
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
       "photoUrl": null,
       "email": "",
       "linkedinUrl": null,
@@ -528,11 +1122,11 @@
       "id": "speaker-7",
       "name": "Steve Baxter",
       "kind": "staff",
-      "title": "entrepreneur and former Shark Tank Australia investor",
+      "title": "Australian investor and entrepreneur; former investor on Shark Tank Australia",
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
       "photoUrl": null,
       "email": "",
       "linkedinUrl": null,
@@ -545,11 +1139,11 @@
       "id": "speaker-8",
       "name": "Lorraine Finlay",
       "kind": "staff",
-      "title": "Australian Human Rights Commission",
+      "title": "Commissioner, Australian Human Rights Commission",
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
       "photoUrl": null,
       "email": "",
       "linkedinUrl": null,
@@ -562,11 +1156,62 @@
       "id": "speaker-9",
       "name": "Salvatore Babones",
       "kind": "staff",
-      "title": "University of Sydney",
+      "title": "Associate Professor, University of Sydney",
       "school": null,
       "placement": null,
       "termId": null,
-      "bio": "Speaker and affiliation reported in the supplied 25 September 2026 schedule. Biography and contact details were not supplied.",
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
+      "photoUrl": null,
+      "email": "",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "speaker-10",
+      "name": "Stephen Walters",
+      "kind": "staff",
+      "title": "Chief Economist, Optimal Economics; Centre for Independent Studies",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
+      "photoUrl": null,
+      "email": "",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "speaker-11",
+      "name": "Chris Berg",
+      "kind": "staff",
+      "title": "Professor of Economics, RMIT University; Co-Founder, RMIT Blockchain Innovation Hub",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
+      "photoUrl": null,
+      "email": "",
+      "linkedinUrl": null,
+      "websiteUrl": null,
+      "teamIds": [],
+      "location": null,
+      "scholarProfileUrl": null
+    },
+    {
+      "id": "speaker-12",
+      "name": "Gigi Foster",
+      "kind": "staff",
+      "title": "Professor of Economics, University of New South Wales; Co-host, The Economists (ABC RN)",
+      "school": null,
+      "placement": null,
+      "termId": null,
+      "bio": "Speaker and affiliation from the supplied CIS 2026 cohort programme. Further biography was not supplied.",
       "photoUrl": null,
       "email": "",
       "linkedinUrl": null,
@@ -814,8 +1459,8 @@
   "announcements": [
     {
       "id": "source-status",
-      "title": "Programme information: verify current instructions",
-      "body": "This portal uses the supplied 25 September 2026 schedule. Later speakers are to be confirmed. It is an independent demo, not an official CIS portal; no registration, reflection or RSVP is sent to CIS.",
+      "title": "Cohort readings and reflection questions are available",
+      "body": "Session pages now include the speakers, topics, resources, questions and deadlines from the supplied cohort HTML. Readings are optional. Reflection submissions use the external fellowship form; this demo does not synchronise their status.",
       "postedAt": "2026-09-25T00:00:00Z",
       "dueAt": null,
       "expiresAt": null,
