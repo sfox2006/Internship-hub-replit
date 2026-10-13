@@ -1,3 +1,5 @@
+import DiscussionReplies from "../components/DiscussionReplies";
+import { addReply } from "../data/discussionThreads";
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { formatDistance } from "date-fns";
@@ -97,18 +99,31 @@ export default function Discussions() {
               </Link>
             </p>
           )}
-          <div className="replies">
-            {d.replies.map((r) => (
-              <div key={r.id}>
-                <strong>{author(r.authorId)}</strong>
-                <small>
-                  {" "}
-                  · {localFormat(r.createdAt, "MMM d, h:mm a")} Sydney time
-                </small>
-                <p className="preserve-lines">{r.body}</p>
-              </div>
-            ))}
-          </div>
+          <DiscussionReplies
+            replies={d.replies}
+            author={author}
+            onReply={(body, parentId) => {
+              const ok = update((s) => ({
+                ...s,
+                discussions: s.discussions.map((thread) =>
+                  thread.id === d.id
+                    ? addReply(
+                        thread,
+                        body,
+                        parentId,
+                        referenceNow().toISOString(),
+                        crypto.randomUUID(),
+                      )
+                    : thread,
+                ),
+              }));
+              setStatus(
+                ok
+                  ? "Reply saved in this browser."
+                  : "Reply added in this session; browser save failed.",
+              );
+            }}
+          />
           <p className="muted">
             {d.replies.length} replies · Last activity{" "}
             {formatDistance(new Date(lastActivity(d)), referenceNow(), {
@@ -125,19 +140,13 @@ export default function Discussions() {
                 ...s,
                 discussions: s.discussions.map((thread) =>
                   thread.id === d.id
-                    ? {
-                        ...thread,
-                        replies: [
-                          ...thread.replies,
-                          {
-                            id: crypto.randomUUID(),
-                            discussionId: d.id,
-                            authorId: "demo",
-                            body: text,
-                            createdAt: referenceNow().toISOString(),
-                          },
-                        ],
-                      }
+                    ? addReply(
+                        thread,
+                        text,
+                        null,
+                        referenceNow().toISOString(),
+                        crypto.randomUUID(),
+                      )
                     : thread,
                 ),
               }));
@@ -150,7 +159,7 @@ export default function Discussions() {
             }}
           >
             <label className="grow">
-              Add a reply
+              Reply to the original message
               <input
                 aria-label={`Reply to ${d.title}`}
                 value={reply[d.id] || ""}

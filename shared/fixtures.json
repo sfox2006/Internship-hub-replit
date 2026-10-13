@@ -1288,22 +1288,6 @@
       "contactPersonIds": []
     },
     {
-      "slug": "applications",
-      "category": "Guide",
-      "title": "Applications and eligibility",
-      "summary": "Over 18; Australia or New Zealand; undergraduate, postgraduate, recent graduate or young professional, from any discipline. No prior economics or classical-liberal study required. High-school students are ineligible. Fellowship upper age limit is not published in the supplied source. The separate workshop\u2019s 18\u201327 cap must not be assumed to apply.",
-      "tags": [
-        "Supplied briefing \u00b7 verify current guidance"
-      ],
-      "blocks": [
-        {
-          "type": "paragraph",
-          "text": "Over 18; Australia or New Zealand; undergraduate, postgraduate, recent graduate or young professional, from any discipline. No prior economics or classical-liberal study required. High-school students are ineligible. Fellowship upper age limit is not published in the supplied source. The separate workshop\u2019s 18\u201327 cap must not be assumed to apply."
-        }
-      ],
-      "contactPersonIds": []
-    },
-    {
       "slug": "funding",
       "category": "Guide",
       "title": "Funding and opportunities",
@@ -1421,34 +1405,6 @@
             {
               "type": "paragraph",
               "text": "AI is not prohibited outright in the reported instructions, but the thoughts and answer must remain the fellow\u2019s own. Oral reviews test the ability to explain and develop that reasoning."
-            }
-          ]
-        }
-      ],
-      "originalFileUrl": null
-    },
-    {
-      "slug": "dc-culture-guide",
-      "title": "Application Information",
-      "subtitle": "Reported status and matters to confirm",
-      "sections": [
-        {
-          "id": "eligibility",
-          "title": "Eligibility",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "Over 18; Australia or New Zealand; undergraduate, postgraduate, recent graduate or young professional, from any discipline. No prior economics or classical-liberal study required. High-school students are ineligible. Fellowship upper age limit is not published in the supplied source. The separate workshop\u2019s 18\u201327 cap must not be assumed to apply."
-            }
-          ]
-        },
-        {
-          "id": "status",
-          "title": "2027 applications",
-          "blocks": [
-            {
-              "type": "paragraph",
-              "text": "The supplied source says applications are not yet open and a non-binding expression of interest is available. This has not been verified as current. Registration of interest is not a formal application. No cohort size, acceptance rate, rubric, interview requirement, questions or confirmed dates are supplied."
             }
           ]
         }

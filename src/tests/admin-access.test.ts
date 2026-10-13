@@ -1,9 +1,9 @@
 import { describe, it, expect } from "vitest";
-// @ts-expect-error Server JavaScript authorization helper tested directly.
 import {
   adminDecision,
   configuredAdminIds,
   requireAdministrator,
+  // @ts-expect-error Server JavaScript authorization helper tested directly.
 } from "../../server/admin-access.mjs";
 describe("administrator authorization pending Replit Auth integration", () => {
   it("rejects unauthenticated users", () => {

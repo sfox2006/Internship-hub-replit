@@ -10,13 +10,12 @@ import Readings from "./pages/Readings";
 import ResourceDetail from "./pages/ResourceDetail";
 import Handbook from "./pages/Handbook";
 import CapstoneGuide from "./pages/CapstoneGuide";
-import DcCultureGuide from "./pages/DcCultureGuide";
 import Faq from "./pages/Faq";
 import People from "./pages/People";
 import PersonDetail from "./pages/PersonDetail";
 import Announcements from "./pages/Announcements";
 import Discussions from "./pages/Discussions";
-import Photos from "./pages/Photos";
+import Reflections from "./pages/Reflections";
 import Saved from "./pages/Saved";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
@@ -34,7 +33,7 @@ export default function App() {
         <Route path="/" element={<ThisWeek />} />
         <Route path="/programme" element={<Programme />} />
         <Route path="/reflection-guide" element={<CapstoneGuide />} />
-        <Route path="/applications" element={<DcCultureGuide />} />
+        <Route path="/applications" element={<NotFound />} />
         <Route path="/schedule" element={<Schedule key={location.key} />} />
         <Route
           path="/session/:id"
@@ -45,7 +44,7 @@ export default function App() {
         <Route path="/resource/:id" element={<ResourceDetail />} />
         <Route path="/handbook" element={<Handbook />} />
         <Route path="/capstone-guide" element={<CapstoneGuide />} />
-        <Route path="/dc-culture-guide" element={<DcCultureGuide />} />
+        <Route path="/dc-culture-guide" element={<NotFound />} />
         <Route path="/faq" element={<Faq />} />
         <Route
           path="/emergency"
@@ -63,7 +62,8 @@ export default function App() {
           path="/discussions"
           element={<Discussions key={location.key} />}
         />
-        <Route path="/photos" element={<Photos />} />
+        <Route path="/photos" element={<NotFound />} />
+        <Route path="/reflections" element={<Reflections />} />
         <Route path="/saved" element={<Saved />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<Search key={location.search} />} />

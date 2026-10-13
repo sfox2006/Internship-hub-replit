@@ -90,10 +90,18 @@ PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run test:e2e
 
 The browser suite starts an isolated production test listener on port **3004**. Build before running it. On PowerShell, set the executable path via `$env:PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` if needed.
 
-Verified for this adaptation: **13 unit tests and 7 browser integration tests**, TypeScript and production build pass. Checks cover Sydney DST conversion, all 13 calendar events, programme-source preservation, real fixture totals, deadlines, independent attendance/RSVP/reflections, notes/bookmarks, linked discussions, profile/image persistence, mobile overflow, storage errors, nested production routes and API/asset 404s. These results validate the cloud build, not a future Replit publication or official CIS content/branding.
+Verified for this adaptation: **23 unit tests and 9 browser integration tests**, TypeScript and production build pass. Checks cover Sydney DST conversion, all 13 calendar events, programme-source preservation, real fixture totals, deadlines, independent attendance/RSVP/reflections, notes/bookmarks, linked discussions, profile/image persistence, mobile overflow, storage errors, nested production routes and API/asset 404s. These results validate the cloud build, not a future Replit publication or official CIS content/branding.
 
 ## Owner administrator activation
 
 The nominated owner is Replit username `samfoxprojects`, with published app `https://internship-hub-replit--samfoxprojects.replit.app/`. Administrator access is **not active yet**. Replit's current documentation requires Replit Agent to provision Replit Auth inside the project. A username or local profile field is not authentication.
 
 [REPLIT-ADMIN-SETUP.md](docs/REPLIT-ADMIN-SETUP.md) contains the project-specific Agent prompt and activation checks. `server/admin-access.mjs` supplies tested, fail-closed server authorization for exact stable user IDs once connected to an already verified Replit Auth session. It is not wired to routes yet and does not implement authentication. Seven additional unit tests cover denial, exact-ID matching, ignored client roles, adapter errors and revocation. The live health endpoint was checked successfully; real administrator login remains unverified until Agent provisioning and owner sign-in are complete.
+
+## Latest portal changes
+
+Photo Library and the separate Application Information page have been removed from navigation, routes and searchable guide data. Their old URLs return 404. Profile photo changes remain available, and existing browser image records are not erased. The earlier source briefing remains intact for reference.
+
+Discussion replies can target the original post or another comment, with recursively nested threads, collapse/expand controls, whitespace validation and browser persistence. Old flat replies remain top-level. Discussion data is still browser-local until authenticated shared storage is integrated.
+
+`/reflections` provides session selection, full questions, deadlines and the supplied external submission form, with an optional embedded version and a fallback link. It does not submit on the user's behalf or infer external submission success.

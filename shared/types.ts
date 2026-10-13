@@ -111,6 +111,7 @@ export type Announcement = {
   assistanceConfig: AssistanceConfig | null;
 };
 export type Reply = {
+  parentReplyId?: string | null;
   id: string;
   discussionId: string;
   authorId: string;

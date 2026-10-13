@@ -63,7 +63,7 @@ export default function GuideArticle({ guide: g }: { guide: Guide }) {
           <hr />
           <Link to="/handbook">Fellowship Handbook</Link>
           <Link to="/reflection-guide">Reflection & Viva Guide</Link>
-          <Link to="/applications">Application Information</Link>
+          <Link to="/reflections">Written Reflections</Link>
         </aside>
         <article className="card prose">
           {g.sections.map((s) => (
