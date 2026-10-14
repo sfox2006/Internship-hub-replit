@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import { approvedMessagingIdentity, installMessaging } from "./auth.mjs";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -250,6 +251,20 @@ app.use(
   }),
 );
 app.use("/api", requireActiveEnrollment);
+installMessaging(app, {
+  pool,
+  isApprovedIdentity: async (req, identity) => {
+    const userId = req.authenticatedUserId;
+    const email = await verifiedEmailForUser(userId);
+    return approvedMessagingIdentity({
+      identity,
+      currentClerkUserId: userId,
+      loginClerkUserId: req.messagingLoginUserId,
+      verifiedClerkEmail: email,
+      enrollmentStatus: req.enrollmentAccess?.status,
+    });
+  },
+});
 app.get("/api/config", (_req, res) => {
   let origin = null;
   try {
@@ -431,7 +446,7 @@ if (process.argv.includes("--dev")) {
     if (!["GET", "HEAD"].includes(req.method)) return next();
     // Only known page routes get the SPA; asset requests and unknown URLs stay 404.
     const page =
-      /^\/(?:admin|sign-in(?:\/.*)?|sign-up(?:\/.*)?|account|programme|reflections|reflection-guide|schedule|requirements|readings|handbook|capstone-guide|faq|emergency|teams|people|announcements|discussions|saved|profile|search|how-things-work|session\/[^/.]+|resource\/[^/.]+|team\/[^/.]+|person\/[^/.]+|article\/[^/.]+)?\/?$/;
+      /^\/(?:messages|admin|sign-in(?:\/.*)?|sign-up(?:\/.*)?|account|programme|reflections|reflection-guide|schedule|requirements|readings|handbook|capstone-guide|faq|emergency|teams|people|announcements|discussions|saved|profile|search|how-things-work|session\/[^/.]+|resource\/[^/.]+|team\/[^/.]+|person\/[^/.]+|article\/[^/.]+)?\/?$/;
     if (page.test(req.path))
       return res.sendFile(path.join(root, "dist/client/index.html"));
     next();

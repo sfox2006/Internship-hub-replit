@@ -67,7 +67,7 @@ export default function AppShell({
           </Link>
         </header>
         <div className="account-notice">
-          Signed in · role: {role} · private data is saved in this browser
+          Signed in · role: {role} · hub records stay in this browser; private messages use verified accounts and shared storage
           <span>2026 Fellowship</span>
         </div>
         {error && (
@@ -80,7 +80,7 @@ export default function AppShell({
         </main>
         <footer>
           Independent CIS fellowship adaptation · Account-specific browser
-          storage · Not an official CIS portal
+          storage for hub state · private messaging · Not an official CIS portal
         </footer>
       </div>
     </>

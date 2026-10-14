@@ -40,3 +40,9 @@ waitForPort = 3000
 
 [workflows.workflow.metadata]
 outputType = "console"
+
+[userenv]
+
+[userenv.development]
+APP_URL = "https://internship-hub-replit--samfoxprojects.replit.app"
+MESSAGING_ENABLED = "false"

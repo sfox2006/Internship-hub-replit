@@ -1,3 +1,4 @@
+import { useMessaging } from "../data/messaging";
 import BrandMark from "./BrandMark";
 import { NavLink, Link } from "react-router-dom";
 import {
@@ -15,7 +16,6 @@ import {
   UserRound,
   ShieldCheck,
 } from "lucide-react";
-import { useDemo } from "../data/demoStore";
 import Avatar from "./Avatar";
 import type { AccountIdentity, AccountRole } from "../auth/types";
 const groups = [
@@ -43,6 +43,7 @@ const groups = [
     items: [
       ["Announcements", "/announcements", Megaphone],
       ["Fellow Directory", "/people", Users],
+      ["Messages", "/messages", MessageCircle],
       ["Discussion Board", "/discussions", MessageCircle],
     ],
   },
@@ -67,6 +68,8 @@ export default function Sidebar({
   identity: AccountIdentity;
   signOut: () => void;
 }) {
+  const { conversations } = useMessaging();
+  const unread = conversations.reduce((n, conversation) => n + conversation.unread, 0);
   const name = identity.name || identity.email || "Fellowship Hub member";
   const email = identity.email;
   return (
@@ -93,6 +96,9 @@ export default function Sidebar({
               >
                 <Icon size={18} />
                 {label}
+                {url === "/messages" && unread > 0 && (
+                  <span className="unread-badge">{unread}</span>
+                )}
               </NavLink>
             ))}
           </details>

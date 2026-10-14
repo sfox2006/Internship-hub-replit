@@ -72,7 +72,7 @@ After publishing, verify the public app’s `/api/health`, `/programme`, `/sched
 
 UTC event instants are converted from the supplied Sydney dates/times. Assignments, unknown speakers, deadline assumptions and synthetic participant data must remain clearly distinguished from verified official data. The palette and policy-area classifications are editorial adaptations; they are not claims about official CIS website taxonomy.
 
-Notes and profile edits save only on request. Image Blobs use IndexedDB with recreated/revoked object URLs. Storage failures remain visible. Sign-out retains records under that account's browser-local namespace. Development PostgreSQL stores account roles plus the approved-email roster and its audit history; it does not store profile, attendance, notes, discussions or image data. Clerk holds authentication identities. There is no moderation, automatic CIS submission synchronisation or cross-device synchronization. Calendar feeds contain fixture sessions and no private notes. Roster setup and owner bootstrap steps are in [docs/ENROLMENT-OPERATIONS.md](docs/ENROLMENT-OPERATIONS.md).
+Notes and profile edits save only on request. Image blobs use IndexedDB with recreated/revoked object URLs. Storage failures remain visible. Sign-out retains records under that account's browser-local namespace. Development PostgreSQL stores account roles plus the approved-email roster and audit history; it does not store profile, attendance, notes, discussions or image data. Clerk holds hub authentication identities. Private messages are stored in PostgreSQL and require a verified OIDC identity tied to the same Clerk account and an active approved roster entry; see [messaging setup](docs/MESSAGING-SETUP.md). No message data is stored in localStorage or IndexedDB. There is no moderation, automatic CIS submission synchronization or cross-device sync for browser-local hub state. Calendar feeds contain fixture sessions and no private notes. Roster setup and owner bootstrap steps are in [docs/ENROLMENT-OPERATIONS.md](docs/ENROLMENT-OPERATIONS.md).
 
 ## Verification
 
@@ -107,3 +107,9 @@ Photo Library and the separate Application Information page have been removed fr
 Discussion replies can target the original post or another comment, with recursively nested threads, collapse/expand controls, whitespace validation and browser persistence. Old flat replies remain top-level. Discussion data is still browser-local until authenticated shared storage is integrated.
 
 `/reflections` provides session selection, full questions, deadlines and the supplied external submission form, with an optional embedded version and a fallback link. It does not submit on the user's behalf or infer external submission success.
+
+## Private messaging
+
+`/messages` adds a responsive, WhatsApp-style one-to-one inbox with text conversations, history pagination, unread counts and automatic polling updates. It uses server-verified OIDC accounts and shared PostgreSQL storage; demo sign-in cannot grant access. Existing programme features and CIS branding are preserved.
+
+**Service configuration is required before messaging is usable.** See [MESSAGING-SETUP.md](docs/MESSAGING-SETUP.md) for the environment settings, database migration, security boundaries and live verification steps. Missing configuration keeps messaging disabled while preserving the programme demo.
