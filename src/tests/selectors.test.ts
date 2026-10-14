@@ -10,7 +10,12 @@ import {
   outstandingPrep,
 } from "../data/selectors";
 import { mondayKey, readingStart, localFormat } from "../data/clock";
-import { initialState, loadState, saveState } from "../data/storage";
+import {
+  initialState,
+  loadState,
+  saveState,
+  userStorageKey,
+} from "../data/storage";
 const now = new Date("2026-10-08T13:23:00Z");
 describe("CIS fellowship selectors and persistence", () => {
   it("uses all thirteen supplied sessions, upcoming/past ordering and unknowns", () => {
@@ -69,7 +74,7 @@ describe("CIS fellowship selectors and persistence", () => {
     expect(
       loadState({ getItem: () => saved }).state.attendedSessionIds,
     ).toEqual(["ls-0416"]);
-    expect(initialState().profile.lastName).toBe("Fellow");
+    expect(initialState().profile.lastName).toBe("");
   });
   it("handles corrupt data and unavailable storage without throwing", () => {
     expect(loadState({ getItem: () => "{broken" }).error).toBeTruthy();
@@ -89,6 +94,22 @@ describe("CIS fellowship selectors and persistence", () => {
       loadState({ getItem: () => JSON.stringify(state) }).state
         .completedRequirementIds,
     ).toEqual([]);
+  });
+  it("isolates browser-local records by verified user ID", () => {
+    const firstKey = userStorageKey("user_one");
+    const secondKey = userStorageKey("user_two");
+    expect(firstKey).not.toBe(secondKey);
+    expect(() => userStorageKey(" user_one")).toThrow();
+    const values = new Map<string, string>();
+    const storage = {
+      getItem: (key: string) => values.get(key) ?? null,
+      setItem: (key: string, value: string) => values.set(key, value),
+    };
+    const first = initialState();
+    first.profile.firstName = "Taylor";
+    saveState(storage, first, firstKey);
+    expect(loadState(storage, firstKey).state.profile.firstName).toBe("Taylor");
+    expect(loadState(storage, secondKey).state.profile.firstName).toBe("");
   });
 });
 

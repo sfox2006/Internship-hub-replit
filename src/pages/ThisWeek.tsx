@@ -65,7 +65,11 @@ export default function ThisWeek() {
       <div className="page-heading">
         <div>
           <span className="eyebrow">LIBERTY & SOCIETY · 2026 FELLOWSHIP</span>
-          <h1>Welcome, {state.profile.firstName}.</h1>
+          <h1>
+            {state.profile.firstName
+              ? `Welcome, ${state.profile.firstName}.`
+              : "Welcome to the Hub."}
+          </h1>
           <p>Independent thinking. Rigorous inquiry. Open debate.</p>
         </div>
         <span className="date-label">{localFormat(now, "EEEE, MMMM d")}</span>

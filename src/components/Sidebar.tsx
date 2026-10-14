@@ -12,9 +12,12 @@ import {
   MessageCircle,
   Bookmark,
   LogOut,
+  UserRound,
+  ShieldCheck,
 } from "lucide-react";
 import { useDemo } from "../data/demoStore";
 import Avatar from "./Avatar";
+import type { AccountIdentity, AccountRole } from "../auth/types";
 const groups = [
   {
     label: "This term",
@@ -43,17 +46,29 @@ const groups = [
       ["Discussion Board", "/discussions", MessageCircle],
     ],
   },
-  { label: "Mine", items: [["Saved", "/saved", Bookmark]] },
+  {
+    label: "Mine",
+    items: [
+      ["Account", "/account", UserRound],
+      ["Saved", "/saved", Bookmark],
+    ],
+  },
 ] as const;
 export default function Sidebar({
   open,
   onClose,
+  role,
+  identity,
+  signOut,
 }: {
   open: boolean;
   onClose: () => void;
+  role: AccountRole;
+  identity: AccountIdentity;
+  signOut: () => void;
 }) {
-  const { state, update } = useDemo();
-  const name = `${state.profile.firstName} ${state.profile.lastName}`;
+  const name = identity.name || identity.email || "Fellowship Hub member";
+  const email = identity.email;
   return (
     <aside
       className={`sidebar ${open ? "open" : ""}`}
@@ -82,18 +97,28 @@ export default function Sidebar({
             ))}
           </details>
         ))}
+        {role === "administrator" && (
+          <NavLink
+            to="/admin"
+            onClick={onClose}
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            <ShieldCheck size={18} />
+            Administrator
+          </NavLink>
+        )}
       </nav>
       <div className="sidebar-user">
-        <Link to="/profile" className="row" onClick={onClose}>
-          <Avatar name={name} id="demo" />
+        <Link to="/account" className="row" onClick={onClose}>
+          <Avatar name={name} id="current-user" />
           <span>
             <strong>{name}</strong>
-            <small>fellow@example.com</small>
+            <small>{email}</small>
           </span>
         </Link>
         <button
           className="text-button"
-          onClick={() => update((s) => ({ ...s, demoSignedIn: false }))}
+          onClick={signOut}
         >
           <LogOut size={15} />
           Sign out

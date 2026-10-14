@@ -10,7 +10,7 @@ test("production health, nested routes, thirteen calendar events and proper erro
     "/schedule",
   ])
     expect((await request.get(path)).status()).toBe(200);
-  const feed = await (await request.get("/api/calendar/demo/feed.ics")).text();
+  const feed = await (await request.get("/api/calendar/feed.ics")).text();
   expect(feed.match(/BEGIN:VEVENT/g)).toHaveLength(13);
   expect(feed).toContain("DTSTART:20260416T080000Z");
   expect(feed).toContain("DTSTART:20261022T070000Z");
@@ -21,10 +21,61 @@ test("production health, nested routes, thirteen calendar events and proper erro
   ])
     expect((await request.get(path)).status()).toBe(404);
 });
+test("anonymous visitors are redirected and protected APIs reject them", async ({
+  page,
+  request,
+}) => {
+  const anonymousHeaders = { "x-hub-test-fixture": "" };
+  const adminPage = await request.get("/admin", {
+    headers: anonymousHeaders,
+    maxRedirects: 0,
+  });
+  expect(adminPage.status()).toBe(302);
+  expect(adminPage.headers().location).toContain("/sign-in?redirect_url=");
+  for (const path of ["/api/me", "/api/admin", "/api/calendar/feed.ics"])
+    expect(
+      (await request.get(path, { headers: anonymousHeaders })).status(),
+    ).toBe(401);
+  await page.context().setExtraHTTPHeaders(anonymousHeaders);
+  await page.goto("/admin");
+  await expect(
+    page.getByRole("heading", { name: "A place to learn. A place to belong." }),
+  ).toBeVisible();
+});
+test("normal accounts cannot access admin APIs or pages; verified admin fixture can", async ({
+  page,
+  request,
+}) => {
+  expect((await request.get("/api/admin")).status()).toBe(403);
+  expect(
+    (
+      await request.get("/api/admin", {
+        headers: { "x-user-id": "user_fixture_administrator", "x-role": "admin" },
+      })
+    ).status(),
+  ).toBe(403);
+  expect((await request.get("/admin")).status()).toBe(403);
+  const allowed = await request.get("/api/admin", {
+    headers: {
+      "x-hub-test-fixture": "administrator",
+      "x-user-id": "user_fixture_normal",
+      "x-role": "normal",
+    },
+  });
+  expect(allowed.status()).toBe(200);
+  expect(await allowed.json()).toEqual({
+    authorized: true,
+    userId: "user_fixture_administrator",
+    role: "administrator",
+  });
+  await page.goto("/account");
+  await expect(page.getByText("Normal user", { exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Administrator" })).toHaveCount(0);
+});
 test("CIS home, source preservation and Sydney schedule", async ({ page }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "Welcome, Demo." }),
+    page.getByRole("heading", { name: "Welcome to the Hub." }),
   ).toBeVisible();
   await expect(
     page.getByText("13 sessions · 6–8 p.m. Sydney time", { exact: false }),
@@ -124,19 +175,15 @@ test("linked discussions validate and persist without official submission", asyn
     page.getByRole("link", { name: "Institutions and liberty" }),
   ).toBeVisible();
 });
-test("profile and uploaded images survive reload, sign-out keeps records", async ({
+test("profile and uploaded images are per-account; sign-out exits the hub", async ({
   page,
 }) => {
   await page.goto("/profile");
   await page.getByLabel("First name", { exact: true }).fill("Taylor");
+  await page.getByLabel("Last name", { exact: true }).fill("Fellow");
   await page.getByRole("button", { name: "Save Changes" }).click();
   await expect(page.getByRole("status")).toHaveText("Changes saved.");
   await page.reload();
-  await expect(page.getByLabel("First name", { exact: true })).toHaveValue(
-    "Taylor",
-  );
-  await page.getByRole("button", { name: "Sign out" }).click();
-  await page.getByRole("button", { name: "Enter demo" }).click();
   await expect(page.getByLabel("First name", { exact: true })).toHaveValue(
     "Taylor",
   );
@@ -154,6 +201,13 @@ test("profile and uploaded images survive reload, sign-out keeps records", async
   await expect(page.getByRole("status")).toHaveText("Changes saved.");
   await page.reload();
   await expect(page.locator("img.avatar.large")).toBeVisible();
+  await page.getByRole("button", { name: "Sign out" }).click();
+  await expect(
+    page.getByRole("heading", {
+      name: "A place to learn. A place to belong.",
+    }),
+  ).toBeVisible();
+  await expect(page.getByRole("button", { name: "Sign out" })).toHaveCount(0);
 });
 test("guidance routes, mobile layout and storage failure handling", async ({
   page,

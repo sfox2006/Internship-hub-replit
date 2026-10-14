@@ -28,7 +28,7 @@ async function run(
   return { res, nextCalled };
 }
 
-describe("administrator authorization pending Replit Auth integration", () => {
+describe("administrator authorization for verified Clerk identities", () => {
   it("rejects unauthenticated users", () => {
     expect(adminDecision(null, "owner-id").status).toBe(401);
     expect(adminDecision({}, "owner-id").allowed).toBe(false);
@@ -36,10 +36,12 @@ describe("administrator authorization pending Replit Auth integration", () => {
     expect(adminDecision({ subject: " owner-id" }, "owner-id").status).toBe(401);
   });
 
-  it("denies everyone when the allowlist is unset or blank", () => {
+  it("denies everyone when no administrator IDs are present", () => {
     expect(configuredAdminIds(undefined).size).toBe(0);
     expect(adminDecision({ subject: "owner-id" }, undefined).allowed).toBe(false);
-    expect(adminDecision({ subject: "owner-id" }, " , ").status).toBe(503);
+    expect(adminDecision({ subject: "owner-id" }, " , ").status).toBe(403);
+    expect(adminDecision({ subject: "owner-id" }, []).status).toBe(403);
+    expect(configuredAdminIds(["owner-id", " owner-id", ""]).size).toBe(1);
   });
 
   it("allows only exact configured stable IDs", () => {
@@ -49,6 +51,15 @@ describe("administrator authorization pending Replit Auth integration", () => {
     expect(adminDecision({ subject: "OWNER-ID" }, ids).status).toBe(403);
     expect(adminDecision({ subject: "owner" }, ids).status).toBe(403);
     expect(adminDecision({ subject: "owner-id-2" }, ids).status).toBe(403);
+  });
+
+  it("supports a database-returned set of exact verified IDs", () => {
+    expect(adminDecision({ subject: "clerk_owner_id" }, ["clerk_owner_id"]).allowed).toBe(
+      true,
+    );
+    expect(adminDecision({ subject: "clerk_other_id" }, ["clerk_owner_id"]).status).toBe(
+      403,
+    );
   });
 
   it("ignores browser-supplied roles, headers and body IDs", async () => {
@@ -93,6 +104,6 @@ describe("administrator authorization pending Replit Auth integration", () => {
     allowed = false;
     await mw({}, res, () => (allowed = true));
     expect(allowed).toBe(false);
-    expect(res.statusCode).toBe(503);
+    expect(res.statusCode).toBe(403);
   });
 });

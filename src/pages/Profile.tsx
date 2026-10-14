@@ -11,7 +11,7 @@ export function validUrl(value: string) {
     return false;
   }
 }
-export default function Profile() {
+export default function Profile({ email }: { email: string }) {
   const { state, update } = useDemo();
   const [form, setForm] = useState({ ...state.profile });
   const [file, setFile] = useState<File | null>(null);
@@ -101,7 +101,7 @@ export default function Profile() {
           <div className="row">
             <Avatar
               name={`${state.profile.firstName} ${state.profile.lastName}`}
-              id="demo"
+              id="current-user"
               size="large"
             />
             <label>
@@ -120,7 +120,10 @@ export default function Profile() {
           </div>
           <label>
             Email
-            <input value="fellow@example.com" readOnly />
+            <input
+              value={email}
+              readOnly
+            />
           </label>
           <div className="grid two">
             <label>

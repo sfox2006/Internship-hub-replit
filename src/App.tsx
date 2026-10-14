@@ -1,7 +1,22 @@
+import { useEffect, useState, type ReactNode } from "react";
+import {
+  ClerkProvider,
+  SignIn,
+  SignUp,
+  useClerk,
+  useUser,
+} from "@clerk/react";
+import { publishableKeyFromHost } from "@clerk/react/internal";
+import {
+  Link,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import Programme from "./pages/Programme";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { useDemo } from "./data/demoStore";
-import AppShell from "./components/AppShell";
 import ThisWeek from "./pages/ThisWeek";
 import Schedule from "./pages/Schedule";
 import SessionDetail from "./pages/SessionDetail";
@@ -21,56 +36,381 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import HowThingsWork from "./pages/HowThingsWork";
 import ArticleDetail from "./pages/ArticleDetail";
-import DemoEntry from "./pages/DemoEntry";
 import NotFound from "./pages/NotFound";
-export default function App() {
-  const { state } = useDemo();
-  const location = useLocation();
-  if (!state.demoSignedIn) return <DemoEntry />;
+import AppShell from "./components/AppShell";
+import BrandMark from "./components/BrandMark";
+import { DemoProvider } from "./data/demoStore";
+import AccountPage from "./pages/Account";
+import AdminPage from "./pages/Admin";
+import type { Account } from "./auth/types";
+
+const clerkPubKey = publishableKeyFromHost(
+  window.location.hostname,
+  import.meta.env.VITE_CLERK_PUBLISHABLE_KEY,
+);
+const clerkProxyUrl = import.meta.env.VITE_CLERK_PROXY_URL;
+
+if (import.meta.env.MODE !== "e2e" && !clerkPubKey) {
+  throw new Error("Missing VITE_CLERK_PUBLISHABLE_KEY for Clerk Auth.");
+}
+
+const clerkAppearance = {
+  options: {
+    logoPlacement: "inside" as const,
+    logoLinkUrl: "/",
+    logoImageUrl: `${window.location.origin}/logo.svg`,
+  },
+  variables: {
+    colorPrimary: "#005850",
+    colorForeground: "#1a1a1a",
+    colorMutedForeground: "#555555",
+    colorBackground: "#ffffff",
+    colorInput: "#ffffff",
+    colorInputForeground: "#1a1a1a",
+    colorNeutral: "#d7d7d7",
+    colorDanger: "#b42318",
+    fontFamily: '"Raleway", Arial, sans-serif',
+    borderRadius: "8px",
+  },
+  elements: {
+    rootBox: { width: "min(100%, 460px)", margin: "0 auto" },
+    cardBox: {
+      width: "100%",
+      boxShadow: "none",
+    },
+    card: {
+      border: "1px solid #d7d7d7",
+      borderRadius: "12px",
+      boxShadow: "none",
+    },
+    formButtonPrimary: {
+      backgroundColor: "#005850",
+    },
+  },
+};
+
+function AuthShell({ children }: { children: ReactNode }) {
   return (
-    <AppShell>
-      <Routes>
-        <Route path="/" element={<ThisWeek />} />
-        <Route path="/programme" element={<Programme />} />
-        <Route path="/reflection-guide" element={<CapstoneGuide />} />
-        <Route path="/applications" element={<NotFound />} />
-        <Route path="/schedule" element={<Schedule key={location.key} />} />
-        <Route
-          path="/session/:id"
-          element={<SessionDetail key={location.pathname} />}
-        />
-        <Route path="/requirements" element={<Requirements />} />
-        <Route path="/readings" element={<Readings />} />
-        <Route path="/resource/:id" element={<ResourceDetail />} />
-        <Route path="/handbook" element={<Handbook />} />
-        <Route path="/capstone-guide" element={<CapstoneGuide />} />
-        <Route path="/dc-culture-guide" element={<NotFound />} />
-        <Route path="/faq" element={<Faq />} />
-        <Route
-          path="/emergency"
-          element={<Navigate to="/handbook" replace />}
-        />
-        <Route path="/teams" element={<Navigate to="/programme" replace />} />
-        <Route
-          path="/team/:id"
-          element={<Navigate to="/programme" replace />}
-        />
-        <Route path="/people" element={<People />} />
-        <Route path="/person/:id" element={<PersonDetail />} />
-        <Route path="/announcements" element={<Announcements />} />
-        <Route
-          path="/discussions"
-          element={<Discussions key={location.key} />}
-        />
-        <Route path="/photos" element={<NotFound />} />
-        <Route path="/reflections" element={<Reflections />} />
-        <Route path="/saved" element={<Saved />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/search" element={<Search key={location.search} />} />
-        <Route path="/how-things-work" element={<HowThingsWork />} />
-        <Route path="/article/:slug" element={<ArticleDetail />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </AppShell>
+    <main className="auth-page">
+      <div className="auth-brand">
+        <BrandMark />
+        <span className="eyebrow">LIBERTY &amp; SOCIETY STUDENT FELLOWSHIP</span>
+      </div>
+      {children}
+    </main>
   );
+}
+
+function Welcome() {
+  return (
+    <AuthShell>
+      <section className="auth-welcome">
+        <h1>A place to learn. A place to belong.</h1>
+        <p>
+          Sign in to continue to the Fellowship Hub, or create an account to
+          join.
+        </p>
+        <div className="row wrap">
+          <Link className="button primary" to="/sign-in">
+            Sign in
+          </Link>
+          <Link className="button" to="/sign-up">
+            Create account
+          </Link>
+        </div>
+      </section>
+    </AuthShell>
+  );
+}
+
+function safeRedirect(value: string | null) {
+  if (
+    !value ||
+    !value.startsWith("/") ||
+    value.startsWith("//") ||
+    value.includes("\\")
+  )
+    return "/";
+  return value;
+}
+
+function SignInPage() {
+  const [params] = useSearchParams();
+  const redirect = safeRedirect(params.get("redirect_url"));
+  return (
+    <AuthShell>
+      <SignIn
+        routing="path"
+        path="/sign-in"
+        signUpUrl="/sign-up"
+        forceRedirectUrl={redirect}
+        appearance={clerkAppearance}
+      />
+    </AuthShell>
+  );
+}
+
+function SignUpPage() {
+  return (
+    <AuthShell>
+      <SignUp
+        routing="path"
+        path="/sign-up"
+        signInUrl="/sign-in"
+        forceRedirectUrl="/"
+        appearance={clerkAppearance}
+      />
+    </AuthShell>
+  );
+}
+
+function ClerkApplication() {
+  const { isLoaded, isSignedIn, user } = useUser();
+  const { signOut } = useClerk();
+  const location = useLocation();
+  const redirectUrl = encodeURIComponent(
+    `${location.pathname}${location.search}${location.hash}`,
+  );
+
+  if (!isLoaded) return <div className="auth-loading">Loading sign-in…</div>;
+
+  if (!isSignedIn || !user) {
+    return (
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/sign-in/*" element={<SignInPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/sign-up/*" element={<SignUpPage />} />
+        <Route
+          path="*"
+          element={<Navigate to={`/sign-in?redirect_url=${redirectUrl}`} replace />}
+        />
+      </Routes>
+    );
+  }
+
+  return (
+    <SignedInApplication
+      userId={user.id}
+      identity={{
+        name: user.fullName || "",
+        email: user.primaryEmailAddress?.emailAddress || "",
+      }}
+      signOut={() => void signOut({ redirectUrl: "/" })}
+    />
+  );
+}
+
+function SignedInApplication({
+  userId,
+  identity,
+  signOut,
+}: {
+  userId: string;
+  identity: { name: string; email: string };
+  signOut: () => void;
+}) {
+  const [account, setAccount] = useState<Account | null>(null);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setAccount(null);
+    setError("");
+    fetch("/api/me", { credentials: "same-origin", signal: controller.signal })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Your account could not be verified.");
+        return (await response.json()) as Account;
+      })
+      .then((current) => {
+        if (current.userId !== userId)
+          throw new Error("The server identity did not match this sign-in.");
+        setAccount(current);
+      })
+      .catch((reason: unknown) => {
+        if (!controller.signal.aborted)
+          setError(
+            reason instanceof Error
+              ? reason.message
+              : "Your account could not be verified.",
+          );
+      });
+    return () => controller.abort();
+  }, [userId]);
+
+  if (error)
+    return (
+      <main className="auth-page">
+        <section className="auth-welcome" role="alert">
+          <h1>Account verification unavailable</h1>
+          <p>{error}</p>
+          <p>Please try again when the account service is available.</p>
+        </section>
+      </main>
+    );
+  if (!account) return <div className="auth-loading">Loading your account…</div>;
+
+  return (
+    <AuthenticatedHub
+      account={account}
+      identity={identity}
+      signOut={signOut}
+    />
+  );
+}
+
+function AuthenticatedHub({
+  account,
+  identity,
+  signOut,
+}: {
+  account: Account;
+  identity: { name: string; email: string };
+  signOut: () => void;
+}) {
+  return (
+    <DemoProvider key={account.userId} userId={account.userId}>
+      <AppShell role={account.role} identity={identity} signOut={signOut}>
+        <Routes>
+          <Route path="/sign-in" element={<Navigate to="/" replace />} />
+          <Route path="/sign-up" element={<Navigate to="/" replace />} />
+          <Route path="/" element={<ThisWeek />} />
+          <Route path="/programme" element={<Programme />} />
+          <Route path="/reflection-guide" element={<CapstoneGuide />} />
+          <Route path="/applications" element={<NotFound />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/session/:id" element={<SessionDetail />} />
+          <Route path="/requirements" element={<Requirements />} />
+          <Route path="/readings" element={<Readings />} />
+          <Route path="/resource/:id" element={<ResourceDetail />} />
+          <Route path="/handbook" element={<Handbook />} />
+          <Route path="/capstone-guide" element={<CapstoneGuide />} />
+          <Route path="/dc-culture-guide" element={<NotFound />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/emergency" element={<Navigate to="/handbook" replace />} />
+          <Route path="/teams" element={<Navigate to="/programme" replace />} />
+          <Route path="/team/:id" element={<Navigate to="/programme" replace />} />
+          <Route path="/people" element={<People />} />
+          <Route path="/person/:id" element={<PersonDetail />} />
+          <Route path="/announcements" element={<Announcements />} />
+          <Route path="/discussions" element={<Discussions />} />
+          <Route path="/photos" element={<NotFound />} />
+          <Route path="/reflections" element={<Reflections />} />
+          <Route path="/saved" element={<Saved />} />
+          <Route
+            path="/profile"
+            element={<Profile email={identity.email} />}
+          />
+          <Route path="/account" element={<AccountPage account={account} />} />
+          <Route
+            path="/admin"
+            element={
+              account.role === "administrator" ? (
+                <AdminPage account={account} />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
+          />
+          <Route path="/search" element={<Search />} />
+          <Route path="/how-things-work" element={<HowThingsWork />} />
+          <Route path="/article/:slug" element={<ArticleDetail />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AppShell>
+    </DemoProvider>
+  );
+}
+
+function FixtureAuthApplication() {
+  const [account, setAccount] = useState<Account | null>(null);
+  const [checked, setChecked] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/me", { signal: controller.signal })
+      .then(async (response) => {
+        if (response.status === 401) return null;
+        if (!response.ok) throw new Error("Test account fixture unavailable.");
+        return (await response.json()) as Account;
+      })
+      .then((result) => {
+        if (!controller.signal.aborted) {
+          setAccount(result);
+          setChecked(true);
+        }
+      })
+      .catch((reason: unknown) => {
+        if (!controller.signal.aborted) {
+          setError(
+            reason instanceof Error
+              ? reason.message
+              : "Test account fixture unavailable.",
+          );
+          setChecked(true);
+        }
+      });
+    return () => controller.abort();
+  }, []);
+
+  if (!checked) return <div className="auth-loading">Loading test fixture…</div>;
+  if (error)
+    return (
+      <main className="auth-page">
+        <section className="auth-welcome" role="alert">
+          <h1>Test fixture unavailable</h1>
+          <p>{error}</p>
+        </section>
+      </main>
+    );
+  if (!account) return <Welcome />;
+  const identity = {
+    name: "Authentication test fixture",
+    email: `${account.role}@fixture.invalid`,
+  };
+  return (
+    <AuthenticatedHub
+      account={account}
+      identity={identity}
+      signOut={() => setAccount(null)}
+    />
+  );
+}
+
+function ClerkRouter() {
+  const navigate = useNavigate();
+  return (
+    <ClerkProvider
+      publishableKey={clerkPubKey}
+      proxyUrl={clerkProxyUrl}
+      appearance={clerkAppearance}
+      signInUrl="/sign-in"
+      signUpUrl="/sign-up"
+      localization={{
+        signIn: {
+          start: {
+            title: "Welcome back",
+            subtitle: "Sign in to access your Fellowship Hub account",
+          },
+        },
+        signUp: {
+          start: {
+            title: "Create your account",
+            subtitle: "Create an account for the Fellowship Hub",
+          },
+        },
+      }}
+      routerPush={(to) => navigate(to)}
+      routerReplace={(to) => navigate(to, { replace: true })}
+    >
+      <ClerkApplication />
+    </ClerkProvider>
+  );
+}
+
+export default function App() {
+  if (import.meta.env.MODE === "e2e") return <FixtureAuthApplication />;
+  return <ClerkRouter />;
 }

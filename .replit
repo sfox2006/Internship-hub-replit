@@ -1,6 +1,6 @@
 entrypoint = "server/index.mjs"
 run = "npm run replit"
-modules = ["nodejs-22", "web", "nix"]
+modules = ["nodejs-22", "web", "nix", "postgresql-16"]
 [deployment]
 build = ["sh", "-c", "npm ci --include=dev && npm run build"]
 run = ["npm", "start"]

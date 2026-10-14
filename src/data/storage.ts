@@ -1,6 +1,11 @@
 import type { PersonalState } from "../../shared/types";
 import { fixtures } from "./selectors";
-export const STORAGE_KEY = "cis-fellowship-demo:v1";
+export const STORAGE_KEY = "cis-fellowship:user-state:v2";
+export function userStorageKey(userId: string) {
+  if (!userId || userId.trim() !== userId)
+    throw new TypeError("A verified user ID is required for local state.");
+  return `${STORAGE_KEY}:${encodeURIComponent(userId)}`;
+}
 export function initialState(): PersonalState {
   return {
     version: 1,
@@ -14,26 +19,28 @@ export function initialState(): PersonalState {
     dismissedAnnouncementIds: [],
     quickTourDismissed: false,
     profile: {
-      firstName: "Demo",
-      lastName: "Fellow",
-      school: "Example University",
-      bio: fixtures.people[0].bio,
+      firstName: "",
+      lastName: "",
+      school: "",
+      bio: "",
       linkedinUrl: "",
       websiteUrl: "",
       photoKey: null,
     },
     discussions: structuredClone(fixtures.discussions),
     photos: [],
-    demoSignedIn: true,
   };
 }
-export function loadState(storage: Pick<Storage, "getItem">): {
+export function loadState(
+  storage: Pick<Storage, "getItem">,
+  key = STORAGE_KEY,
+): {
   state: PersonalState;
   error: string | null;
 } {
   const seed = initialState();
   try {
-    const raw = storage.getItem(STORAGE_KEY);
+    const raw = storage.getItem(key);
     if (!raw) return { state: seed, error: null };
     const saved = JSON.parse(raw);
     if (
@@ -55,7 +62,6 @@ export function loadState(storage: Pick<Storage, "getItem">): {
       !record(saved.rsvpBySession) ||
       !record(saved.privateNotesBySession) ||
       !record(saved.profile) ||
-      typeof saved.demoSignedIn !== "boolean" ||
       !Array.isArray(saved.photos)
     )
       throw Error("Invalid personal records");
@@ -136,16 +142,17 @@ export function loadState(storage: Pick<Storage, "getItem">): {
     return {
       state: seed,
       error:
-        "Saved browser data could not be read. This session uses fresh demo records; existing stored data has not been overwritten.",
+        "Saved browser data could not be read. This session uses fresh personal records; existing stored data has not been overwritten.",
     };
   }
 }
 export function saveState(
   storage: Pick<Storage, "setItem">,
   state: PersonalState,
+  key = STORAGE_KEY,
 ) {
   try {
-    storage.setItem(STORAGE_KEY, JSON.stringify(state));
+    storage.setItem(key, JSON.stringify(state));
     return null;
   } catch {
     return "Browser storage is unavailable or full. Changes work in this session but could not be saved for reload.";

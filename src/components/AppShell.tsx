@@ -5,9 +5,21 @@ import Sidebar from "./Sidebar";
 import GlobalSearch from "./GlobalSearch";
 import Avatar from "./Avatar";
 import { useDemo } from "../data/demoStore";
-export default function AppShell({ children }: { children: ReactNode }) {
-  const { state, error } = useDemo();
+import type { AccountIdentity, AccountRole } from "../auth/types";
+export default function AppShell({
+  children,
+  role,
+  identity,
+  signOut,
+}: {
+  children: ReactNode;
+  role: AccountRole;
+  identity: AccountIdentity;
+  signOut: () => void;
+}) {
+  const { error } = useDemo();
   const location = useLocation();
+  const name = identity.name || identity.email || "Your account";
   const [open, setOpen] = useState(false);
   useEffect(() => {
     setOpen(false);
@@ -25,7 +37,13 @@ export default function AppShell({ children }: { children: ReactNode }) {
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <Sidebar open={open} onClose={() => setOpen(false)} />
+      <Sidebar
+        open={open}
+        onClose={() => setOpen(false)}
+        role={role}
+        identity={identity}
+        signOut={signOut}
+      />
       {open && (
         <button
           aria-label="Close navigation"
@@ -44,15 +62,13 @@ export default function AppShell({ children }: { children: ReactNode }) {
             {open ? <X /> : <Menu />}
           </button>
           <GlobalSearch />
-          <Link aria-label="Your profile" to="/profile">
-            <Avatar
-              name={`${state.profile.firstName} ${state.profile.lastName}`}
-              id="demo"
-            />
+          <Link aria-label="Your account" to="/account">
+            <Avatar name={name} id="current-user" />
           </Link>
         </header>
-        <div className="demo-notice">
-          Demo · changes are stored in this browser <span>2026 Fellowship</span>
+        <div className="account-notice">
+          Signed in · role: {role} · private data is saved in this browser
+          <span>2026 Fellowship</span>
         </div>
         {error && (
           <div className="error storage-error" role="alert">
@@ -63,8 +79,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
           {children}
         </main>
         <footer>
-          Independent CIS fellowship adaptation · Browser-local demo · Not an
-          official CIS portal
+          Independent CIS fellowship adaptation · Account-specific browser
+          storage · Not an official CIS portal
         </footer>
       </div>
     </>

@@ -1,6 +1,6 @@
 # Liberty & Society Fellowship Hub
 
-An independent adaptation of the existing intern-portal demo for the Centre for Independent Studies (CIS) Liberty & Society Student Fellowship. Programme data combines the original briefing (25 September 2026 snapshot) with the subsequently supplied cohort HTML containing readings, questions and updated speakers. This is not an official CIS portal, an application system, or a live integration with CIS. No secrets are required.
+An independent adaptation of the existing intern-portal demo for the Centre for Independent Studies (CIS) Liberty & Society Student Fellowship. Programme data combines the original briefing (25 September 2026 snapshot) with the subsequently supplied cohort HTML containing readings, questions and updated speakers. This is not an official CIS portal, an application system, or a live integration with CIS. Development authentication uses Replit-managed Clerk credentials; no credentials belong in the repository.
 
 ## What changed
 
@@ -11,8 +11,9 @@ An independent adaptation of the existing intern-portal demo for the Centre for 
 - Attendance has its own browser-local record, separate from RSVP and reflection/review completion. Programme guidance reports at least 10 of 13 sessions; entry-specific absence limits are retained. This is not an official attendance register or certificate.
 - Readings are encouraged, not mandatory. 26 optional resource assignments (including two presentations) and 19 full reflection questions are imported from the supplied HTML. External links are retained, including shared reading collections.
 - The handbook, reflection/viva guide, application information and FAQ reflect the fellowship. Cato-specific office/team/emergency content is no longer reachable as active pages; those old routes redirect to programme guidance. Legacy guide URLs remain supported.
-- Speakers use reported names/affiliations, with missing biographies/contacts identified as unavailable. The sole fellow profile is explicitly synthetic.
-- Profile, notes, bookmarks, replies and image-upload functionality remain browser-local. CIS records use `cis-fellowship-demo:v1` and IndexedDB `cis-fellowship-images`; previous Cato browser records are left untouched.
+- Speakers use reported names/affiliations, with missing biographies/contacts identified as unavailable. New account profiles start blank; no demo account is created or signed in automatically.
+- Replit-managed Clerk Auth gates the hub. New accounts receive the `normal` role; administrator access is checked server-side against the Development database's `app_user_roles` table. No administrator is assigned automatically.
+- Profile fields, notes, bookmarks, attendance, reflections, RSVP, discussions, replies, photo metadata and uploaded image blobs remain browser-local and are namespaced by the verified Clerk user ID. These records do not sync across devices or accounts. Previous `cis-fellowship-demo:v1` browser records and IndexedDB images are left untouched and are not loaded as a signed-in user's state.
 
 ## Visual references and brand fidelity
 
@@ -57,6 +58,7 @@ Express serves `dist/client` on `0.0.0.0:${PORT:-3000}`. Production does not use
 - `PORT`: default 3000.
 - `APP_URL`: optional public origin for the calendar feed URL; defaults to the browser origin.
 - `VITE_REFERENCE_NOW`: public build-time instant, default `2026-10-08T13:23:00Z`. Set to `live` and rebuild for real current time. All programme calculations use the same reference clock and Sydney timezone. There is no background live-refresh service.
+- `CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY`, `VITE_CLERK_PUBLISHABLE_KEY`: provisioned as Replit-managed Development secrets; never add real values to `.env.example` or commit them. The Clerk proxy URL is provisioned for production.
 
 Do not put secrets in `VITE_*` variables. Reflection links open the supplied external form; this app does not detect or assert successful form submission. No application or viva appointment integration is implemented. The supplied password-bearing Zoom join link is not committed to this public-demo code; distribute it privately until authenticated membership access is implemented.
 
@@ -70,7 +72,7 @@ After publishing, verify the public app’s `/api/health`, `/programme`, `/sched
 
 UTC event instants are converted from the supplied Sydney dates/times. Assignments, unknown speakers, deadline assumptions and synthetic participant data must remain clearly distinguished from verified official data. The palette and policy-area classifications are editorial adaptations; they are not claims about official CIS website taxonomy.
 
-Notes and profile edits save only on request. Image Blobs use IndexedDB with recreated/revoked object URLs. Storage failures remain visible. Sign-out retains personal browser records. There is no shared database, real authentication, moderation, automatic CIS submission synchronisation or cross-device synchronization. Calendar feeds contain fixture sessions and no private notes.
+Notes and profile edits save only on request. Image Blobs use IndexedDB with recreated/revoked object URLs. Storage failures remain visible. Sign-out retains records under that account's browser-local namespace. The Development database stores only account-role rows; it does not store profile, attendance, notes, discussions or image data. Clerk holds authentication identities. There is no moderation, automatic CIS submission synchronisation or cross-device synchronization. Calendar feeds contain fixture sessions and no private notes.
 
 ## Verification
 
@@ -88,15 +90,15 @@ If a compatible Chromium is supplied, skip browser installation:
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run test:e2e
 ```
 
-The browser suite starts an isolated production test listener on port **3004**. Build before running it. On PowerShell, set the executable path via `$env:PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` if needed.
+The browser suite builds an isolated `e2e`-mode client and starts a test-only server with fixed normal/admin identity fixtures on port **3004**. Those fixtures are gated by both the `e2e` Vite mode and `NODE_ENV=test` plus `APP_AUTH_TEST_FIXTURES=1`; they are not enabled in the normal Development or production build. On PowerShell, set the executable path via `$env:PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` if needed.
 
-Verified for this adaptation: **23 unit tests and 9 browser integration tests**, TypeScript and production build pass. Checks cover Sydney DST conversion, all 13 calendar events, programme-source preservation, real fixture totals, deadlines, independent attendance/RSVP/reflections, notes/bookmarks, linked discussions, profile/image persistence, mobile overflow, storage errors, nested production routes and API/asset 404s. These results validate the cloud build, not a future Replit publication or official CIS content/branding.
+Verified for this adaptation: **28 unit tests and 11 browser integration tests**, TypeScript and production build pass. Checks cover Sydney DST conversion, all 13 calendar events, programme-source preservation, real fixture totals, deadlines, independent attendance/RSVP/reflections, notes/bookmarks, linked discussions, profile/image persistence, user-key storage isolation, anonymous redirects, API 401s, normal-user administrator denial, fixture administrator authorization, role/header tampering, mobile overflow, storage errors, nested routes and API/asset 404s. Fixture tests do not substitute for signing in with the owner's actual account.
 
 ## Owner administrator activation
 
-The nominated owner is Replit username `samfoxprojects`, with published app `https://internship-hub-replit--samfoxprojects.replit.app/`. Administrator access is **not active yet**. Replit's current documentation requires Replit Agent to provision Replit Auth inside the project. A username or local profile field is not authentication.
+The intended owner is Replit username `samfoxprojects`, and the published app is `https://internship-hub-replit--samfoxprojects.replit.app/`. Replit-managed Clerk Auth is provisioned in **Development only**. No account has been verified and no administrator role has been assigned. Sign in through the Development Preview, open `/account`, and confirm the server-verified Clerk user ID before any administrator grant.
 
-[REPLIT-ADMIN-SETUP.md](docs/REPLIT-ADMIN-SETUP.md) contains the project-specific Agent prompt and activation checks. `server/admin-access.mjs` supplies tested, fail-closed server authorization for exact stable user IDs once connected to an already verified Replit Auth session. It is not wired to routes yet and does not implement authentication. Seven additional unit tests cover denial, exact-ID matching, ignored client roles, adapter errors and revocation. The live health endpoint was checked successfully; real administrator login remains unverified until Agent provisioning and owner sign-in are complete.
+[REPLIT-ADMIN-SETUP.md](docs/REPLIT-ADMIN-SETUP.md) explains the account-ID verification and explicit, parameterized Development database bootstrap. `server/admin-access.mjs` is connected to Clerk's verified server session for `/api/admin`; the admin page and API remain inaccessible to normal accounts. Production auth, production database schema, and production administrator access remain unchanged until a later approved publish and activation.
 
 ## Latest portal changes
 

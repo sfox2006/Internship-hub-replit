@@ -163,7 +163,6 @@ export type PersonalState = {
   profile: Profile;
   discussions: Discussion[];
   photos: Photo[];
-  demoSignedIn: boolean;
 };
 export type Fixtures = {
   term: Term;

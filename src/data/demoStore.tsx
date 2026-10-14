@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 import type { PersonalState } from "../../shared/types";
-import { initialState, loadState, saveState } from "./storage";
+import { initialState, loadState, saveState, userStorageKey } from "./storage";
 type Store = {
   state: PersonalState;
   error: string | null;
@@ -15,10 +15,17 @@ type Store = {
   ) => void;
 };
 const Context = createContext<Store | null>(null);
-export function DemoProvider({ children }: { children: ReactNode }) {
+export function DemoProvider({
+  children,
+  userId,
+}: {
+  children: ReactNode;
+  userId: string;
+}) {
+  const key = userStorageKey(userId);
   const [loaded] = useState(() => {
     try {
-      return loadState(window.localStorage);
+      return loadState(window.localStorage, key);
     } catch {
       return {
         state: initialState(),
@@ -33,7 +40,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     const next = fn(state);
     let message: string | null;
     try {
-      message = saveState(window.localStorage, next);
+        message = saveState(window.localStorage, next, key);
     } catch {
       message =
         "Browser storage is unavailable. Changes could not be saved for reload.";

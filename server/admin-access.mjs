@@ -1,9 +1,16 @@
 /**
- * Administrator authorization, to be connected AFTER Replit Agent provisions Auth.
- * This module does not authenticate anyone. getVerifiedUser must read a server-side
- * identity already authenticated by Replit Auth; never a header, body or localStorage.
+ * Administrator authorization for an already verified server-side identity.
+ * Identity and role claims from headers, request bodies and browser storage are
+ * deliberately not interpreted here.
  */
 export function configuredAdminIds(value) {
+  if (Array.isArray(value)) {
+    return new Set(
+      value.filter(
+        (id) => typeof id === "string" && id && id.trim() === id,
+      ),
+    );
+  }
   if (typeof value !== "string") return new Set();
   return new Set(
     value
@@ -18,7 +25,7 @@ export function adminDecision(verifiedUser, configuredIds) {
     return { allowed: false, status: 401, error: "Sign-in required" };
   }
   const admins = configuredAdminIds(configuredIds);
-  if (!admins.size) {
+  if (!admins.size && configuredIds === undefined) {
     return {
       allowed: false,
       status: 503,
@@ -36,14 +43,14 @@ export function adminDecision(verifiedUser, configuredIds) {
 }
 export function requireAdministrator(
   getVerifiedUser,
-  getAdminIds = () => process.env.ADMIN_REPLIT_USER_IDS,
+  getAdminIds = () => [],
 ) {
   if (typeof getVerifiedUser !== "function")
     throw new TypeError("A verified server identity adapter is required");
   return async (req, res, next) => {
     try {
       const user = await getVerifiedUser(req);
-      const decision = adminDecision(user, getAdminIds());
+      const decision = adminDecision(user, await getAdminIds());
       if (!decision.allowed)
         return res.status(decision.status).json({ error: decision.error });
       res.locals.administratorSubject = user.subject;

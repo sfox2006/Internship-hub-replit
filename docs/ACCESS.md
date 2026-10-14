@@ -1,17 +1,19 @@
 # Administrator and fellow access
 
-Access control is not implemented in this demo. Enter demo is not login, profile email is a placeholder, and directory categories are not permission roles. Replit workspace permissions control who edits/deploys code; application permissions need their own implementation.
+## Current Development status
 
-Recommended production path: Supabase Auth and Postgres, with invite-only membership.
+Replit-managed Clerk Auth is configured for Development. The Express server verifies Clerk sessions; hub pages require sign-in, all `/api/*` routes except health checks require sign-in, and `/api/admin/*` requires a server-stored administrator role. The public `/` page is only the welcome/sign-in entry point. Normal signups are stored as `normal`; no administrator has been assigned.
 
-1. Create a Supabase project. Enable the chosen email login method and configure the deployed Replit origin and authentication callback in its redirect settings. Disable unrestricted public signup for a private cohort.
-2. Add server authentication to Express and a login/session flow to React. Verify identity on every protected server operation; hiding buttons does not grant or enforce security. Serve protected cohort information from authenticated APIs rather than embedding it in a public client fixture bundle.
-3. Add a server-managed membership table referencing authenticated user IDs, with roles `admin` and `fellow`. Bootstrap the programme administrator through a controlled server/database operation. Clients must not assign or promote their own role. Enforce database row policies and server permission checks.
-4. Administrators can manage programme content, invite/remove fellows, and perform explicitly authorised attendance/submission administration. Fellows can read cohort materials and access only their own personal records; private notes remain private. Shared discussions need defined membership access. Role and record access require tests proving users cannot access other users' notes or grant themselves administrator permissions.
-5. Replace browser-local personal records with authenticated database records. Implement content management screens and authorise every change. Supabase Auth alone supplies identities; it does not create the hub's administrator UI or migrate localStorage data automatically.
-6. Store the provider configuration in Replit's environment settings. A public project URL and publishable key may be client-visible; privileged service credentials belong exclusively on the server. Never put a service-role key in a `VITE_*` variable, source control or chat.
-7. After the integration is deployed, invite the administrator account and the fellows via the provider's invitation flow. Assign `admin` through the controlled bootstrap path and `fellow` to ordinary invitees. Verify redirects and permissions on the real published domain using separate accounts.
+The Development PostgreSQL table `app_user_roles` stores the stable Clerk user ID and role. It contains no client-writable role endpoint. The production deployment and production database/auth settings have not been changed.
 
-The supplied password-bearing Zoom join link is intentionally not embedded in the public demo or committed to GitHub. Add it to protected cohort content after authentication and membership checks exist. The supplied reflection form is an external destination; opening it does not synchronise completion into this app.
+## Personal data and content boundaries
 
-These are implementation steps, not settings that already exist in the current hub. Authentication, a shared database and administrator screens remain a separate development change requiring a provider project and actual administrator identity.
+Profile, attendance, RSVP, reflection completion, notes, bookmarks, discussions, replies, dismissals, and photo metadata are stored in browser localStorage under a key derived from that user's verified Clerk ID. Uploaded image blobs are in IndexedDB and referenced only by that user's local profile. This isolates accounts in the same browser but does not sync data across devices or provide server backups.
+
+Programme/session/speaker fixtures are bundled as read-only shared content. They are not a place to put private or password-bearing material: client-bundled content can be inspected even when a page requires sign-in. The supplied Zoom password/link remains excluded. Opening the supplied reflection form does not synchronise its submission status.
+
+## Owner identity and administrator activation
+
+The intended owner is Replit username `samfoxprojects`, but username/email are not proof of identity. Sign in in Development, open `/account`, and use the **Verified Clerk user ID** shown there. It is returned by `/api/me` from the verified server session. Confirm that exact ID before any role change.
+
+After explicit confirmation, promote only that ID with a parameterized update in the Development database. The full steps and exact query are in [REPLIT-ADMIN-SETUP.md](./REPLIT-ADMIN-SETUP.md). Do not implement first-user promotion, email-based promotion, client roles, or a public bootstrap endpoint. A production role must be separately considered after a production deployment is approved.

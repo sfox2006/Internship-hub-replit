@@ -6,15 +6,18 @@ export default defineConfig({
   use: {
     baseURL: "http://127.0.0.1:3004",
     headless: true,
+    extraHTTPHeaders: { "x-hub-test-fixture": "normal" },
     launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
       ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH }
       : undefined,
   },
   webServer: {
-    command: "npm start",
+    command:
+      "npm run build -- --mode e2e && NODE_ENV=test APP_AUTH_TEST_FIXTURES=1 npm start",
     env: { PORT: "3004" },
     url: "http://127.0.0.1:3004/api/health",
-    reuseExistingServer: true,
+    reuseExistingServer: false,
+    timeout: 120_000,
   },
   reporter: "list",
 });

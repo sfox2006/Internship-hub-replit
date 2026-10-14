@@ -11,7 +11,7 @@ export default function Avatar({
   size?: string;
 }) {
   const { state } = useDemo();
-  const key = id === "demo" ? state.profile.photoKey : null;
+  const key = id === "current-user" ? state.profile.photoKey : null;
   const [url, setUrl] = useState<string | null>(null);
   useEffect(() => {
     let active = true;

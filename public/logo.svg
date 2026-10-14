@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 92" role="img" aria-labelledby="title">
+  <title id="title">Fellowship Hub — Centre for Independent Studies</title>
+  <rect x="2" y="9" width="225" height="74" rx="3" fill="#fff" stroke="#c09d51" stroke-width="3"/>
+  <text x="114" y="31" text-anchor="middle" fill="#024a44" font-family="Georgia,serif" font-size="13" letter-spacing="1.2">THE CENTRE FOR</text>
+  <text x="114" y="54" text-anchor="middle" fill="#024a44" font-family="Georgia,serif" font-size="19" font-weight="bold">INDEPENDENT</text>
+  <text x="114" y="72" text-anchor="middle" fill="#024a44" font-family="Georgia,serif" font-size="15" letter-spacing="2">STUDIES</text>
+  <text x="287" y="58" text-anchor="middle" fill="#c09d51" font-family="Georgia,serif" font-size="57" font-weight="bold">50</text>
+  <text x="287" y="76" text-anchor="middle" fill="#c09d51" font-family="Georgia,serif" font-size="15" font-style="italic">years</text>
+</svg>

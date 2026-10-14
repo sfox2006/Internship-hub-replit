@@ -32,7 +32,7 @@ export default function Schedule() {
   const months = [
     ...new Set(sessions.map((s) => localFormat(s.startAt, "MMMM yyyy"))),
   ];
-  const feed = origin + "/api/calendar/demo/feed.ics";
+  const feed = origin + "/api/calendar/feed.ics";
   return (
     <>
       <div className="page-heading">
