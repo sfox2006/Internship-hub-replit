@@ -1,1 +1,2 @@
 - [Clerk proxy fallthrough](clerk-proxy-fallback.md) — an app-level 401 on `/api/__clerk/...` means the script request fell through before Clerk.
+- [Messaging environment checks](messaging-environment-checks.md) — secret-key existence does not prove a nonempty value; target database migrations explicitly.
