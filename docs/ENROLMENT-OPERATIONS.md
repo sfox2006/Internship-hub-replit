@@ -33,11 +33,11 @@ The joining link is `https://internship-hub-replit--samfoxprojects.replit.app/si
 
 No migration drops or rewrites existing tables. No test email rows are inserted into either database; test enrollment records exist only in an isolated in-memory fixture store.
 
-The migration has been applied to **Development only**. Do not run application DDL or write queries against Production. Replit's supported Production schema change is the schema diff shown during Publish: review that it only adds the two enrollment tables and indexes, and retain existing role/data rows. This project has not been published for this change, so Production does not yet have the new roster tables and the live app remains unchanged.
+The migration has been applied to Development and deployed to Production through Replit Publish. Read-only verification of the live schema confirms both enrollment tables, their expected indexes and audit foreign key, with zero enrollment and audit rows. Do not run application DDL manually against Production; use the Publish schema diff for future schema changes and preserve existing role/data rows.
 
 ## Administrator bootstrap
 
-No administrator exists in the Development or Production role table as of the read-only metadata check. The Replit username `samfoxprojects` is not enough to prove account ownership.
+Production currently has exactly one administrator role. The owner verified the signed-in Production account and explicitly approved its single-row promotion. A Replit username alone is not identity proof; this runbook intentionally records no provider user IDs or email addresses.
 
 1. Sign in to the Development preview and open `/account`. Copy the **Verified Clerk user ID** shown by the server-verified `/api/me` response.
 2. The owner must confirm that exact ID in chat before any role change.
@@ -51,9 +51,9 @@ No administrator exists in the Development or Production role table as of the re
    ```
 
    Bind `$1` to the exact confirmed ID and verify that exactly one row changed. Do not widen the update to an email or username.
-4. A Production administrator must be considered separately after Production schema setup and deployment approval. Sign in to the Production app and verify that environment's own ID; do not assume a Development Clerk ID is identical.
+4. The Production owner bootstrap is complete. For any future Production grant, repeat identity verification in the Production environment after schema deployment; never assume a Development Clerk ID is identical.
 
-The app has no first-user promotion, self-service role editor, administrator email list, or client-side role authority. The actual owner ID has not been identified or assigned in this implementation.
+The app has no first-user promotion, self-service role editor, administrator email list, or client-side role authority. The SQL above remains the Development bootstrap procedure; Production changes require separate explicit approval and environment-specific identity verification.
 
 ## Browser-local account state
 
