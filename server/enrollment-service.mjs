@@ -23,7 +23,7 @@ function publicRow(row) {
 function fromDatabase(row) {
   if (!row) return null;
   return {
-    id: row.id,
+    id: row.enrollment_id,
     email: row.email_address,
     emailNormalized: row.email_normalized,
     name: row.full_name,
