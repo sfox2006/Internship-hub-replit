@@ -2,6 +2,18 @@ import Card from "../components/Card";
 import type { Account } from "../auth/types";
 
 export default function AccountPage({ account }: { account: Account }) {
+  const enrollmentLabel =
+    account.enrollmentStatus === "joined"
+      ? "Joined"
+      : account.enrollmentStatus === "approved"
+        ? "Approved · not joined"
+        : account.enrollmentStatus === "suspended"
+          ? "Suspended"
+          : account.enrollmentStatus === "email-unverified"
+            ? "Verified email required"
+            : account.enrollmentStatus === "identity-conflict"
+              ? "Account link conflict"
+              : "Not approved";
   return (
     <div className="narrow">
       <div className="page-heading">
@@ -20,11 +32,14 @@ export default function AccountPage({ account }: { account: Account }) {
           </dd>
           <dt>Hub role</dt>
           <dd>{account.role === "administrator" ? "Administrator" : "Normal user"}</dd>
+          <dt>Enrollment status</dt>
+          <dd>{enrollmentLabel}</dd>
         </dl>
         <p className="muted">
-          This ID comes from the server-verified Clerk session. New accounts
-          receive normal-user access; account settings cannot grant administrator
-          privileges.
+          This ID and status come from the server. A verified provider email is
+          matched to the app-owned roster and permanently linked to this stable
+          account ID on first join. New accounts receive normal-user access;
+          account settings cannot grant administrator privileges.
         </p>
       </Card>
     </div>

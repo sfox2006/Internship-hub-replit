@@ -2,7 +2,7 @@
 
 ## Current status
 
-Replit-managed Clerk Auth has been provisioned for **Development**. This checkout now uses Clerk's verified server session, a sign-in gate, protected APIs, and a server-backed role table. No user has been made an administrator. The published application and production authentication/database settings have not been changed.
+Replit-managed Clerk Auth has been provisioned for **Development**. This checkout uses Clerk's verified server session, an enrollment gate, protected member assets/APIs, and a server-backed role table. No user has been made an administrator and no email has been approved. The published application and Production authentication/database settings have not been changed.
 
 ## Project owner
 
@@ -13,12 +13,12 @@ The Replit username `samfoxprojects` is the intended owner account, but a userna
 ## Verify the owner identity
 
 1. Open the **Development Preview** for this project and visit `/sign-in`; use the existing Replit-managed Clerk account, or create a normal account with `/sign-up`.
-2. After sign-in, open `/account`. Its **Verified Clerk user ID** is returned by `/api/me` from the server-verified session, not from a browser-supplied role or ID.
+2. After sign-in, open `/account`. Its **Verified Clerk user ID** is returned by `/api/me` from the server-verified session, not from a browser-supplied role or ID. `/account` remains available before email enrollment.
 3. Share that ID and confirm it is yours. Do not use a username, email, profile field, request header, or ID copied from another account as proof.
 
 ## Explicit administrator bootstrap
 
-There is no public role-edit endpoint and no first-user promotion. Until the owner confirms the exact ID, all new accounts stay normal users and `/admin` is unavailable.
+There is no public role-edit endpoint and no first-user promotion. Until the owner confirms the exact ID and a server-side role update is separately approved, all new accounts stay normal users and `/admin` is unavailable.
 
 After the owner confirms the ID, an authorized project operator can promote that one row in the **Development** database using a bound SQL parameter:
 
@@ -37,4 +37,4 @@ To revoke the role, set the same exact ID back to `normal` with a parameterized 
 
 Profile fields, photo metadata/blobs, attendance, RSVP, reflection completion, bookmarks, notes, discussion threads/replies, dismissed notices, and tour state are still stored in the user's browser. Local state keys are namespaced by the verified Clerk user ID; images remain in IndexedDB. These records are not shared with administrators or synchronized across devices. Shared programme/speaker/session source content remains static fixture data.
 
-Only Development has been provisioned and checked. Do not publish until explicitly approved. Publishing will require reviewing Clerk's production-domain setup and the production database schema separately; no production administrator role is included in this setup.
+Only Development has been provisioned and checked. The roster migration is applied only to Development. Do not publish until explicitly approved. Publishing will require reviewing Clerk's Production-domain setup and applying the additive schema diff, then separately confirming any Production user ID before assigning a Production role. No Production administrator role is included in this setup.

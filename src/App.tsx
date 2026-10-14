@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { Suspense, lazy, useEffect, useState, type ReactNode } from "react";
 import {
   ClerkProvider,
   SignIn,
@@ -16,33 +16,12 @@ import {
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
-import Programme from "./pages/Programme";
-import ThisWeek from "./pages/ThisWeek";
-import Schedule from "./pages/Schedule";
-import SessionDetail from "./pages/SessionDetail";
-import Requirements from "./pages/Requirements";
-import Readings from "./pages/Readings";
-import ResourceDetail from "./pages/ResourceDetail";
-import Handbook from "./pages/Handbook";
-import CapstoneGuide from "./pages/CapstoneGuide";
-import Faq from "./pages/Faq";
-import People from "./pages/People";
-import PersonDetail from "./pages/PersonDetail";
-import Announcements from "./pages/Announcements";
-import Discussions from "./pages/Discussions";
-import Reflections from "./pages/Reflections";
-import Saved from "./pages/Saved";
-import Profile from "./pages/Profile";
-import Search from "./pages/Search";
-import HowThingsWork from "./pages/HowThingsWork";
-import ArticleDetail from "./pages/ArticleDetail";
-import NotFound from "./pages/NotFound";
-import AppShell from "./components/AppShell";
 import BrandMark from "./components/BrandMark";
-import { DemoProvider } from "./data/demoStore";
 import AccountPage from "./pages/Account";
-import AdminPage from "./pages/Admin";
 import type { Account } from "./auth/types";
+
+const MemberHub = lazy(() => import("./MemberHub"));
+const AdminPage = lazy(() => import("./pages/Admin"));
 
 const clerkPubKey = publishableKeyFromHost(
   window.location.hostname,
@@ -249,6 +228,7 @@ function SignedInApplication({
 }) {
   const [account, setAccount] = useState<Account | null>(null);
   const [error, setError] = useState("");
+  const location = useLocation();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -275,6 +255,33 @@ function SignedInApplication({
     return () => controller.abort();
   }, [userId]);
 
+  useEffect(() => {
+    let active = true;
+    const refreshAccess = async () => {
+      if (document.visibilityState !== "visible") return;
+      try {
+        const response = await fetch("/api/me", {
+          credentials: "same-origin",
+          cache: "no-store",
+        });
+        if (!response.ok) return;
+        const current = (await response.json()) as Account;
+        if (active && current.userId === userId) setAccount(current);
+      } catch {
+        // The server still protects every API request; retry when the tab is active.
+      }
+    };
+    const interval = window.setInterval(refreshAccess, 15_000);
+    document.addEventListener("visibilitychange", refreshAccess);
+    window.addEventListener("focus", refreshAccess);
+    return () => {
+      active = false;
+      window.clearInterval(interval);
+      document.removeEventListener("visibilitychange", refreshAccess);
+      window.removeEventListener("focus", refreshAccess);
+    };
+  }, [userId]);
+
   if (error)
     return (
       <main className="auth-page">
@@ -287,75 +294,68 @@ function SignedInApplication({
     );
   if (!account) return <div className="auth-loading">Loading your account…</div>;
 
+  const isAdminRoute =
+    location.pathname === "/admin" || location.pathname.startsWith("/admin/");
+  const isAccountRoute =
+    location.pathname === "/account" || location.pathname.startsWith("/account/");
+
+  if (isAdminRoute && account.role === "administrator")
+    return (
+      <Suspense fallback={<div className="auth-loading">Loading administrator tools…</div>}>
+        <AdminPage account={account} signOut={signOut} />
+      </Suspense>
+    );
+
+  if (account.enrollmentStatus !== "joined" && isAccountRoute)
+    return (
+      <AuthShell>
+        <AccountPage account={account} />
+        <button className="button" type="button" onClick={signOut}>
+          Sign out
+        </button>
+      </AuthShell>
+    );
+
+  if (account.enrollmentStatus !== "joined")
+    return <EnrollmentRequired account={account} signOut={signOut} />;
+
   return (
-    <AuthenticatedHub
-      account={account}
-      identity={identity}
-      signOut={signOut}
-    />
+    <Suspense fallback={<div className="auth-loading">Loading your hub…</div>}>
+      <MemberHub account={account} identity={identity} signOut={signOut} />
+    </Suspense>
   );
 }
 
-function AuthenticatedHub({
+function EnrollmentRequired({
   account,
-  identity,
   signOut,
 }: {
   account: Account;
-  identity: { name: string; email: string };
   signOut: () => void;
 }) {
+  const message =
+    account.enrollmentStatus === "suspended"
+      ? "Hub access for this account is suspended. Contact the hub administrator if you believe this is incorrect."
+      : account.enrollmentStatus === "email-unverified"
+        ? "Verify an email address with your sign-in provider, then sign in again. The hub checks verified addresses on the server."
+        : account.enrollmentStatus === "identity-conflict"
+          ? "This approved address is already linked to another account. Contact the hub administrator; approvals cannot be transferred between accounts."
+          : "This account can sign in, but its verified email is not approved for hub access yet. Ask the hub administrator to add it to the enrollment roster.";
   return (
-    <DemoProvider key={account.userId} userId={account.userId}>
-      <AppShell role={account.role} identity={identity} signOut={signOut}>
-        <Routes>
-          <Route path="/sign-in" element={<Navigate to="/" replace />} />
-          <Route path="/sign-up" element={<Navigate to="/" replace />} />
-          <Route path="/" element={<ThisWeek />} />
-          <Route path="/programme" element={<Programme />} />
-          <Route path="/reflection-guide" element={<CapstoneGuide />} />
-          <Route path="/applications" element={<NotFound />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/session/:id" element={<SessionDetail />} />
-          <Route path="/requirements" element={<Requirements />} />
-          <Route path="/readings" element={<Readings />} />
-          <Route path="/resource/:id" element={<ResourceDetail />} />
-          <Route path="/handbook" element={<Handbook />} />
-          <Route path="/capstone-guide" element={<CapstoneGuide />} />
-          <Route path="/dc-culture-guide" element={<NotFound />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/emergency" element={<Navigate to="/handbook" replace />} />
-          <Route path="/teams" element={<Navigate to="/programme" replace />} />
-          <Route path="/team/:id" element={<Navigate to="/programme" replace />} />
-          <Route path="/people" element={<People />} />
-          <Route path="/person/:id" element={<PersonDetail />} />
-          <Route path="/announcements" element={<Announcements />} />
-          <Route path="/discussions" element={<Discussions />} />
-          <Route path="/photos" element={<NotFound />} />
-          <Route path="/reflections" element={<Reflections />} />
-          <Route path="/saved" element={<Saved />} />
-          <Route
-            path="/profile"
-            element={<Profile email={identity.email} />}
-          />
-          <Route path="/account" element={<AccountPage account={account} />} />
-          <Route
-            path="/admin"
-            element={
-              account.role === "administrator" ? (
-                <AdminPage account={account} />
-              ) : (
-                <Navigate to="/" replace />
-              )
-            }
-          />
-          <Route path="/search" element={<Search />} />
-          <Route path="/how-things-work" element={<HowThingsWork />} />
-          <Route path="/article/:slug" element={<ArticleDetail />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </AppShell>
-    </DemoProvider>
+    <AuthShell>
+      <section className="auth-welcome" role="status">
+        <h1>Enrollment required</h1>
+        <p>{message}</p>
+        <div className="row wrap">
+          <Link className="button primary" to="/account">
+            View account ID and status
+          </Link>
+          <button className="button" type="button" onClick={signOut}>
+            Sign out
+          </button>
+        </div>
+      </section>
+    </AuthShell>
   );
 }
 
@@ -407,8 +407,8 @@ function FixtureAuthApplication() {
     email: `${account.role}@fixture.invalid`,
   };
   return (
-    <AuthenticatedHub
-      account={account}
+    <SignedInApplication
+      userId={account.userId}
       identity={identity}
       signOut={() => setAccount(null)}
     />

@@ -1,0 +1,30 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "NNeTesLKb75sg_NrL3m__"
+uri = "file://generated-artifacts/admin-enrolments-roster.png"
+type = "image"
+title = "Administrator enrolments — roster"
+description = "Roster and joining instructions captured from the isolated administrator browser fixture. All displayed addresses are .invalid test data; no real enrollment was added."
+logical_id = "09741031-ceda-4b90-97b8-6cbee68bfc2c"
+content_hash = "sha256:9200b8de9311b8925b6b45ae21e238e07962dd18b96f7dcca486506ad632d8c6"
+size = 88811
+mtime_ms = 1791995003773
+storage_uri = "gcs://replit-rams-assets-worf/rams/assets/repl:b3110d73-6abb-4629-8e7b-9c17f8349f52/09741031-ceda-4b90-97b8-6cbee68bfc2c/44ad2ccc-85b6-41e3-bc99-65c934e9d293"
+storage_version_token = "1791995027187068"
+content_type = "image/png"
+
+[[outputs]]
+id = "G50KVZwXCkOr7YLEmzSfh"
+uri = "file://generated-artifacts/admin-enrolments-import-review.png"
+type = "image"
+title = "Administrator enrolments — import review"
+description = "Bulk CSV review state from the isolated fixture. The preview shows new, existing, duplicate, and invalid rows and explicitly labels approval as normal members. Nothing was approved or emailed."
+logical_id = "5076470c-5fc5-4476-a5a3-a7585043fbd3"
+content_hash = "sha256:c21e6e5feff998defeae0532bb8b54ec0e1196a014f34fd0be451df18505207d"
+size = 98318
+mtime_ms = 1791995004361
+storage_uri = "gcs://replit-rams-assets-worf/rams/assets/repl:b3110d73-6abb-4629-8e7b-9c17f8349f52/5076470c-5fc5-4476-a5a3-a7585043fbd3/30e6cca1-fc36-4965-b145-1e9a70050e32"
+storage_version_token = "1791995027924385"
+content_type = "image/png"
