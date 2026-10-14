@@ -1,6 +1,7 @@
 import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: "tests",
+  testIgnore: ["tests/production/**"],
   fullyParallel: false,
   workers: 2,
   use: {

@@ -40,6 +40,12 @@
   place-items: center;
   color: var(--muted);
 }
+.auth-load-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
 .account-notice {
   background: var(--lavender);
 }

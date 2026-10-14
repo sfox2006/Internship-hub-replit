@@ -168,11 +168,47 @@ function ClerkApplication() {
   const { isLoaded, isSignedIn, user } = useUser();
   const { signOut } = useClerk();
   const location = useLocation();
+  const [loadTimedOut, setLoadTimedOut] = useState(false);
   const redirectUrl = encodeURIComponent(
     `${location.pathname}${location.search}${location.hash}`,
   );
 
-  if (!isLoaded) return <div className="auth-loading">Loading sign-in…</div>;
+  useEffect(() => {
+    if (isLoaded) {
+      setLoadTimedOut(false);
+      return;
+    }
+    const timeout = window.setTimeout(() => setLoadTimedOut(true), 12_000);
+    return () => window.clearTimeout(timeout);
+  }, [isLoaded]);
+
+  if (!isLoaded) {
+    if (loadTimedOut)
+      return (
+        <main className="auth-page">
+          <section className="auth-welcome" role="alert">
+            <h1>Sign-in could not load</h1>
+            <p>
+              Sign-in did not finish initializing. Check your connection and
+              try again. If it keeps failing, contact the site owner.
+            </p>
+            <div className="auth-load-actions">
+              <button
+                className="button button-primary"
+                type="button"
+                onClick={() => window.location.reload()}
+              >
+                Try again
+              </button>
+              <Link className="button" to="/">
+                Return to welcome
+              </Link>
+            </div>
+          </section>
+        </main>
+      );
+    return <div className="auth-loading">Loading sign-in…</div>;
+  }
 
   if (!isSignedIn || !user) {
     return (
