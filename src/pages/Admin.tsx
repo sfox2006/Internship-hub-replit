@@ -392,7 +392,8 @@ export default function AdminPage({
               onClick={() => void approveImport()}
               disabled={busy || preview.counts.new === 0}
             >
-              Approve {preview.counts.new} new as normal members
+              Approve {preview.counts.new} normal member
+              {preview.counts.new === 1 ? "" : "s"}
             </button>
           </section>
         )}
@@ -403,8 +404,8 @@ export default function AdminPage({
           <div>
             <h2>Approved email roster</h2>
             <p className="muted">
-              Joined users are linked by stable Clerk user ID. Suspended entries
-              remain on the roster and can be reactivated.
+              Approved people must sign in with the email on this roster.
+              Suspended entries can be reactivated.
             </p>
           </div>
           <label className="enrollment-search">
@@ -434,13 +435,16 @@ export default function AdminPage({
                 <tr key={entry.id}>
                   <td>{entry.email}</td>
                   <td>{entry.name || "—"}</td>
-                  <td>{entry.status === "approved" ? "Approved · not joined" : entry.status}</td>
+                  <td>
+                    {entry.status === "approved"
+                      ? "Approved · not joined"
+                      : entry.status === "joined"
+                        ? "Joined"
+                        : "Suspended"}
+                  </td>
                   <td>{displayDate(entry.joinedAt)}</td>
                   <td>
                     <span>{displayDate(entry.updatedAt)}</span>
-                    <small className="enrollment-message">
-                      Updated by <code>{entry.updatedBy}</code>
-                    </small>
                   </td>
                   <td>
                     <button
@@ -467,9 +471,8 @@ export default function AdminPage({
       <Card>
         <h2>Joining instructions</h2>
         <p>
-          Share the sign-up link only with people whose email address is on the
-          approved roster. They create their own account and complete provider
-          verification. No message is sent from this page.
+          People create an account using their approved email address and verify
+          it before accessing the hub. No invitation is sent from this page.
         </p>
         <label className="enrollment-input">
           Published sign-up link

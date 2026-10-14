@@ -28,7 +28,7 @@ export function createAdminEnrollmentRouter({
     res.json({
       url: new URL("/sign-up", appUrl).toString(),
       instructions:
-        "Create an account using an approved email address, then complete the provider's email verification. The sign-up link does not send email or create an account.",
+        "Create an account using the email address approved for you, then verify that email before accessing the hub. This page does not send invitations or create accounts.",
     });
   });
 

@@ -17,6 +17,16 @@ test("capture isolated administrator roster and import-review screens", async ({
   const page = await administrator.newPage();
   const response = await page.goto("/admin");
   expect(response?.status()).toBe(200);
+  const joiningInfoResponse = await administrator.request.get(
+    "/api/admin/enrollments/join-info",
+  );
+  expect(joiningInfoResponse.status()).toBe(200);
+  const joiningInfo = await joiningInfoResponse.json();
+  expect(joiningInfo.instructions).toContain(
+    "Create an account using the email address approved for you",
+  );
+  expect(joiningInfo.instructions).toContain("verify that email");
+  expect(joiningInfo.instructions).not.toContain("provider verification");
   await expect(
     page.getByRole("heading", { name: "Administrator", exact: true }),
   ).toBeVisible();
@@ -25,6 +35,20 @@ test("capture isolated administrator roster and import-review screens", async ({
     page.getByTestId("enrollment-roster").getByText(
       "already.approved@fixture.invalid",
     ),
+  ).toBeVisible();
+  const rosterTable = page.getByTestId("enrollment-roster");
+  await expect(
+    rosterTable.getByRole("cell", { name: "Joined", exact: true }),
+  ).toBeVisible();
+  await expect(
+    rosterTable.getByRole("cell", { name: "Suspended", exact: true }),
+  ).toBeVisible();
+  await expect(rosterTable).not.toContainText("Updated by");
+  await expect(rosterTable).not.toContainText("user_fixture_administrator");
+  await expect(page.getByText(/Approved people must sign in with the email/))
+    .toBeVisible();
+  await expect(
+    page.getByText(/People create an account using their approved email address and verify it/),
   ).toBeVisible();
   await page.addStyleTag({
     content: "html { scroll-behavior: auto !important; }",
@@ -61,7 +85,7 @@ test("capture isolated administrator roster and import-review screens", async ({
   );
   await expect(
     page.getByRole("button", {
-      name: "Approve 1 new as normal members",
+      name: "Approve 1 normal member",
     }),
   ).toBeVisible();
 
@@ -79,6 +103,18 @@ test("capture isolated administrator roster and import-review screens", async ({
     animations: "disabled",
     caret: "hide",
   });
+
+  await page.getByLabel("CSV content").fill(
+    [
+      "email,name",
+      "visual.one@fixture.invalid,First Member",
+      "visual.two@fixture.invalid,Second Member",
+    ].join("\n"),
+  );
+  await page.getByRole("button", { name: "Review import" }).click();
+  await expect(
+    page.getByRole("button", { name: "Approve 2 normal members" }),
+  ).toBeVisible();
 
   expect(statSync(rosterPath).size).toBeGreaterThan(0);
   expect(statSync(reviewPath).size).toBeGreaterThan(0);
