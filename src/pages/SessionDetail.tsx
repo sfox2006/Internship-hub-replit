@@ -91,6 +91,11 @@ export default function SessionDetail() {
           ))}
           <Card>
             <h2>Reflection questions</h2>
+            <p>
+              <Link to={`/reflections?session=${session.id}`}>
+                Written reflections and submission →
+              </Link>
+            </p>
             <p>Submit a 300-word reflection answering one question.</p>
             {session.submissionQuestions?.length ? (
               <ol>

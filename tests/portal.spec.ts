@@ -5,7 +5,6 @@ test("production health, nested routes, thirteen calendar events and proper erro
   expect(await (await request.get("/api/health")).json()).toEqual({ ok: true });
   for (const path of [
     "/programme",
-    "/applications",
     "/reflection-guide",
     "/session/ls-1022",
     "/schedule",
@@ -141,24 +140,20 @@ test("profile and uploaded images survive reload, sign-out keeps records", async
   await expect(page.getByLabel("First name", { exact: true })).toHaveValue(
     "Taylor",
   );
-  await page.goto("/photos");
-  await page.getByLabel("Image", { exact: true }).setInputFiles({
-    name: "pixel.png",
-    mimeType: "image/png",
-    buffer: Buffer.from(
-      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aH4sAAAAASUVORK5CYII=",
-      "base64",
-    ),
-  });
-  await page.getByLabel("Caption (optional)").fill("Fellowship demo");
-  await page.getByRole("button", { name: "Upload", exact: true }).click();
-  await expect(
-    page.getByRole("img", { name: "Fellowship demo" }),
-  ).toBeVisible();
+  await page
+    .getByLabel("Change photo")
+    .setInputFiles({
+      name: "pixel.png",
+      mimeType: "image/png",
+      buffer: Buffer.from(
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aH4sAAAAASUVORK5CYII=",
+        "base64",
+      ),
+    });
+  await page.getByRole("button", { name: "Save Changes" }).click();
+  await expect(page.getByRole("status")).toHaveText("Changes saved.");
   await page.reload();
-  await expect(
-    page.getByRole("img", { name: "Fellowship demo" }),
-  ).toBeVisible();
+  await expect(page.locator("img.avatar.large")).toBeVisible();
 });
 test("guidance routes, mobile layout and storage failure handling", async ({
   page,
@@ -167,7 +162,7 @@ test("guidance routes, mobile layout and storage failure handling", async ({
   for (const [path, title] of [
     ["/handbook", "Fellowship Handbook"],
     ["/reflection-guide", "Reflection & Viva Guide"],
-    ["/applications", "Application Information"],
+    ["/reflections", "Written Reflections"],
     ["/people", "Fellow Directory"],
     ["/faq", "FAQ"],
     ["/programme", "Liberty & Society Student Fellowship"],
@@ -227,5 +222,110 @@ test("reading links, presentation materials, full questions and submission form 
       name: "EconLib — Introduction to Public Choice",
       exact: true,
     }),
+  ).toBeVisible();
+});
+
+test("nested discussions persist and removed sections stay absent", async ({
+  page,
+  request,
+}) => {
+  await page.goto("/discussions?compose=1");
+  await page.getByLabel("Title", { exact: true }).fill("Threaded discussion");
+  await page.getByLabel("Message", { exact: true }).fill("Original post");
+  await page.getByRole("button", { name: "Post discussion" }).click();
+  await page
+    .getByLabel("Reply to Threaded discussion", { exact: true })
+    .fill("First comment");
+  await page.getByRole("button", { name: "Reply", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Reply to this comment", exact: true })
+    .click();
+  await page
+    .getByLabel("Reply to comment: First comment", { exact: true })
+    .fill("Nested reply");
+  await page.getByRole("button", { name: "Post reply", exact: true }).click();
+  const nested = page.locator(".thread-children .thread-comment");
+  await expect(nested).toHaveCount(1);
+  await expect(nested).toContainText("Nested reply");
+  await nested
+    .getByRole("button", { name: "Reply to this comment", exact: true })
+    .click();
+  await page
+    .getByLabel("Reply to comment: Nested reply", { exact: true })
+    .fill("Third level");
+  await page.getByRole("button", { name: "Post reply", exact: true }).click();
+  await page.reload();
+  await expect(page.locator(".thread-children .thread-children")).toContainText(
+    "Third level",
+  );
+  await page
+    .getByRole("button", { name: "Hide replies (1)", exact: true })
+    .first()
+    .click();
+  await expect(
+    page.getByText("Third level", { exact: true }),
+  ).not.toBeVisible();
+  await page
+    .getByRole("button", { name: "Show replies (1)", exact: true })
+    .first()
+    .click();
+  await expect(page.getByText("Third level", { exact: true })).toBeVisible();
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+  await expect(
+    page.getByRole("link", { name: "Photo Library", exact: true }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByRole("link", { name: "Application Information", exact: true }),
+  ).toHaveCount(0);
+  for (const path of ["/photos", "/applications", "/dc-culture-guide"])
+    expect((await request.get(path)).status()).toBe(404);
+});
+test("written reflections display selected questions and official submission destination", async ({
+  page,
+}) => {
+  await page.goto("/reflections?session=ls-0416");
+  await expect(
+    page.getByRole("heading", { name: "Written Reflections", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      "Identify a real-world example of rent-seeking or regulatory capture.",
+      { exact: false },
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Open fellowship submissions form ↗" }),
+  ).toHaveAttribute("href", /^https:\/\/docs.google.com\/forms\//);
+  await expect(page.locator("p").filter({ hasText: "Deadline:" })).toContainText(
+    "Apr 30, 2026 · 11:59 p.m. Sydney time",
+  );
+  await page.getByText("Submit using the embedded form", { exact: true }).click();
+  await expect(
+    page.locator('iframe[title="Fellowship written reflection submissions"]'),
+  ).toBeVisible();
+  await expect(
+    page.locator('iframe[title="Fellowship written reflection submissions"]'),
+  ).toHaveAttribute("src", /^https:\/\/docs.google.com\/forms\/.*embedded=true$/);
+  await expect(
+    page.getByText("If the form doesn’t load, use the link above.", { exact: true }),
+  ).toBeVisible();
+  await page
+    .getByLabel("Reflection session", { exact: true })
+    .selectOption("ls-1022");
+  await expect(
+    page.getByRole("heading", {
+      name: "Tax, Spending and the Sustainability of the Budget",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Questions to be confirmed.", { exact: false }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByText("To be confirmed.", { exact: true }),
   ).toBeVisible();
 });

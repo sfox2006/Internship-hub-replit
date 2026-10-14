@@ -5,9 +5,34 @@ modules = ["nodejs-22", "web", "nix"]
 build = ["sh", "-c", "npm ci --include=dev && npm run build"]
 run = ["npm", "start"]
 deploymentTarget = "cloudrun"
+
 [[ports]]
 localPort = 3000
 externalPort = 80
 
 [nix]
 channel = "stable-25_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Internship Hub"
+
+[[workflows.workflow]]
+name = "Internship Hub"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm start"
+waitForPort = 3000
+
+[workflows.workflow.metadata]
+outputType = "console"

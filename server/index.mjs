@@ -58,7 +58,7 @@ if (process.argv.includes("--dev")) {
     if (!["GET", "HEAD"].includes(req.method)) return next();
     // Only known page routes get the SPA; asset requests and unknown URLs stay 404.
     const page =
-      /^\/(?:programme|applications|reflection-guide|schedule|requirements|readings|handbook|capstone-guide|dc-culture-guide|faq|emergency|teams|people|announcements|discussions|photos|saved|profile|search|how-things-work|session\/[^/.]+|resource\/[^/.]+|team\/[^/.]+|person\/[^/.]+|article\/[^/.]+)?\/?$/;
+      /^\/(?:programme|reflections|reflection-guide|schedule|requirements|readings|handbook|capstone-guide|faq|emergency|teams|people|announcements|discussions|saved|profile|search|how-things-work|session\/[^/.]+|resource\/[^/.]+|team\/[^/.]+|person\/[^/.]+|article\/[^/.]+)?\/?$/;
     if (page.test(req.path))
       return res.sendFile(path.join(root, "dist/client/index.html"));
     next();
