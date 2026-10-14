@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BrandMark from "../components/BrandMark";
 import { useDemo } from "../data/demoStore";
 export default function DemoEntry() {
@@ -25,6 +26,7 @@ export default function DemoEntry() {
         >
           Enter demo
         </button>
+        <p><Link to="/messages">Private messaging · verified sign-in</Link></p>
         {error && (
           <p role="alert" className="error">
             {error}

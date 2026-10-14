@@ -8,12 +8,13 @@ import "./styles/tokens.css";
 import "./styles/global.css";
 import "./styles/layout.css";
 import App from "./App";
+import { MessagingProvider } from "./data/messaging";
 import { DemoProvider } from "./data/demoStore";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <DemoProvider>
-        <App />
+        <MessagingProvider><App /></MessagingProvider>
       </DemoProvider>
     </BrowserRouter>
   </React.StrictMode>,

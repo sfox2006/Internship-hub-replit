@@ -1,3 +1,4 @@
+import { useMessaging } from "../data/messaging";
 import BrandMark from "./BrandMark";
 import { NavLink, Link } from "react-router-dom";
 import {
@@ -40,6 +41,7 @@ const groups = [
     items: [
       ["Announcements", "/announcements", Megaphone],
       ["Fellow Directory", "/people", Users],
+      ["Messages", "/messages", MessageCircle],
       ["Discussion Board", "/discussions", MessageCircle],
     ],
   },
@@ -53,6 +55,8 @@ export default function Sidebar({
   onClose: () => void;
 }) {
   const { state, update } = useDemo();
+  const { conversations } = useMessaging();
+  const unread = conversations.reduce((n,c) => n+c.unread,0);
   const name = `${state.profile.firstName} ${state.profile.lastName}`;
   return (
     <aside
@@ -78,6 +82,7 @@ export default function Sidebar({
               >
                 <Icon size={18} />
                 {label}
+                {url === "/messages" && unread > 0 && <span className="unread-badge">{unread}</span>}
               </NavLink>
             ))}
           </details>

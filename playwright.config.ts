@@ -10,11 +10,15 @@ export default defineConfig({
       ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH }
       : undefined,
   },
-  webServer: {
+  webServer: [{
     command: "npm start",
     env: { PORT: "3004" },
     url: "http://127.0.0.1:3004/api/health",
-    reuseExistingServer: true,
-  },
+    reuseExistingServer: false,
+  }, {
+    command: "node tests/messaging-server.mjs",
+    url: "http://127.0.0.1:3005/api/health",
+    reuseExistingServer: false,
+  }],
   reporter: "list",
 });

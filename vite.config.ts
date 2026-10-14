@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   build: { outDir: "dist/client" },
-  test: { include: ["src/tests/**/*.test.ts"] },
+  test: { include: ["src/tests/**/*.test.{ts,mjs}"] },
 });

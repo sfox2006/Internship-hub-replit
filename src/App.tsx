@@ -1,3 +1,4 @@
+import Messages from "./pages/Messages";
 import Programme from "./pages/Programme";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useDemo } from "./data/demoStore";
@@ -26,10 +27,11 @@ import NotFound from "./pages/NotFound";
 export default function App() {
   const { state } = useDemo();
   const location = useLocation();
-  if (!state.demoSignedIn) return <DemoEntry />;
+  if (!state.demoSignedIn && location.pathname !== "/messages") return <DemoEntry />;
   return (
     <AppShell>
       <Routes>
+        <Route path="/messages" element={<Messages />} />
         <Route path="/" element={<ThisWeek />} />
         <Route path="/programme" element={<Programme />} />
         <Route path="/reflection-guide" element={<CapstoneGuide />} />

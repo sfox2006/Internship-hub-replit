@@ -70,7 +70,7 @@ After publishing, verify the public app’s `/api/health`, `/programme`, `/sched
 
 UTC event instants are converted from the supplied Sydney dates/times. Assignments, unknown speakers, deadline assumptions and synthetic participant data must remain clearly distinguished from verified official data. The palette and policy-area classifications are editorial adaptations; they are not claims about official CIS website taxonomy.
 
-Notes and profile edits save only on request. Image Blobs use IndexedDB with recreated/revoked object URLs. Storage failures remain visible. Sign-out retains personal browser records. There is no shared database, real authentication, moderation, automatic CIS submission synchronisation or cross-device synchronization. Calendar feeds contain fixture sessions and no private notes.
+Notes and profile edits save only on request. Image Blobs use IndexedDB with recreated/revoked object URLs. Storage failures remain visible. Sign-out retains personal browser records. Those demo features have no shared database or authentication. Private messaging separately adds verified OIDC accounts, PostgreSQL storage and cross-device conversation access; see [messaging setup](docs/MESSAGING-SETUP.md). Moderation and automatic CIS submission synchronisation are not implemented. Calendar feeds contain fixture sessions and no private notes.
 
 ## Verification
 
@@ -105,3 +105,9 @@ Photo Library and the separate Application Information page have been removed fr
 Discussion replies can target the original post or another comment, with recursively nested threads, collapse/expand controls, whitespace validation and browser persistence. Old flat replies remain top-level. Discussion data is still browser-local until authenticated shared storage is integrated.
 
 `/reflections` provides session selection, full questions, deadlines and the supplied external submission form, with an optional embedded version and a fallback link. It does not submit on the user's behalf or infer external submission success.
+
+## Private messaging
+
+`/messages` adds a responsive, WhatsApp-style one-to-one inbox with text conversations, history pagination, unread counts and automatic polling updates. It uses server-verified OIDC accounts and shared PostgreSQL storage; demo sign-in cannot grant access. Existing programme features and CIS branding are preserved.
+
+**Service configuration is required before messaging is usable.** See [MESSAGING-SETUP.md](docs/MESSAGING-SETUP.md) for the environment settings, database migration, security boundaries and live verification steps. Missing configuration keeps messaging disabled while preserving the programme demo.
