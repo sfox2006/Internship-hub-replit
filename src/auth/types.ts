@@ -3,6 +3,10 @@ export type AccountRole = "normal" | "administrator";
 export type Account = {
   userId: string;
   role: AccountRole;
+  firstName: string;
+  lastName: string;
+  verifiedEmail: string | null;
+  profileComplete: boolean;
   enrollmentStatus:
     | "joined"
     | "approved"
@@ -15,4 +19,6 @@ export type Account = {
 export type AccountIdentity = {
   name: string;
   email: string;
+  firstName: string;
+  lastName: string;
 };

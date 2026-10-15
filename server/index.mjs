@@ -18,6 +18,10 @@ import { ensureNormalAccount, listAdministratorIds } from "./account-roles.mjs";
 import { loadClientAssetPolicy } from "./asset-access.mjs";
 import { createAdminEnrollmentRouter } from "./admin-enrollment-routes.mjs";
 import {
+  hasCompleteAccountProfile,
+  validateAccountProfile,
+} from "./account-profile.mjs";
+import {
   createEnrollmentService,
   createFixtureEnrollmentStore,
 } from "./enrollment-service.mjs";
@@ -39,6 +43,8 @@ const fixtureUsers = new Map([
       role: "normal",
       email: "joined.member@fixture.invalid",
       emailVerified: true,
+      firstName: "Joined",
+      lastName: "Member",
     },
   ],
   [
@@ -48,6 +54,8 @@ const fixtureUsers = new Map([
       role: "administrator",
       email: "administrator@fixture.invalid",
       emailVerified: true,
+      firstName: "Admin",
+      lastName: "Fellow",
     },
   ],
   [
@@ -57,6 +65,8 @@ const fixtureUsers = new Map([
       role: "normal",
       email: "unapproved.member@fixture.invalid",
       emailVerified: true,
+      firstName: "Unapproved",
+      lastName: "Member",
     },
   ],
   [
@@ -66,6 +76,8 @@ const fixtureUsers = new Map([
       role: "normal",
       email: "unverified.member@fixture.invalid",
       emailVerified: false,
+      firstName: "Unverified",
+      lastName: "Member",
     },
   ],
   [
@@ -75,6 +87,8 @@ const fixtureUsers = new Map([
       role: "normal",
       email: "candidate.member@fixture.invalid",
       emailVerified: true,
+      firstName: "Candidate",
+      lastName: "Member",
     },
   ],
   [
@@ -84,6 +98,19 @@ const fixtureUsers = new Map([
       role: "normal",
       email: "suspended.member@fixture.invalid",
       emailVerified: true,
+      firstName: "Suspended",
+      lastName: "Member",
+    },
+  ],
+  [
+    "profile-incomplete",
+    {
+      id: "user_fixture_profile_incomplete",
+      role: "normal",
+      email: "profile.incomplete@fixture.invalid",
+      emailVerified: true,
+      firstName: "",
+      lastName: "",
     },
   ],
 ]);
@@ -130,9 +157,13 @@ async function verifiedClerkProfileForUser(userId) {
       (candidate) => candidate.id === userId,
     );
     const email = fixture?.emailVerified ? fixture.email : null;
+    const firstName = fixture?.firstName ?? "";
+    const lastName = fixture?.lastName ?? "";
     return {
       email,
-      name: email?.split("@")[0] || "Fellow",
+      firstName,
+      lastName,
+      name: [firstName, lastName].filter(Boolean).join(" "),
     };
   }
   const user = await clerkClient.users.getUser(userId);
@@ -143,12 +174,10 @@ async function verifiedClerkProfileForUser(userId) {
     (address) => address.id === user.primaryEmailAddressId,
   );
   const email = (primary ?? verified[0])?.emailAddress ?? null;
-  const name =
-    [user.firstName, user.lastName].filter(Boolean).join(" ") ||
-    user.username ||
-    email?.split("@")[0] ||
-    "Fellow";
-  return { email, name: String(name).slice(0, 120) };
+  const firstName = typeof user.firstName === "string" ? user.firstName : "";
+  const lastName = typeof user.lastName === "string" ? user.lastName : "";
+  const name = [firstName.trim(), lastName.trim()].filter(Boolean).join(" ");
+  return { email, firstName, lastName, name };
 }
 async function verifiedEmailForUser(userId) {
   return (await verifiedClerkProfileForUser(userId)).email;
@@ -230,15 +259,88 @@ app.use("/api", requireSignedIn);
 app.get("/api/me", async (req, res) => {
   try {
     const access = await enrollmentAccess(req);
+    const profile = await verifiedClerkProfileForRequest(req);
     res.json({
       userId: req.authenticatedUserId,
       role: req.authenticatedRole,
       enrollmentStatus: access.status,
+      firstName: profile.firstName,
+      lastName: profile.lastName,
+      verifiedEmail: profile.email,
+      profileComplete: !!profile.email && hasCompleteAccountProfile(profile),
     });
   } catch {
     res.status(503).json({ error: "Enrollment status unavailable." });
   }
 });
+
+function requireConfiguredAppOrigin(req, res, next) {
+  try {
+    const configuredOrigin = new URL(process.env.APP_URL).origin;
+    if (!req.get("origin") || req.get("origin") !== configuredOrigin)
+      return res.status(403).json({ error: "Same-origin request required." });
+    return next();
+  } catch {
+    return res.status(503).json({ error: "Account settings are unavailable." });
+  }
+}
+
+app.put(
+  "/api/account/profile",
+  requireConfiguredAppOrigin,
+  async (req, res) => {
+    const update = validateAccountProfile(req.body);
+    if (!update.ok) return res.status(400).json({ error: update.error });
+    try {
+      const current = await verifiedClerkProfileForRequest(req);
+      if (!current.email)
+        return res.status(403).json({
+          error: "Verify your email before completing your account.",
+          code: "EMAIL_VERIFICATION_REQUIRED",
+        });
+      if (authTestFixturesEnabled) {
+        const fixture = [...fixtureUsers.values()].find(
+          (candidate) => candidate.id === req.authenticatedUserId,
+        );
+        if (!fixture) return res.status(404).json({ error: "Account not found." });
+        fixture.firstName = update.firstName;
+        fixture.lastName = update.lastName;
+      } else {
+        await clerkClient.users.updateUser(req.authenticatedUserId, {
+          firstName: update.firstName,
+          lastName: update.lastName,
+        });
+      }
+      res.json({
+        firstName: update.firstName,
+        lastName: update.lastName,
+      });
+    } catch {
+      res.status(503).json({ error: "Account name could not be saved." });
+    }
+  },
+);
+
+async function requireCompleteProfile(req, res, next) {
+  try {
+    const profile = await verifiedClerkProfileForRequest(req);
+    if (!profile.email)
+      return res.status(403).json({
+        error: "Verify your email before accessing the hub.",
+        code: "EMAIL_VERIFICATION_REQUIRED",
+      });
+    if (!hasCompleteAccountProfile(profile))
+      return res.status(403).json({
+        error: "Complete your first and last name before accessing the hub.",
+        code: "PROFILE_REQUIRED",
+      });
+    return next();
+  } catch {
+    return res.status(503).json({ error: "Account profile unavailable." });
+  }
+}
+
+app.use("/api", requireCompleteProfile);
 app.use("/api/admin", requireAdministratorAccess);
 app.get("/api/admin", (req, res) =>
   res.json({
@@ -287,8 +389,19 @@ installMessaging(app, {
       userId: req.authenticatedUserId,
       sessionId: req.authenticatedSessionId,
       verifiedEmail: profile.email,
+      firstName: profile.firstName,
+      lastName: profile.lastName,
       name: profile.name,
       enrollmentStatus: access.status,
+    };
+  },
+  getVerifiedMember: async (userId) => {
+    const profile = await verifiedClerkProfileForUser(userId);
+    if (!profile.email || !hasCompleteAccountProfile(profile)) return null;
+    return {
+      verifiedEmail: profile.email,
+      firstName: profile.firstName,
+      lastName: profile.lastName,
     };
   },
 });
@@ -348,11 +461,17 @@ async function pageAccess(req) {
   const userId = verifiedUserId(req);
   if (!userId) return { userId: null, role: null, membership: null };
   const role = await roleForUser(userId);
+  const profile = await verifiedClerkProfileForUser(userId);
   const membership = await enrollmentService.getAccess(
     userId,
-    () => verifiedEmailForUser(userId),
+    async () => profile.email,
   );
-  return { userId, role, membership };
+  return {
+    userId,
+    role,
+    membership,
+    profileComplete: !!profile.email && hasCompleteAccountProfile(profile),
+  };
 }
 
 app.use(async (req, res, next) => {
@@ -368,16 +487,18 @@ app.use(async (req, res, next) => {
     if (servesMemberSource || servesAdminSource) {
       setPrivateNoStore(res);
       try {
-        const { userId, role, membership } = await pageAccess(req);
+        const { userId, role, membership, profileComplete } = await pageAccess(req);
         if (!userId)
           return res.status(401).type("text/plain").send("Sign-in required");
         if (servesAdminSource && role !== "administrator")
           return res.status(403).type("text/plain").send("Administrator access required");
         if (
           servesMemberSource &&
-          membership?.status !== "joined"
+          (membership?.status !== "joined" || !profileComplete)
         )
           return res.status(403).type("text/plain").send("Approved enrollment required");
+        if (servesAdminSource && !profileComplete)
+          return res.status(403).type("text/plain").send("Complete your account profile");
         return next();
       } catch {
         return res.status(503).type("text/plain").send("Account service unavailable");
@@ -397,12 +518,13 @@ app.use(async (req, res, next) => {
       return res.status(404).type("text/plain").send("Not found");
     setPrivateNoStore(res);
     try {
-      const { userId, role, membership } = await pageAccess(req);
+      const { userId, role, membership, profileComplete } = await pageAccess(req);
       if (!userId)
         return res.status(401).type("text/plain").send("Sign-in required");
       const memberAllowed =
-        memberAssetPath && membership?.status === "joined";
-      const adminAllowed = adminAssetPath && role === "administrator";
+        memberAssetPath && membership?.status === "joined" && profileComplete;
+      const adminAllowed =
+        adminAssetPath && role === "administrator" && profileComplete;
       if (!memberAllowed && !adminAllowed)
         return res.status(403).type("text/plain").send("Approved access required");
       return next();
@@ -442,11 +564,19 @@ app.use(async (req, res, next) => {
     if (req.path === "/admin" || req.path.startsWith("/admin/")) {
       if (role !== "administrator")
         return res.status(403).type("text/plain").send("Administrator access required");
+      const profile = await verifiedClerkProfileForUser(userId);
+      if (!profile.email || !hasCompleteAccountProfile(profile))
+        return res
+          .status(403)
+          .sendFile(path.join(clientRoot, "index.html"));
       return next();
     }
+    const profile = await verifiedClerkProfileForUser(userId);
+    if (!profile.email || !hasCompleteAccountProfile(profile))
+      return res.status(403).sendFile(path.join(clientRoot, "index.html"));
     const membership = await enrollmentService.getAccess(
       userId,
-      () => verifiedEmailForUser(userId),
+      async () => profile.email,
     );
     if (membership.status !== "joined")
       return res

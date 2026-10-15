@@ -21,6 +21,7 @@ export function installMessaging(
   {
     pool: suppliedPool,
     getVerifiedIdentity = async () => null,
+    getVerifiedMember = async () => null,
     env = process.env,
   } = {},
 ) {
@@ -96,6 +97,10 @@ export function installMessaging(
     if (
       typeof identity.verifiedEmail !== "string" ||
       !identity.verifiedEmail.trim() ||
+      typeof identity.firstName !== "string" ||
+      !identity.firstName.trim() ||
+      typeof identity.lastName !== "string" ||
+      !identity.lastName.trim() ||
       identity.enrollmentStatus !== "joined"
     )
       return { status: 403 };
@@ -170,6 +175,7 @@ export function installMessaging(
     messagingRouter(store, {
       origin,
       isValidCsrf: (token, expected) => validCsrf(token, expected),
+      getVerifiedMember,
     }),
   );
 }

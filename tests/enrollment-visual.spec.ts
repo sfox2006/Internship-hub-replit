@@ -38,10 +38,10 @@ test("capture isolated administrator roster and import-review screens", async ({
   ).toBeVisible();
   const rosterTable = page.getByTestId("enrollment-roster");
   await expect(
-    rosterTable.getByRole("cell", { name: "Joined", exact: true }),
+    rosterTable.getByRole("cell", { name: "Joined", exact: true }).first(),
   ).toBeVisible();
   await expect(
-    rosterTable.getByRole("cell", { name: "Suspended", exact: true }),
+    rosterTable.getByRole("cell", { name: "Suspended", exact: true }).first(),
   ).toBeVisible();
   await expect(rosterTable).not.toContainText("Updated by");
   await expect(rosterTable).not.toContainText("user_fixture_administrator");

@@ -4,6 +4,17 @@
 .message-inbox h2 {padding:1rem;margin:0;background:var(--navy);color:white;display:flex;gap:.5rem;align-items:center}
 .new-message {display:block;padding:1rem;font-size:.85rem;font-weight:600}
 .new-message select {display:block;width:100%;margin-top:.5rem;min-width:0}
+.group-create {padding:0 1rem 1rem;border-bottom:1px solid var(--border);font-size:.82rem}
+.group-create h3 {display:flex;align-items:center;gap:.45rem;margin:0 0 .35rem;font-size:1rem}
+.group-create p {font-size:.78rem;line-height:1.45;margin:.35rem 0 .65rem}
+.group-create label:not(.check) {margin:0 0 .65rem;font-size:.8rem}
+.group-member-picker {border:1px solid var(--border);border-radius:8px;padding:.55rem .65rem;margin:0 0 .75rem;max-height:180px;overflow-y:auto}
+.group-member-picker legend {font-size:.78rem;font-weight:600;padding:0 .25rem}
+.group-member-picker .check {font-size:.8rem;gap:.45rem;margin:.3rem 0}
+.conversation-title {min-width:0}
+.conversation-title strong {overflow-wrap:anywhere}
+.group-member-list {max-width:100%;overflow-wrap:anywhere;line-height:1.4}
+.message-sender {display:block;font-size:.78rem;color:var(--navy);margin-bottom:.25rem}
 .message-inbox > .muted {padding:0 1rem}
 .inbox-item {display:flex;width:100%;text-align:left;align-items:center;gap:.6rem;border:0;border-bottom:1px solid var(--border);border-radius:0;padding:1rem;background:white;color:var(--ink)}
 .inbox-item.selected {background:var(--cis-success);color:var(--ink);box-shadow:inset 3px 0 var(--navy)}

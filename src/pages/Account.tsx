@@ -1,7 +1,14 @@
 import Card from "../components/Card";
+import AccountProfileForm from "../components/AccountProfileForm";
 import type { Account } from "../auth/types";
 
-export default function AccountPage({ account }: { account: Account }) {
+export default function AccountPage({
+  account,
+  onSaveProfile,
+}: {
+  account: Account;
+  onSaveProfile: (firstName: string, lastName: string) => Promise<void>;
+}) {
   const enrollmentLabel =
     account.enrollmentStatus === "joined"
       ? "Joined"
@@ -32,6 +39,12 @@ export default function AccountPage({ account }: { account: Account }) {
           </dd>
           <dt>Hub role</dt>
           <dd>{account.role === "administrator" ? "Administrator" : "Normal user"}</dd>
+          <dt>First name</dt>
+          <dd>{account.firstName || "Not set"}</dd>
+          <dt>Last name</dt>
+          <dd>{account.lastName || "Not set"}</dd>
+          <dt>Verified email</dt>
+          <dd>{account.verifiedEmail || "Email verification required"}</dd>
           <dt>Enrollment status</dt>
           <dd>{enrollmentLabel}</dd>
         </dl>
@@ -42,6 +55,11 @@ export default function AccountPage({ account }: { account: Account }) {
           account settings cannot grant administrator privileges.
         </p>
       </Card>
+      <AccountProfileForm
+        account={account}
+        onSave={onSaveProfile}
+        title="Edit your name"
+      />
     </div>
   );
 }

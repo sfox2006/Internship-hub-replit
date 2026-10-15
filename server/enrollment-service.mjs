@@ -72,9 +72,15 @@ export function createFixtureEnrollmentStore() {
         "user_fixture_suspended",
         3,
       ),
+      fixtureRow(
+        "profile.incomplete@fixture.invalid",
+        "approved",
+        "user_fixture_profile_incomplete",
+        4,
+      ),
     ],
     audit: [],
-    nextId: 4,
+    nextId: 5,
   };
 }
 

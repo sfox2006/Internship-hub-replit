@@ -8,7 +8,7 @@ The Development PostgreSQL tables `app_user_roles`, `app_enrollments`, and `app_
 
 ## Personal data and content boundaries
 
-Profile, attendance, RSVP, reflection completion, notes, bookmarks, discussions, replies, dismissals, and photo metadata are stored in browser localStorage under a key derived from that user's verified Clerk ID. Uploaded image blobs are in IndexedDB and referenced only by that user's local profile. This isolates accounts in the same browser but does not sync data across devices or provide server backups.
+First and last name are stored in the signed-in Clerk account and required before entering the hub. Other profile, attendance, RSVP, reflection completion, notes, bookmarks, discussions, replies, dismissals, and photo metadata are stored in browser localStorage under a key derived from that user's verified Clerk ID. Uploaded image blobs are in IndexedDB and referenced only by that user's local profile. This isolates accounts in the same browser but does not sync data across devices or provide server backups.
 
 The public authentication entry bundle does not contain the shared programme fixtures. Those fixtures are loaded only in member-gated JavaScript chunks, and calendar/data APIs are server-gated. Do not put secrets or password-bearing material in the fixtures. The supplied Zoom password/link remains excluded. Opening the supplied reflection form does not synchronise its submission status.
 

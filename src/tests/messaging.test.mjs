@@ -44,7 +44,7 @@ describe('Verified private messaging',() => {
     expect(response.status).toBe(200);
     const session = await response.json();
     expect(session.configured).toBe(true);
-    expect(session.user).toEqual({id:ids.alice,name:'Alice'});
+    expect(session.user).toEqual({id:ids.alice,name:'Alice Fellow'});
     expect(session.csrf).toMatch(/^[a-f0-9]{64}$/);
     expect(session).not.toHaveProperty('email');
     expect((await fetch(`${base}/api/auth/login`,{headers:{'X-Test-User':'alice'}})).status).toBe(404);
@@ -158,5 +158,103 @@ describe('Verified private messaging',() => {
     await context.store.read(ids.bob,conversation,earlier[0].id);
     expect((await context.store.inbox(ids.bob))[0].unread).toBe(0);
     expect((await api(`conversations/${conversation}/messages?before=garbage`,'alice')).status).toBe(400);
+  });
+  it('creates fixed three-person groups with private history, sender names, and per-member unread/read state',async () => {
+    const available = await (await api('users','alice')).json();
+    expect(available).toEqual(expect.arrayContaining([
+      {id:ids.bob,name:'Bob Fellow'},
+      {id:ids.carol,name:'Carol Fellow'},
+      {id:ids.mallory,name:'Mallory Outsider'},
+    ]));
+    expect(JSON.stringify(available)).not.toContain('@');
+    expect(JSON.stringify(available)).not.toContain('clerk_user_id');
+    expect((await api('groups','alice',{name:'Fellows',memberIds:[ids.bob]})).status).toBe(400);
+
+    const created = await api('groups','alice',{
+      name:'Writing circle',
+      memberIds:[ids.bob,ids.carol],
+    });
+    expect(created.status).toBe(201);
+    const group = await created.json();
+    expect(group).toMatchObject({
+      kind:'group',
+      group_name:'Writing circle',
+    });
+    expect(group.id).toMatch(/^grp_/);
+    const details = await (await api(`groups/${group.id}`,'alice')).json();
+    expect(details.members.map(member => member.name)).toEqual([
+      'Alice Fellow','Bob Fellow','Carol Fellow',
+    ]);
+    expect(JSON.stringify(details)).not.toContain('@');
+
+    const sent = await api(`conversations/${group.id}/messages`,'alice',{
+      body:'Fixture group message',
+      sender_id:ids.mallory,
+    });
+    expect(sent.status).toBe(201);
+    expect(await sent.json()).toMatchObject({
+      sender_id:ids.alice,
+      sender_name:'Alice Fellow',
+      body:'Fixture group message',
+    });
+    const bobInbox = await (await api('conversations','bob')).json();
+    const bobGroup = bobInbox.find(item => item.id === group.id);
+    expect(bobGroup).toMatchObject({
+      kind:'group',
+      group_name:'Writing circle',
+      unread:1,
+    });
+    const history = await (await api(`conversations/${group.id}/messages`,'bob')).json();
+    expect(history[0]).toMatchObject({
+      sender_id:ids.alice,
+      sender_name:'Alice Fellow',
+      body:'Fixture group message',
+    });
+    await api(`conversations/${group.id}/read`,'bob',{through:history[0].id});
+    expect((await (await api('conversations','bob')).json())
+      .find(item => item.id === group.id).unread).toBe(0);
+  });
+  it('denies group history, send, and read to an unrelated active approved member',async () => {
+    const created = await api('groups','alice',{
+      name:'Private three',
+      memberIds:[ids.bob,ids.carol],
+    });
+    const groupId = (await created.json()).id;
+    const before = await context.db.query(
+      'SELECT (SELECT count(*) FROM hub_group_messages WHERE group_id=$1)::int AS messages, (SELECT count(*) FROM hub_group_reads WHERE group_id=$1)::int AS reads',
+      [groupId],
+    );
+    const outsiderInbox = await (await api('conversations','mallory')).json();
+    expect(outsiderInbox.some(item => item.id === groupId)).toBe(false);
+    for (const [suffix,body] of [
+      ['messages',undefined],
+      ['messages',{body:'outsider attempt'}],
+      ['read',{through:'1'}],
+    ])
+      expect((await api(`conversations/${groupId}/${suffix}`,'mallory',body)).status).toBe(404);
+    const after = await context.db.query(
+      'SELECT (SELECT count(*) FROM hub_group_messages WHERE group_id=$1)::int AS messages, (SELECT count(*) FROM hub_group_reads WHERE group_id=$1)::int AS reads',
+      [groupId],
+    );
+    expect(after.rows[0]).toEqual(before.rows[0]);
+  });
+  it('rechecks active approved membership inside group data access after a member is suspended',async () => {
+    const created = await api('groups','alice',{
+      name:'Status test',
+      memberIds:[ids.bob,ids.carol],
+    });
+    const groupId = (await created.json()).id;
+    await api(`conversations/${groupId}/messages`,'alice',{body:'Before suspension'});
+    await context.db.query(
+      "UPDATE app_enrollments SET status='suspended' WHERE clerk_user_id=$1",
+      ['test-clerk-carol'],
+    );
+    expect((await messagingSession('carol')).status).toBe(200);
+    expect((await api(`conversations/${groupId}/messages`,'carol')).status).toBe(404);
+    expect((await api(`conversations/${groupId}/messages`,'carol',{body:'After suspension'})).status).toBe(404);
+    expect((await api(`conversations/${groupId}/read`,'carol',{through:'1'})).status).toBe(404);
+    expect(await context.store.groupHistory(ids.carol,groupId)).toEqual([]);
+    expect(await context.store.sendGroup(ids.carol,groupId,'direct store attempt')).toBeNull();
+    expect(await context.store.groupParticipant(ids.carol,groupId)).toBe(false);
   });
 });

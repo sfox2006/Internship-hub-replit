@@ -12,7 +12,7 @@ test('private chat updates across accounts, persists, tracks unread, and isolate
   await login(alice,'alice'); await login(bob,'bob'); await login(eve,'eve'); await login(mallory,'mallory');
   const a = await alice.newPage(); const b = await bob.newPage();
   await a.goto(`${base}/messages`); await b.goto(`${base}/messages`);
-  await expect(a.getByText('Signed in through the hub as Alice')).toBeVisible();
+  await expect(a.getByText('Signed in through the hub as Alice Fellow')).toBeVisible();
   await expect(a.getByRole('link',{name:/sign in for messaging/i})).toHaveCount(0);
   await expect(a.getByRole('button',{name:'Sign out of messaging'})).toHaveCount(0);
   await a.getByLabel('Message a fellow').selectOption('00000000-0000-4000-8000-000000000002');
@@ -23,7 +23,9 @@ test('private chat updates across accounts, persists, tracks unread, and isolate
   await b.getByLabel('Inbox').getByRole('button').filter({hasText:'Alice'}).click();
   await b.bringToFront();
   await expect(b.getByRole('log')).toContainText('Hello Bob, ready for the fellowship?');
-  await expect(b.getByLabel('Inbox').getByLabel('1 unread')).toHaveCount(0,{timeout:15000});
+  const bobDirect = b.getByLabel('Inbox').getByRole('button').filter({hasText:'Alice Fellow'});
+  await expect(bobDirect).toBeVisible();
+  await expect(bobDirect.getByLabel('1 unread')).toHaveCount(0,{timeout:15000});
   await b.getByLabel('Message',{exact:true}).fill('Absolutely! See you there.');
   await b.getByRole('button',{name:'Send',exact:true}).click();
   await a.bringToFront();
@@ -59,6 +61,87 @@ test('private chat updates across accounts, persists, tracks unread, and isolate
   await pageWait(a);
   await expect(a.getByText('PRIVATE-TEST-PENDING',{exact:true})).toHaveCount(0);
   await alice.close();await bob.close();await eve.close();await mallory.close();
+});
+test('three-person groups show names, track unread, and deny an active outsider read, send, and read-mark access',async ({browser}) => {
+  test.setTimeout(60000);
+  const alice = await browser.newContext();
+  const bob = await browser.newContext();
+  const carol = await browser.newContext();
+  const mallory = await browser.newContext();
+  await login(alice,'alice');
+  await login(bob,'bob');
+  await login(carol,'carol');
+  await login(mallory,'mallory');
+  const a = await alice.newPage();
+  const b = await bob.newPage();
+  const c = await carol.newPage();
+  await a.goto(`${base}/messages`);
+  await b.goto(`${base}/messages`);
+  await c.goto(`${base}/messages`);
+
+  await expect(a.getByLabel('Message a fellow')).toContainText('Bob Fellow');
+  await expect(a.getByLabel('Message a fellow')).not.toContainText('00000000');
+  await a.getByLabel('Group name').fill('Writing circle');
+  await a.getByLabel('Bob Fellow').check();
+  await a.getByLabel('Carol Fellow').check();
+  await a.getByRole('button',{name:'Create group'}).click();
+  await expect(a.getByText('Private group · 3 members')).toBeVisible();
+  await expect(a.getByText('Members: Alice Fellow, Bob Fellow, Carol Fellow')).toBeVisible();
+
+  await a.getByLabel('Message',{exact:true}).fill('A private group fixture message');
+  await a.getByRole('button',{name:'Send',exact:true}).click();
+  await expect(b.getByLabel('Inbox').getByLabel('1 unread')).toBeVisible({timeout:15000});
+  await expect(c.getByLabel('Inbox').getByLabel('1 unread')).toBeVisible({timeout:15000});
+  const groupId = new URL(a.url()).searchParams.get('conversation');
+  expect(groupId).toMatch(/^grp_/);
+  await b.getByLabel('Inbox').getByRole('button').filter({hasText:'Writing circle'}).click();
+  await expect(b.getByRole('log')).toContainText('A private group fixture message');
+  await expect(b.getByRole('log')).toContainText('Alice Fellow');
+  await expect(b.getByText('Members: Alice Fellow, Bob Fellow, Carol Fellow')).toBeVisible();
+  const bobGroup = b.getByLabel('Inbox').getByRole('button').filter({hasText:'Writing circle'});
+  await expect(bobGroup).toBeVisible();
+  await expect(bobGroup.getByLabel('1 unread')).toHaveCount(0,{timeout:15000});
+  await c.getByLabel('Inbox').getByRole('button').filter({hasText:'Writing circle'}).click();
+  await expect(c.getByRole('log')).toContainText('A private group fixture message');
+  const carolGroup = c.getByLabel('Inbox').getByRole('button').filter({hasText:'Writing circle'});
+  await expect(carolGroup.getByLabel('1 unread')).toHaveCount(0,{timeout:15000});
+
+  await b.getByLabel('Message',{exact:true}).fill('Bob confirms the group reply');
+  await b.getByRole('button',{name:'Send',exact:true}).click();
+  await a.bringToFront();
+  await expect(a.getByRole('log')).toContainText('Bob confirms the group reply',{timeout:15000});
+  await c.bringToFront();
+  await expect(c.getByRole('log')).toContainText('Bob confirms the group reply',{timeout:15000});
+  await expect(c.getByRole('log')).toContainText('Bob Fellow');
+  await a.reload();
+  await expect(a.getByRole('log')).toContainText('A private group fixture message');
+  await expect(a.getByRole('log')).toContainText('Bob confirms the group reply');
+  await a.setViewportSize({width:390,height:844});
+  expect(await a.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await a.getByRole('button',{name:'Back to inbox'}).click();
+  await a.getByLabel('Inbox').getByRole('button').filter({hasText:'Writing circle'}).click();
+  await expect(a.getByRole('log')).toContainText('Bob confirms the group reply');
+
+  const outsiderSession = await mallory.request.get(`${base}/api/auth/session`);
+  expect(outsiderSession.status()).toBe(200);
+  const csrf = (await outsiderSession.json()).csrf;
+  const outsiderInbox = await mallory.request.get(`${base}/api/messaging/conversations`);
+  expect((await outsiderInbox.json()).some((item: {id:string}) => item.id === groupId)).toBe(false);
+  const outsiderDetails = await mallory.request.get(`${base}/api/messaging/groups/${groupId}`);
+  expect(outsiderDetails.status()).toBe(404);
+  const outsiderRead = await mallory.request.get(`${base}/api/messaging/conversations/${groupId}/messages`);
+  expect(outsiderRead.status()).toBe(404);
+  const outsiderSend = await mallory.request.post(`${base}/api/messaging/conversations/${groupId}/messages`,{
+    data:{body:'Unrelated active member cannot send to this group.'},
+    headers:{Origin:base,'X-CSRF-Token':csrf},
+  });
+  expect(outsiderSend.status()).toBe(404);
+  const outsiderMarkRead = await mallory.request.post(`${base}/api/messaging/conversations/${groupId}/read`,{
+    data:{through:'1'},
+    headers:{Origin:base,'X-CSRF-Token':csrf},
+  });
+  expect(outsiderMarkRead.status()).toBe(404);
+  await alice.close();await bob.close();await carol.close();await mallory.close();
 });
 test('mobile messaging fits and returns to inbox',async ({browser}) => {
   const context = await browser.newContext({viewport:{width:390,height:844}});

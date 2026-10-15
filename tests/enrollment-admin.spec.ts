@@ -172,6 +172,7 @@ test("an administrator can approve, suspend and reactivate members without email
     .getByTestId("enrollment-roster")
     .getByRole("row")
     .filter({ hasText: "candidate.member@fixture.invalid" });
+  const joinedCandidateRow = candidateRow.filter({ hasText: "Joined" });
   await expect(candidateRow).toContainText("Approved · not joined");
   await expect(candidateRow).not.toContainText("Updated by");
   await expect(candidateRow).not.toContainText("user_fixture_administrator");
@@ -203,7 +204,7 @@ test("an administrator can approve, suspend and reactivate members without email
   expect(memberPage?.status()).toBe(200);
   await expectPrivateNoStore(memberPage!);
 
-  await candidateRow.getByRole("button", { name: "Suspend" }).click();
+  await joinedCandidateRow.getByRole("button", { name: "Suspend" }).click();
   await expect(candidateRow).toContainText("Suspended");
   expect((await candidate.request.get("/api/calendar/feed.ics")).status()).toBe(
     403,

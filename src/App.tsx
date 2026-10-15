@@ -18,6 +18,7 @@ import {
 } from "react-router-dom";
 import BrandMark from "./components/BrandMark";
 import AccountPage from "./pages/Account";
+import AccountProfileForm from "./components/AccountProfileForm";
 import type { Account } from "./auth/types";
 
 const MemberHub = lazy(() => import("./MemberHub"));
@@ -207,24 +208,50 @@ function ClerkApplication() {
 
   return (
     <SignedInApplication
+      key={user.id}
       userId={user.id}
       identity={{
         name: user.fullName || "",
         email: user.primaryEmailAddress?.emailAddress || "",
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
       }}
       signOut={() => void signOut({ redirectUrl: "/" })}
+      onSaveProfile={saveAccountProfile}
     />
   );
+}
+
+async function saveAccountProfile(firstName: string, lastName: string) {
+  const response = await fetch("/api/account/profile", {
+    method: "PUT",
+    credentials: "same-origin",
+    cache: "no-store",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ firstName, lastName }),
+  });
+  const result = (await response.json().catch(() => ({}))) as {
+    error?: string;
+  };
+  if (!response.ok)
+    throw new Error(result.error || "Your name could not be saved.");
 }
 
 function SignedInApplication({
   userId,
   identity,
   signOut,
+  onSaveProfile,
 }: {
   userId: string;
-  identity: { name: string; email: string };
+  identity: {
+    name: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+  };
   signOut: () => void;
+  onSaveProfile: (firstName: string, lastName: string) => Promise<void>;
 }) {
   const [account, setAccount] = useState<Account | null>(null);
   const [error, setError] = useState("");
@@ -254,6 +281,20 @@ function SignedInApplication({
       });
     return () => controller.abort();
   }, [userId]);
+
+  async function saveProfile(firstName: string, lastName: string) {
+    const originalUserId = userId;
+    await onSaveProfile(firstName, lastName);
+    const response = await fetch("/api/me", {
+      credentials: "same-origin",
+      cache: "no-store",
+    });
+    if (!response.ok) throw new Error("Your updated account could not be verified.");
+    const current = (await response.json()) as Account;
+    if (current.userId !== originalUserId)
+      throw new Error("The signed-in account changed. Sign in again to continue.");
+    setAccount(current);
+  }
 
   useEffect(() => {
     let active = true;
@@ -299,6 +340,23 @@ function SignedInApplication({
   const isAccountRoute =
     location.pathname === "/account" || location.pathname.startsWith("/account/");
 
+  if (!account.profileComplete)
+    return (
+      <AuthShell>
+        <section className="auth-welcome">
+          <h1>Complete your account</h1>
+          <p>
+            Use your verified email and add your first and last name before
+            entering the Fellowship Hub.
+          </p>
+        </section>
+        <AccountProfileForm account={account} onSave={saveProfile} />
+        <button className="button" type="button" onClick={signOut}>
+          Sign out
+        </button>
+      </AuthShell>
+    );
+
   if (isAdminRoute && account.role === "administrator")
     return (
       <Suspense fallback={<div className="auth-loading">Loading administrator tools…</div>}>
@@ -309,7 +367,7 @@ function SignedInApplication({
   if (account.enrollmentStatus !== "joined" && isAccountRoute)
     return (
       <AuthShell>
-        <AccountPage account={account} />
+        <AccountPage account={account} onSaveProfile={saveProfile} />
         <button className="button" type="button" onClick={signOut}>
           Sign out
         </button>
@@ -321,7 +379,17 @@ function SignedInApplication({
 
   return (
     <Suspense fallback={<div className="auth-loading">Loading your hub…</div>}>
-      <MemberHub account={account} identity={identity} signOut={signOut} />
+      <MemberHub
+        account={account}
+        identity={{
+          name: `${account.firstName} ${account.lastName}`.trim() || identity.name,
+          email: account.verifiedEmail || identity.email,
+          firstName: account.firstName,
+          lastName: account.lastName,
+        }}
+        signOut={signOut}
+        onSaveProfile={saveProfile}
+      />
     </Suspense>
   );
 }
@@ -403,14 +471,32 @@ function FixtureAuthApplication() {
     );
   if (!account) return <Welcome />;
   const identity = {
-    name: "Authentication test fixture",
-    email: `${account.role}@fixture.invalid`,
+    name: `${account.firstName} ${account.lastName}`.trim(),
+    email: account.verifiedEmail || "",
+    firstName: account.firstName,
+    lastName: account.lastName,
   };
+  async function saveFixtureProfile(firstName: string, lastName: string) {
+    const response = await fetch("/api/account/profile", {
+      method: "PUT",
+      credentials: "same-origin",
+      cache: "no-store",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ firstName, lastName }),
+    });
+    const result = (await response.json().catch(() => ({}))) as {
+      error?: string;
+    };
+    if (!response.ok)
+      throw new Error(result.error || "Test profile could not be saved.");
+  }
   return (
     <SignedInApplication
+      key={account.userId}
       userId={account.userId}
       identity={identity}
       signOut={() => setAccount(null)}
+      onSaveProfile={saveFixtureProfile}
     />
   );
 }

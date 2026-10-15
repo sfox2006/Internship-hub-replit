@@ -34,10 +34,12 @@ export default function MemberHub({
   account,
   identity,
   signOut,
+  onSaveProfile,
 }: {
   account: Account;
   identity: AccountIdentity;
   signOut: () => void;
+  onSaveProfile: (firstName: string, lastName: string) => Promise<void>;
 }) {
   return (
     <DemoProvider key={account.userId} userId={account.userId}>
@@ -73,9 +75,21 @@ export default function MemberHub({
               <Route path="/saved" element={<Saved />} />
               <Route
                 path="/profile"
-                element={<Profile email={identity.email} />}
+                element={
+                  <Profile
+                    email={identity.email}
+                    firstName={identity.firstName}
+                    lastName={identity.lastName}
+                    onSaveNames={onSaveProfile}
+                  />
+                }
               />
-              <Route path="/account" element={<AccountPage account={account} />} />
+              <Route
+                path="/account"
+                element={
+                  <AccountPage account={account} onSaveProfile={onSaveProfile} />
+                }
+              />
               <Route
                 path="/admin"
                 element={

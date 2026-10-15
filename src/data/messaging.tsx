@@ -1,7 +1,37 @@
 import { createContext, useContext, useEffect, useState, useRef, type ReactNode } from 'react';
 export type Fellow = {id:string;name:string};
-export type Conversation = {id:string;peer_id:string;peer_name:string;last_body:string|null;last_at:string|null;unread:number};
-export type Message = {id:string;sender_id:string;body:string;created_at:string};
+export type Conversation = {
+  id:string;
+  kind:'direct'|'group';
+  peer_id?:string;
+  peer_name?:string;
+  group_name?:string;
+  last_body:string|null;
+  last_at:string|null;
+  unread:number;
+};
+export type GroupDetails = {id:string;group_name:string;members:Fellow[]};
+export type Message = {id:string;sender_id:string;sender_name?:string;body:string;created_at:string};
+
+export function fellowLabels(people:Fellow[]):Map<string,string> {
+  const counts = new Map<string,number>();
+  const key = (name:string) => name.trim().toLocaleLowerCase();
+  for (const person of people) {
+    const normalized = key(person.name);
+    counts.set(normalized,(counts.get(normalized) || 0) + 1);
+  }
+  const positions = new Map<string,number>();
+  return new Map(people.map(person => {
+    const normalized = key(person.name);
+    const count = counts.get(normalized) || 1;
+    const position = (positions.get(normalized) || 0) + 1;
+    positions.set(normalized,position);
+    return [
+      person.id,
+      count > 1 ? `${person.name} (member ${position} of ${count})` : person.name,
+    ];
+  }));
+}
 type Session = {
   configured:boolean;
   user:Fellow|null;

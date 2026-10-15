@@ -57,4 +57,4 @@ The app has no first-user promotion, self-service role editor, administrator ema
 
 ## Browser-local account state
 
-Profile fields, photos, attendance, RSVP, reflection progress, saved items, notes, discussions, replies, announcement dismissals, and tour state remain in localStorage/IndexedDB under an account-specific key. That data is isolated per Clerk ID in the same browser but is not stored on the server, backed up, or synchronized across devices. Only the enrollment roster/audit and role are server-side.
+First and last name are maintained in the signed-in Clerk account and are required before hub access. Other member profile fields, photos, attendance, RSVP, reflection progress, saved items, notes, discussions, replies, announcement dismissals, and tour state remain in localStorage/IndexedDB under an account-specific key. That data is isolated per Clerk ID in the same browser but is not stored on the server, backed up, or synchronized across devices. The enrollment roster/audit, roles, and private messages are server-side.

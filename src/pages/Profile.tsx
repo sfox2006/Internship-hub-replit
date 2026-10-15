@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDemo } from "../data/demoStore";
 import { putImage, validateImage } from "../data/imageStore";
+import { normalizeAccountName, withVerifiedAccountName } from "../data/account-profile";
 import Avatar from "../components/Avatar";
 import Card from "../components/Card";
 export function validUrl(value: string) {
@@ -11,13 +12,30 @@ export function validUrl(value: string) {
     return false;
   }
 }
-export default function Profile({ email }: { email: string }) {
+export default function Profile({
+  email,
+  firstName,
+  lastName,
+  onSaveNames,
+}: {
+  email: string;
+  firstName: string;
+  lastName: string;
+  onSaveNames: (firstName: string, lastName: string) => Promise<void>;
+}) {
   const { state, update } = useDemo();
-  const [form, setForm] = useState({ ...state.profile });
+  const [form, setForm] = useState(() =>
+    withVerifiedAccountName(state.profile, { firstName, lastName }),
+  );
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
+  useEffect(() => {
+    setForm((current) =>
+      withVerifiedAccountName(current, { firstName, lastName }),
+    );
+  }, [firstName, lastName]);
   function field(
     key:
       | "firstName"
@@ -46,8 +64,12 @@ export default function Profile({ email }: { email: string }) {
             e.preventDefault();
             setMessage("");
             setError("");
-            if (!form.firstName.trim() || !form.lastName.trim()) {
-              setError("First and last name are required.");
+            const verifiedFirstName = normalizeAccountName(form.firstName);
+            const verifiedLastName = normalizeAccountName(form.lastName);
+            if (!verifiedFirstName || !verifiedLastName) {
+              setError(
+                "First and last name must each contain 1–100 characters without control characters.",
+              );
               return;
             }
             if (
@@ -69,12 +91,17 @@ export default function Profile({ email }: { email: string }) {
                 photoKey = crypto.randomUUID();
                 await putImage(photoKey, file);
               }
+              if (
+                verifiedFirstName !== firstName ||
+                verifiedLastName !== lastName
+              )
+                await onSaveNames(verifiedFirstName, verifiedLastName);
               const ok = update((s) => ({
                 ...s,
                 profile: {
                   ...form,
-                  firstName: form.firstName.trim(),
-                  lastName: form.lastName.trim(),
+                  firstName: verifiedFirstName,
+                  lastName: verifiedLastName,
                   linkedinUrl: form.linkedinUrl.trim(),
                   websiteUrl: form.websiteUrl.trim(),
                   photoKey,
@@ -100,7 +127,7 @@ export default function Profile({ email }: { email: string }) {
         >
           <div className="row">
             <Avatar
-              name={`${state.profile.firstName} ${state.profile.lastName}`}
+              name={`${form.firstName} ${form.lastName}`}
               id="current-user"
               size="large"
             />
@@ -130,6 +157,7 @@ export default function Profile({ email }: { email: string }) {
               First name
               <input
                 required
+                maxLength={100}
                 value={form.firstName}
                 onChange={(e) => field("firstName", e.target.value)}
               />
@@ -138,6 +166,7 @@ export default function Profile({ email }: { email: string }) {
               Last name
               <input
                 required
+                maxLength={100}
                 value={form.lastName}
                 onChange={(e) => field("lastName", e.target.value)}
               />

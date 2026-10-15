@@ -44,5 +44,5 @@ outputType = "console"
 [userenv]
 
 [userenv.development]
-APP_URL = "https://internship-hub-replit--samfoxprojects.replit.app"
+APP_URL = "https://b3110d73-6abb-4629-8e7b-9c17f8349f52-00-3jtlipoc7ji37.worf.replit.dev"
 MESSAGING_ENABLED = "false"
