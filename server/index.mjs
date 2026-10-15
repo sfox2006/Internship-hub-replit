@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import { approvedMessagingIdentity, installMessaging } from "./auth.mjs";
+import { installMessaging } from "./auth.mjs";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -117,12 +117,23 @@ function verifiedUserId(req) {
   }
   return getAuth(req).userId;
 }
-async function verifiedEmailForUser(userId) {
+function verifiedSessionId(req) {
+  if (authTestFixturesEnabled) {
+    const fixture = fixtureUsers.get(req.get("x-hub-test-fixture"));
+    return fixture ? `test-session-${fixture.id}` : null;
+  }
+  return getAuth(req).sessionId;
+}
+async function verifiedClerkProfileForUser(userId) {
   if (authTestFixturesEnabled) {
     const fixture = [...fixtureUsers.values()].find(
       (candidate) => candidate.id === userId,
     );
-    return fixture?.emailVerified ? fixture.email : null;
+    const email = fixture?.emailVerified ? fixture.email : null;
+    return {
+      email,
+      name: email?.split("@")[0] || "Fellow",
+    };
   }
   const user = await clerkClient.users.getUser(userId);
   const verified = user.emailAddresses.filter(
@@ -131,13 +142,28 @@ async function verifiedEmailForUser(userId) {
   const primary = verified.find(
     (address) => address.id === user.primaryEmailAddressId,
   );
-  return (primary ?? verified[0])?.emailAddress ?? null;
+  const email = (primary ?? verified[0])?.emailAddress ?? null;
+  const name =
+    [user.firstName, user.lastName].filter(Boolean).join(" ") ||
+    user.username ||
+    email?.split("@")[0] ||
+    "Fellow";
+  return { email, name: String(name).slice(0, 120) };
+}
+async function verifiedEmailForUser(userId) {
+  return (await verifiedClerkProfileForUser(userId)).email;
+}
+async function verifiedClerkProfileForRequest(req) {
+  req.verifiedClerkProfilePromise ??= verifiedClerkProfileForUser(
+    req.authenticatedUserId,
+  );
+  return req.verifiedClerkProfilePromise;
 }
 async function enrollmentAccess(req) {
   if (!req.enrollmentAccess) {
     req.enrollmentAccess = await enrollmentService.getAccess(
       req.authenticatedUserId,
-      () => verifiedEmailForUser(req.authenticatedUserId),
+      async () => (await verifiedClerkProfileForRequest(req)).email,
     );
   }
   return req.enrollmentAccess;
@@ -165,6 +191,7 @@ async function requireSignedIn(req, res, next) {
     if (typeof userId !== "string" || !userId)
       return res.status(401).json({ error: "Sign-in required" });
     req.authenticatedUserId = userId;
+    req.authenticatedSessionId = verifiedSessionId(req);
     req.authenticatedRole = await roleForUser(userId);
     return next();
   } catch {
@@ -253,16 +280,16 @@ app.use(
 app.use("/api", requireActiveEnrollment);
 installMessaging(app, {
   pool,
-  isApprovedIdentity: async (req, identity) => {
-    const userId = req.authenticatedUserId;
-    const email = await verifiedEmailForUser(userId);
-    return approvedMessagingIdentity({
-      identity,
-      currentClerkUserId: userId,
-      loginClerkUserId: req.messagingLoginUserId,
-      verifiedClerkEmail: email,
-      enrollmentStatus: req.enrollmentAccess?.status,
-    });
+  getVerifiedIdentity: async (req) => {
+    const profile = await verifiedClerkProfileForRequest(req);
+    const access = await enrollmentAccess(req);
+    return {
+      userId: req.authenticatedUserId,
+      sessionId: req.authenticatedSessionId,
+      verifiedEmail: profile.email,
+      name: profile.name,
+      enrollmentStatus: access.status,
+    };
   },
 });
 app.get("/api/config", (_req, res) => {

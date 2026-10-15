@@ -40,7 +40,6 @@ const Context = createContext<{
   conversations:Conversation[];
   error:string;
   refresh:()=>Promise<void>;
-  logout:()=>Promise<void>;
   invalidate:(message?:string)=>void;
 } | null>(null);
 export function MessagingProvider({children}:{children:ReactNode}) {
@@ -101,12 +100,7 @@ export function MessagingProvider({children}:{children:ReactNode}) {
     document.addEventListener('visibilitychange',tick);
     return () => { clearInterval(interval); window.removeEventListener('focus',tick); document.removeEventListener('visibilitychange',tick); };
   },[]);
-  async function logout() {
-    const csrf = session?.csrf;
-    invalidate();
-    await request('auth/logout',csrf,{});
-  }
-  return <Context.Provider value={{session,conversations,error,refresh,logout,invalidate}}>{children}</Context.Provider>;
+  return <Context.Provider value={{session,conversations,error,refresh,invalidate}}>{children}</Context.Provider>;
 }
 export function useMessaging() {
   const value = useContext(Context);

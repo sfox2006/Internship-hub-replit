@@ -5,7 +5,7 @@ import { isAuthorizationFailure, request, useMessaging, type Fellow, type Messag
 import Avatar from '../components/Avatar';
 import '../styles/messages.css';
 export default function Messages() {
-  const {session,conversations,error:connectionError,refresh,logout,invalidate} = useMessaging();
+  const {session,conversations,error:connectionError,refresh,invalidate} = useMessaging();
   const [params,setParams] = useSearchParams();
   const selected = params.get('conversation');
   const conversation = conversations.find(c => c.id === selected);
@@ -123,13 +123,11 @@ export default function Messages() {
     <div className="page-heading"><div><span className="eyebrow">FELLOWSHIP COMMUNITY</span><h1>Messages</h1><p>One-to-one conversations with your fellow members.</p></div></div>
     {(error || connectionError) && <p className="error" role="alert">{error || connectionError} {!session?.accessDenied && <button onClick={() => void refresh()}>Retry connection</button>}</p>}
     {!session ? <p role="status">Connecting to messaging…</p> : !session.user ? <section className="card">
-      <MessageCircle size={32}/><h2>Private conversations start with sign-in</h2>
-       <p>{session.accessDenied ? 'Your hub access is no longer available. Sign in again or contact the hub administrator if this seems wrong.' : session.configured ? 'Sign in with a verified account to send and receive messages.' : 'Private messaging is awaiting authentication and database setup. Please contact the hub administrator.'}</p>
-      {params.has('authError') && <p role="alert" className="error">Sign-in could not be verified. Use an account with a verified email and try again.</p>}
-       {session.configured && !session.accessDenied && <a className="button primary" href="/api/auth/login">Sign in for messaging</a>}
-      <p>Your demo profile does not grant access to private messages.</p><Link to="/">Back to the hub</Link>
+      <MessageCircle size={32}/><h2>Messages use your hub sign-in</h2>
+      <p>{session.accessDenied ? 'Your verified hub sign-in or approved enrollment is no longer available. Sign in through the hub again or contact the administrator.' : session.configured ? 'Messaging is available through the same verified Clerk account you use for the hub.' : 'Private messaging is disabled until its shared database is ready and an administrator activates it.'}</p>
+      <p>There is no separate messaging account or demo access.</p><Link to="/">Back to the hub</Link>
     </section> : <>
-      <div className="message-account"><span>Signed in as <strong>{session.user.name}</strong> · Updates automatically</span><button onClick={() => void logout().catch(e => setError(e.message))}>Sign out of messaging</button></div>
+      <div className="message-account"><span>Signed in through the hub as <strong>{session.user.name}</strong> · Updates automatically</span></div>
       <div className={`messenger ${selected ? 'has-conversation' : ''}`}>
         <aside className="message-inbox" aria-label="Inbox">
           <h2>Inbox <span className="unread-badge">{conversations.reduce((n,c) => n+c.unread,0)}</span></h2>

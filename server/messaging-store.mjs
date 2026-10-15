@@ -1,5 +1,13 @@
 export class MessagingStore {
   constructor(pool) { this.pool = pool; }
+  async ensureUser({clerkUserId,name}) {
+    const result = await this.pool.query(`INSERT INTO hub_users
+      (issuer,subject,name,clerk_user_id)
+      VALUES ('urn:cis:clerk-session',$1,$2,$1)
+      ON CONFLICT (clerk_user_id) DO UPDATE SET name=excluded.name
+      RETURNING id,name,clerk_user_id`, [clerkUserId,name || 'Fellow']);
+    return result.rows[0];
+  }
   async users(id) {
     return (await this.pool.query(`SELECT h.id, h.name
       FROM hub_users h
@@ -31,23 +39,42 @@ export class MessagingStore {
     return result.rows[0] ?? null;
   }
   async participant(id, conversation) {
-    return (await this.pool.query('SELECT id FROM hub_conversations WHERE id=$1 AND $2 IN (user_a,user_b)', [conversation,id])).rowCount > 0;
+    return (await this.pool.query(`SELECT c.id
+      FROM hub_conversations c
+      JOIN hub_users a ON a.id=c.user_a
+      JOIN app_enrollments ea ON ea.clerk_user_id=a.clerk_user_id AND ea.status='approved'
+      JOIN hub_users b ON b.id=c.user_b
+      JOIN app_enrollments eb ON eb.clerk_user_id=b.clerk_user_id AND eb.status='approved'
+      WHERE c.id=$1 AND $2 IN (c.user_a,c.user_b)`, [conversation,id])).rowCount > 0;
   }
   async history(id, conversation, before) {
     // Authorization is repeated in the data query, even after route-level checks.
     return (await this.pool.query(`SELECT m.id::text, m.sender_id, m.body, m.created_at FROM hub_messages m
       JOIN hub_conversations c ON c.id=m.conversation_id
+      JOIN hub_users a ON a.id=c.user_a
+      JOIN app_enrollments ea ON ea.clerk_user_id=a.clerk_user_id AND ea.status='approved'
+      JOIN hub_users b ON b.id=c.user_b
+      JOIN app_enrollments eb ON eb.clerk_user_id=b.clerk_user_id AND eb.status='approved'
       WHERE c.id=$1 AND $2 IN (c.user_a,c.user_b) AND ($3::bigint IS NULL OR m.id<$3)
       ORDER BY m.id DESC LIMIT 100`, [conversation,id,before ?? null])).rows.reverse();
   }
   async send(id, conversation, body) {
     return (await this.pool.query(`INSERT INTO hub_messages(conversation_id,sender_id,body)
-      SELECT id,$2,$3 FROM hub_conversations WHERE id=$1 AND $2 IN (user_a,user_b)
+      SELECT c.id,$2,$3 FROM hub_conversations c
+      JOIN hub_users a ON a.id=c.user_a
+      JOIN app_enrollments ea ON ea.clerk_user_id=a.clerk_user_id AND ea.status='approved'
+      JOIN hub_users b ON b.id=c.user_b
+      JOIN app_enrollments eb ON eb.clerk_user_id=b.clerk_user_id AND eb.status='approved'
+      WHERE c.id=$1 AND $2 IN (c.user_a,c.user_b)
       RETURNING id::text,sender_id,body,created_at`, [conversation,id,body])).rows[0] ?? null;
   }
   async read(id, conversation, through) {
     await this.pool.query(`INSERT INTO hub_reads(conversation_id,user_id,last_message_id)
       SELECT c.id,$2,m.id FROM hub_conversations c JOIN hub_messages m ON m.conversation_id=c.id
+      JOIN hub_users a ON a.id=c.user_a
+      JOIN app_enrollments ea ON ea.clerk_user_id=a.clerk_user_id AND ea.status='approved'
+      JOIN hub_users b ON b.id=c.user_b
+      JOIN app_enrollments eb ON eb.clerk_user_id=b.clerk_user_id AND eb.status='approved'
       WHERE c.id=$1 AND $2 IN (c.user_a,c.user_b) AND m.id=$3
       ON CONFLICT(conversation_id,user_id) DO UPDATE SET last_message_id=greatest(hub_reads.last_message_id,excluded.last_message_id)`, [conversation,id,through]);
   }

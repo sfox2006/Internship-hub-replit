@@ -1,48 +1,49 @@
 # Private messaging setup
 
-The hub continues to use its existing Clerk sign-in, server-verified Clerk identity, approved-email enrolment roster, and administrator authorization. Private messaging adds a second, confidential OIDC sign-in only when explicitly enabled. It does not replace Clerk, enroll users, or grant roles. A messaging identity is accepted only when its ID token has the boolean claim `email_verified: true`, its normalized email exactly matches the current server-verified Clerk email, the current Clerk user is the same one that started OIDC sign-in, and that Clerk user has active roster access.
+Private messages use the hub's existing verified Clerk sign-in. There is no second messaging login, external identity provider, messaging-only logout, or demo access. Messaging does not change administrator roles or enrollment status.
 
-## Current configuration and safe activation
+## Readiness and activation
 
-Messaging fails closed unless `MESSAGING_ENABLED=true` and all six required settings below are non-empty:
+Messaging remains off unless `MESSAGING_ENABLED=true` and all required server-side settings are present:
 
-- `APP_URL` — public HTTPS origin only, with no path.
-- `DATABASE_URL` — existing server-side PostgreSQL connection.
-- `SESSION_SECRET` — existing server-side session secret, at least 32 characters.
-- `OIDC_ISSUER` — issuer value from the provider's OIDC discovery document.
-- `OIDC_CLIENT_ID` — OAuth application client ID.
-- `OIDC_CLIENT_SECRET` — confidential OAuth application secret.
+- `DATABASE_URL` — the existing shared PostgreSQL database.
+- `SESSION_SECRET` — the existing secret, at least 32 characters; do not replace it.
+- `APP_URL` — the exact public HTTPS origin used for same-origin checks.
 
-The app already uses the existing database/session secret; do not replace either. Do not put any of these values in `VITE_*` variables, source files, browser storage, or committed `.env` files. Keep messaging disabled until the three OIDC settings are configured and verified. The example environment file deliberately sets `MESSAGING_ENABLED=false`.
+The existing Clerk server integration must also be able to fetch the authenticated user's current primary verified email. Do not copy Clerk keys or any secret into client variables, source files, browser storage, or committed `.env` files.
 
-## Clerk as the OIDC provider
+The Development database must contain `hub_users`, `hub_conversations`, `hub_messages`, and `hub_reads` before enabling the feature. `hub_sessions` is retained as a legacy table from the earlier design but is no longer used for messaging authentication. Production schema changes are applied by Replit's supported Publish flow; never run DDL against Production or add startup-time schema changes.
 
-Clerk's official [OAuth/SSO guide](https://clerk.com/docs/guides/configure/auth-strategies/oauth/single-sign-on) describes Clerk acting as an OAuth/OIDC provider for a client application. To set that up when you have access to the relevant Clerk dashboard:
+Keep `MESSAGING_ENABLED=false` until database readiness has been confirmed and activation is separately approved. Production must remain off until its schema and rollout have been approved.
 
-1. Create an OAuth application for this hub in Clerk's **OAuth applications** page. Use the scopes `openid profile email`.
-2. Register this exact redirect URI: `APP_URL/api/auth/callback` (for the current published origin, `https://internship-hub-replit--samfoxprojects.replit.app/api/auth/callback`).
-3. Save the new OAuth application's Client ID and one-time Client Secret securely. Use the issuer identifier from its OIDC discovery document as `OIDC_ISSUER`; do not substitute an authorize, token, or user-info endpoint.
-4. Add `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET` through Replit Secrets for **Development**. Verify the provider's ID token exposes `email_verified` as the boolean `true`; the application rejects missing, false, or string-valued claims.
-5. After reviewing the Development behavior, explicitly set `MESSAGING_ENABLED=true` in Development only. Keep Production disabled until its own configuration and rollout are separately approved.
+## Identity and enrollment checks
 
-Replit's current managed-Clerk dashboard access is gated in this workspace, and no supported agent provisioning callback can create the OAuth application or retrieve its client credentials. The three OIDC values are currently empty in Development. Do not try to work around the dashboard gate by upgrading or changing the authentication provider without the owner's decision.
+1. The existing Clerk middleware validates the hub session. Messaging uses its server-provided stable Clerk user ID and session ID; browser-supplied IDs, headers, roles, or email are not authentication.
+2. The server fetches the Clerk user and selects a currently verified email address. An absent or unverified email denies messaging.
+3. The server requires the same Clerk identity to have active `joined` enrollment. Suspended, unapproved, or unverified users cannot read or send messages.
+4. Messaging maps a Clerk user to `hub_users` by stable Clerk user ID. Existing mappings and conversation IDs are reused; creating a mapping does not grant a role or enrollment.
 
-## Database and sign-in flow
+Administrators and normal members follow the same messaging identity and roster checks. Existing administrator authorization is unchanged.
 
-The schema migration adds messaging users linked to stable Clerk IDs, PostgreSQL-backed sessions, one-to-one conversations, messages, and read cursors. Apply the migration to **Development only** and verify the tables before enabling the feature. Never run a migration against Production from the application or shell; Replit's managed Production schema is applied through its supported deployment flow.
+## Privacy and API protections
 
-Members first sign into the hub with Clerk and must already have active approved-email roster access. From `/messages`, they then sign into the configured OIDC provider. The provider email must match the current verified Clerk email. Only active roster members can appear in the recipient selector or access messaging APIs. A messaging login never changes a user's role or roster status.
+- All messaging APIs revalidate the current Clerk identity and active enrollment. Message history and inbox requests additionally check conversation participation in both route middleware and SQL.
+- Mutations require the exact configured origin and a CSRF token derived server-side from the authenticated Clerk user ID, Clerk session ID, application origin, and existing session secret.
+- Private responses use `private, no-store`. Message content and messaging identity are not stored in browser local storage or IndexedDB.
+- Account switch, hub sign-out, expired/revoked access, or a 401/403 clears the previous inbox and displayed messages. In-flight responses from the previous identity are ignored.
+- Existing profile and other hub-local data retain their current per-account storage behavior.
+- Messaging uses shared PostgreSQL and is not end-to-end encrypted; database administrators can read message text.
 
-## Behaviour and boundaries
+## Product behavior
 
-- The server validates OIDC authorization codes with PKCE, state, and nonce, requires strict boolean email verification, and regenerates the session after login. The PostgreSQL session is bound to the current Clerk user ID; switching Clerk accounts invalidates messaging access.
-- Session cookies are HttpOnly, SameSite, and secure on HTTPS. Message history, private identity, and session tokens are not stored in localStorage or IndexedDB. Existing hub features retain their current storage behavior.
-- Every messaging request checks the Clerk session, active roster access, messaging session, and conversation participation. Client-supplied sender IDs are ignored. Mutations require the exact application origin and a session-bound CSRF token; private responses use `no-store`.
-- Two members share one conversation regardless of who starts it. Messages are limited to 4,000 characters. The latest 100 messages load initially; earlier history uses cursor pagination. Read cursors move forward only through messages in that conversation.
-- Active conversation history polls every three seconds; inbox and navigation unread badges refresh every five seconds. Hidden tabs pause polling. Connection errors remain visible, failed sends retain the draft, Enter sends, and Shift+Enter adds a line break.
-- This is server-stored messaging protected in transit, not end-to-end encryption. Administrators with database access can read message text. Attachments, group chat, calls, and delivery/read receipts are outside this feature.
-- Signing out of messaging destroys its session but does not sign the user out of the hub. Messaging sessions expire after eight hours.
+- Two joined members share one conversation, regardless of who starts it. Other active members cannot read or send in a conversation unless they are participants.
+- A suspended member is excluded from recipients and inbox results. Existing messages are retained in the database.
+- Messages are limited to 4,000 characters. The latest 100 load first; earlier history uses cursor pagination. Read cursors only advance through messages in that conversation.
+- The inbox refreshes every five seconds and the open conversation every three seconds. Hidden tabs pause polling. Connectivity failures remain visible and can be retried.
+- Group chat, attachments, calls, and delivery/read receipts are not included.
 
 ## Verification
 
-`npm test` exercises identity/roster authorization and PostgreSQL queries against isolated PGlite fixtures. `npm run build` checks TypeScript and production bundling. The separate `tests/messaging-server.mjs` uses test-only identities and an isolated database on port 3005; it is never imported by the production server and does not substitute for a real OIDC provider test.
+`npm test` exercises `installMessaging` with a server-supplied Clerk identity, verified-email and enrollment denials, same-origin/CSRF checks, stable mapping preservation, and isolated PostgreSQL fixtures. Browser tests cover two participants, an unrelated active approved third member's read/send denial, an unapproved member, hub sign-out, account switching, and delayed stale responses. Test identities are isolated fixtures only and are never used by the production server.
+
+Before real account testing, use two joined accounts for a conversation and a third active approved account that is not a participant. Verify that the two participants can exchange messages, the third account receives denial for both read and send, and sign-out/account switching clears the previous view. Do not use demo identities or send invitations as part of code verification.
