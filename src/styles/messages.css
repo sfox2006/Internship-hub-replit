@@ -6,7 +6,7 @@
 .new-message select {display:block;width:100%;margin-top:.5rem;min-width:0}
 .message-inbox > .muted {padding:0 1rem}
 .inbox-item {display:flex;width:100%;text-align:left;align-items:center;gap:.6rem;border:0;border-bottom:1px solid var(--border);border-radius:0;padding:1rem;background:white;color:var(--ink)}
-.inbox-item.selected {background:var(--cis-success);box-shadow:inset 3px 0 var(--navy)}
+.inbox-item.selected {background:var(--cis-success);color:var(--ink);box-shadow:inset 3px 0 var(--navy)}
 .inbox-preview {flex:1;min-width:0}.inbox-preview strong,.inbox-preview small {display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.inbox-preview small {margin-top:.4rem;color:var(--muted)}
 .inbox-meta {display:flex;align-items:flex-end;flex-direction:column;gap:.4rem;font-size:.65rem}
 .unread-badge {border-radius:20px;padding:.15rem .45rem;background:var(--cis-action);color:white;font-size:.75rem;min-width:1.3rem;text-align:center}
